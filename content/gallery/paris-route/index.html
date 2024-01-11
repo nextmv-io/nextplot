@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ece87d80e2554c3981d8a7707db322e6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_ece87d80e2554c3981d8a7707db322e6" ></div>
+        
+</body>
+<script>    
+    
+            var map_ece87d80e2554c3981d8a7707db322e6 = L.map(
+                "map_ece87d80e2554c3981d8a7707db322e6",
+                {
+                    center: [48.86421464185859, 2.324933624095614],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_419506950a4948a19c2495f5ca20199b = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+            var tile_layer_1e47ba50fc254b47bd83f4d69f9fedf1 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+            var tile_layer_4fd38ec9cca245e49a8b4ee0eb4e962d = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+            var tile_layer_f4b44fe692a046f4a763174ba643fbc2 = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+            var layer_control_0a3be09692584201b48260d6f4eba2ac = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_1e47ba50fc254b47bd83f4d69f9fedf1,
+                    "cartodbdark_matter" : tile_layer_4fd38ec9cca245e49a8b4ee0eb4e962d,
+                    "stamenwatercolor" : tile_layer_f4b44fe692a046f4a763174ba643fbc2,
+                },
+                overlays :  {
+                },
+            };
+            L.control.layers(
+                layer_control_0a3be09692584201b48260d6f4eba2ac.base_layers,
+                layer_control_0a3be09692584201b48260d6f4eba2ac.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+            tile_layer_4fd38ec9cca245e49a8b4ee0eb4e962d.remove();
+            tile_layer_f4b44fe692a046f4a763174ba643fbc2.remove();
+        
+    
+            var poly_line_744151859edb41a893362839fb12a8f4 = L.polyline(
+                [[48.86064983816991, 2.3373478124467524], [48.86548659130954, 2.3211691026573686], [48.873730646108235, 2.2950561481174456], [48.85814487640506, 2.2945793548805833], [48.842085594729355, 2.321845363923588]],
+                {"bubblingMouseEvents": true, "color": "#cc2828", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc2828", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 12.5}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+        var popup_e0a2a3648aa44437809bc54ddfeb9682 = L.popup({"maxWidth": 450});
+
+        
+            var html_20bcb5801c5a4999840a7bb509a846d2 = $(`<div id="html_20bcb5801c5a4999840a7bb509a846d2" style="width: 100.0%; height: 100.0%;"><p>Route points: 7</br>Route length: 15.37 km (9.55 miles)</br></p></div>`)[0];
+            popup_e0a2a3648aa44437809bc54ddfeb9682.setContent(html_20bcb5801c5a4999840a7bb509a846d2);
+        
+
+        poly_line_744151859edb41a893362839fb12a8f4.bindPopup(popup_e0a2a3648aa44437809bc54ddfeb9682)
+        ;
+
+        
+    
+    
+            var poly_line_f05537091eb04789b000ce4c266ac75a = L.polyline(
+                [[48.84616060048901, 2.346233405549605], [48.853070514317345, 2.349489020192572], [48.88634368898782, 2.343046834223321]],
+                {"bubblingMouseEvents": true, "color": "#28cccc", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#28cccc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 12.5}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+        var popup_6e410692d4714ee9965b864973434c9e = L.popup({"maxWidth": 450});
+
+        
+            var html_77bf413f5ed44f92a2643d195ef93bf8 = $(`<div id="html_77bf413f5ed44f92a2643d195ef93bf8" style="width: 100.0%; height: 100.0%;"><p>Route points: 5</br>Route length: 9.53 km (5.92 miles)</br></p></div>`)[0];
+            popup_6e410692d4714ee9965b864973434c9e.setContent(html_77bf413f5ed44f92a2643d195ef93bf8);
+        
+
+        poly_line_f05537091eb04789b000ce4c266ac75a.bindPopup(popup_6e410692d4714ee9965b864973434c9e)
+        ;
+
+        
+    
+    
+            var circle_317a61d10d6b45bba710616d6704a9e6 = L.circle(
+                [48.86064983816991, 2.3373478124467524],
+                {"bubblingMouseEvents": true, "color": "#cc2828", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc2828", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 90.0, "stroke": true, "weight": 3}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+        var popup_c72bff031e1d446ab806dacd620043dc = L.popup({"maxWidth": 450});
+
+        
+            var html_a5c5db5ddce64c7d8bbba03c2b045134 = $(`<div id="html_a5c5db5ddce64c7d8bbba03c2b045134" style="width: 100.0%; height: 100.0%;"><p>Stop: 1 / 5</br>Distance: 2.59 km (1.61 miles)</br>Location (lon/lat): 2.3373478124467524, 48.86064983816991</p>JSON:</br><pre><code>{<br/>  "id": "Louvre",<br/>  "location": [<br/>    48.86064983816991,<br/>    2.3373478124467524<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+            popup_c72bff031e1d446ab806dacd620043dc.setContent(html_a5c5db5ddce64c7d8bbba03c2b045134);
+        
+
+        circle_317a61d10d6b45bba710616d6704a9e6.bindPopup(popup_c72bff031e1d446ab806dacd620043dc)
+        ;
+
+        
+    
+    
+            var circle_11c701f464584a1aa5f5ea4d6bb128cb = L.circle(
+                [48.86548659130954, 2.3211691026573686],
+                {"bubblingMouseEvents": true, "color": "#cc2828", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc2828", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 90.0, "stroke": true, "weight": 3}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+        var popup_5618f4068f794165a52aa5184afe5dd7 = L.popup({"maxWidth": 450});
+
+        
+            var html_7cd97217dc6d4451b0be2c2b06c4773b = $(`<div id="html_7cd97217dc6d4451b0be2c2b06c4773b" style="width: 100.0%; height: 100.0%;"><p>Stop: 2 / 5</br>Distance: 3.89 km (2.42 miles)</br>Location (lon/lat): 2.3211691026573686, 48.86548659130954</p>JSON:</br><pre><code>{<br/>  "id": "Place de la Concorde",<br/>  "location": [<br/>    48.86548659130954,<br/>    2.3211691026573686<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+            popup_5618f4068f794165a52aa5184afe5dd7.setContent(html_7cd97217dc6d4451b0be2c2b06c4773b);
+        
+
+        circle_11c701f464584a1aa5f5ea4d6bb128cb.bindPopup(popup_5618f4068f794165a52aa5184afe5dd7)
+        ;
+
+        
+    
+    
+            var circle_c2240028a11e40888576001505dd2508 = L.circle(
+                [48.873730646108235, 2.2950561481174456],
+                {"bubblingMouseEvents": true, "color": "#cc2828", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc2828", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 90.0, "stroke": true, "weight": 3}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+        var popup_268571dd1f1f4960a33456797af58d2c = L.popup({"maxWidth": 450});
+
+        
+            var html_67146abf91af4513a84210b130651698 = $(`<div id="html_67146abf91af4513a84210b130651698" style="width: 100.0%; height: 100.0%;"><p>Stop: 3 / 5</br>Distance: 6.01 km (3.74 miles)</br>Location (lon/lat): 2.2950561481174456, 48.873730646108235</p>JSON:</br><pre><code>{<br/>  "id": "Arc de Triomphe",<br/>  "location": [<br/>    48.873730646108235,<br/>    2.2950561481174456<br/>  ],<br/>  "quantity": 1<br/>}</code></pre></br></div>`)[0];
+            popup_268571dd1f1f4960a33456797af58d2c.setContent(html_67146abf91af4513a84210b130651698);
+        
+
+        circle_c2240028a11e40888576001505dd2508.bindPopup(popup_268571dd1f1f4960a33456797af58d2c)
+        ;
+
+        
+    
+    
+            var circle_ca59e62fa23d4386a21de969d1b60433 = L.circle(
+                [48.85814487640506, 2.2945793548805833],
+                {"bubblingMouseEvents": true, "color": "#cc2828", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc2828", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 90.0, "stroke": true, "weight": 3}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+        var popup_86169380c6134ad5ac2d8ad83dd1b902 = L.popup({"maxWidth": 450});
+
+        
+            var html_f8bbd26cd34a4a12901b3787cc3728ce = $(`<div id="html_f8bbd26cd34a4a12901b3787cc3728ce" style="width: 100.0%; height: 100.0%;"><p>Stop: 4 / 5</br>Distance: 7.75 km (4.81 miles)</br>Location (lon/lat): 2.2945793548805833, 48.85814487640506</p>JSON:</br><pre><code>{<br/>  "id": "Tour Eiffel",<br/>  "location": [<br/>    48.85814487640506,<br/>    2.2945793548805833<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+            popup_86169380c6134ad5ac2d8ad83dd1b902.setContent(html_f8bbd26cd34a4a12901b3787cc3728ce);
+        
+
+        circle_ca59e62fa23d4386a21de969d1b60433.bindPopup(popup_86169380c6134ad5ac2d8ad83dd1b902)
+        ;
+
+        
+    
+    
+            var circle_fb680b08e411436c9ba5632508832034 = L.circle(
+                [48.842085594729355, 2.321845363923588],
+                {"bubblingMouseEvents": true, "color": "#cc2828", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc2828", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 90.0, "stroke": true, "weight": 3}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+        var popup_6adfbf9ff6244a83b4365545c0208f51 = L.popup({"maxWidth": 450});
+
+        
+            var html_ed02844f5b7e41c0a258cf5c15fe372c = $(`<div id="html_ed02844f5b7e41c0a258cf5c15fe372c" style="width: 100.0%; height: 100.0%;"><p>Stop: 5 / 5</br>Distance: 10.42 km (6.48 miles)</br>Location (lon/lat): 2.321845363923588, 48.842085594729355</p>JSON:</br><pre><code>{<br/>  "id": "Tour Montparnasse",<br/>  "location": [<br/>    48.842085594729355,<br/>    2.321845363923588<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+            popup_6adfbf9ff6244a83b4365545c0208f51.setContent(html_ed02844f5b7e41c0a258cf5c15fe372c);
+        
+
+        circle_fb680b08e411436c9ba5632508832034.bindPopup(popup_6adfbf9ff6244a83b4365545c0208f51)
+        ;
+
+        
+    
+    
+            var circle_4e8aae2b84fb47ff9e8314a6e332c293 = L.circle(
+                [48.84616060048901, 2.346233405549605],
+                {"bubblingMouseEvents": true, "color": "#28cccc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cccc", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 90.0, "stroke": true, "weight": 3}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+        var popup_87acf9ba92174828b8e60e8b4010fedf = L.popup({"maxWidth": 450});
+
+        
+            var html_d394dcee35f64e9ab48b1b0321e6df00 = $(`<div id="html_d394dcee35f64e9ab48b1b0321e6df00" style="width: 100.0%; height: 100.0%;"><p>Stop: 1 / 3</br>Distance: 3.90 km (2.43 miles)</br>Location (lon/lat): 2.346233405549605, 48.84616060048901</p>JSON:</br><pre><code>{<br/>  "id": "Panth\u00e9on",<br/>  "location": [<br/>    48.84616060048901,<br/>    2.346233405549605<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
+            popup_87acf9ba92174828b8e60e8b4010fedf.setContent(html_d394dcee35f64e9ab48b1b0321e6df00);
+        
+
+        circle_4e8aae2b84fb47ff9e8314a6e332c293.bindPopup(popup_87acf9ba92174828b8e60e8b4010fedf)
+        ;
+
+        
+    
+    
+            var circle_c02aaf7ab10d4db9a0fa660f51167315 = L.circle(
+                [48.853070514317345, 2.349489020192572],
+                {"bubblingMouseEvents": true, "color": "#28cccc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cccc", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 90.0, "stroke": true, "weight": 3}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+        var popup_bb5b3130fd0348db8f0c77670a0b5f97 = L.popup({"maxWidth": 450});
+
+        
+            var html_8d528c53dd6f469f8cb3f51eb90e9d71 = $(`<div id="html_8d528c53dd6f469f8cb3f51eb90e9d71" style="width: 100.0%; height: 100.0%;"><p>Stop: 2 / 3</br>Distance: 4.71 km (2.93 miles)</br>Location (lon/lat): 2.349489020192572, 48.853070514317345</p>JSON:</br><pre><code>{<br/>  "id": "Notre-Dame",<br/>  "location": [<br/>    48.853070514317345,<br/>    2.349489020192572<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
+            popup_bb5b3130fd0348db8f0c77670a0b5f97.setContent(html_8d528c53dd6f469f8cb3f51eb90e9d71);
+        
+
+        circle_c02aaf7ab10d4db9a0fa660f51167315.bindPopup(popup_bb5b3130fd0348db8f0c77670a0b5f97)
+        ;
+
+        
+    
+    
+            var circle_fed302e5249648c8a10e3bc6c4c9dbf0 = L.circle(
+                [48.88634368898782, 2.343046834223321],
+                {"bubblingMouseEvents": true, "color": "#28cccc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cccc", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 90.0, "stroke": true, "weight": 3}
+            ).addTo(map_ece87d80e2554c3981d8a7707db322e6);
+        
+    
+        var popup_98a99591667f4c379a74fbe704930c36 = L.popup({"maxWidth": 450});
+
+        
+            var html_3423a35906ae4f1f9886b403db6119db = $(`<div id="html_3423a35906ae4f1f9886b403db6119db" style="width: 100.0%; height: 100.0%;"><p>Stop: 3 / 3</br>Distance: 8.44 km (5.24 miles)</br>Location (lon/lat): 2.343046834223321, 48.88634368898782</p>JSON:</br><pre><code>{<br/>  "id": "Sacr\u00e9-C\u0153ur",<br/>  "location": [<br/>    48.88634368898782,<br/>    2.343046834223321<br/>  ],<br/>  "quantity": 1<br/>}</code></pre></br></div>`)[0];
+            popup_98a99591667f4c379a74fbe704930c36.setContent(html_3423a35906ae4f1f9886b403db6119db);
+        
+
+        circle_fed302e5249648c8a10e3bc6c4c9dbf0.bindPopup(popup_98a99591667f4c379a74fbe704930c36)
+        ;
+
+        
+    
+</script>

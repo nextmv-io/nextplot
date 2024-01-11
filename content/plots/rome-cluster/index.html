@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f4f85001c1f74ba68b6e469a95084a33 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_f4f85001c1f74ba68b6e469a95084a33" ></div>
+        
+</body>
+<script>    
+    
+            var map_f4f85001c1f74ba68b6e469a95084a33 = L.map(
+                "map_f4f85001c1f74ba68b6e469a95084a33",
+                {
+                    center: [41.868876705765594, 12.433831336149531],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_50c8b23a67c345a4905f6d0fa2e47c84 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+            var tile_layer_b4d2f81a34fc4d71b9f2e783f816a1f7 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+            var tile_layer_f965f6a372aa44e19953259583793605 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+            var layer_control_b8d56938e6494da398edb481135242f5 = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_b4d2f81a34fc4d71b9f2e783f816a1f7,
+                    "cartodbdark_matter" : tile_layer_f965f6a372aa44e19953259583793605,
+                },
+                overlays :  {
+                },
+            };
+            L.control.layers(
+                layer_control_b8d56938e6494da398edb481135242f5.base_layers,
+                layer_control_b8d56938e6494da398edb481135242f5.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+            tile_layer_f965f6a372aa44e19953259583793605.remove();
+        
+    
+            var polygon_5d7c93bc64554b7eb5c8e09fd9d18cd6 = L.polygon(
+                [[41.954999706277626, 12.54023862531173], [41.99502325301238, 12.530654238920535], [41.986312276736925, 12.504343421544057], [41.98237521988739, 12.495178220224576], [41.97911644341555, 12.489707119627992], [41.96374252594334, 12.471813759133042], [41.94687119196684, 12.470343848014075], [41.942498430266056, 12.482579151472034], [41.94330035263041, 12.536639277106133]],
+                {"bubblingMouseEvents": true, "color": "#cc2828", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc2828", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_31472b65f43446e385fbb72fdc0e4913 = L.popup({"maxWidth": 450});
+
+        
+            var html_5392c125175d4d5492868d45487a28fd = $(`<div id="html_5392c125175d4d5492868d45487a28fd" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 31</br>Cluster diameter: 7.32 km (4.55 miles)</p></div>`)[0];
+            popup_31472b65f43446e385fbb72fdc0e4913.setContent(html_5392c125175d4d5492868d45487a28fd);
+        
+
+        polygon_5d7c93bc64554b7eb5c8e09fd9d18cd6.bindPopup(popup_31472b65f43446e385fbb72fdc0e4913)
+        ;
+
+        
+    
+    
+            var polygon_bbfde6a961374aaa824c219c6a104dc3 = L.polygon(
+                [[41.99660728436014, 12.76511648640494], [41.95856012843601, 12.648010317896722], [41.95321739810969, 12.64399741271531], [41.92371752843794, 12.62616234590272], [41.898981399287784, 12.620190567704359], [41.9026575360096, 12.661294980364778], [41.912458745251584, 12.685495968543808]],
+                {"bubblingMouseEvents": true, "color": "#cc3928", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc3928", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_096b4a601e104ead8fcb8485a62d85b7 = L.popup({"maxWidth": 450});
+
+        
+            var html_d40e9695cc38460fb7d6e2d81c41f75e = $(`<div id="html_d40e9695cc38460fb7d6e2d81c41f75e" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 24</br>Cluster diameter: 16.17 km (10.05 miles)</p></div>`)[0];
+            popup_096b4a601e104ead8fcb8485a62d85b7.setContent(html_d40e9695cc38460fb7d6e2d81c41f75e);
+        
+
+        polygon_bbfde6a961374aaa824c219c6a104dc3.bindPopup(popup_096b4a601e104ead8fcb8485a62d85b7)
+        ;
+
+        
+    
+    
+            var polygon_3d12cdc3df7d4877ab0a1a2976133540 = L.polygon(
+                [[41.91692144368694, 12.197487500051578], [41.90288295241506, 12.239776638710072], [41.91328138892249, 12.260414517485414], [41.94771089189074, 12.267229448470465], [41.95017560959067, 12.229469305623075], [41.94993462224578, 12.219779349618092]],
+                {"bubblingMouseEvents": true, "color": "#cc4b28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc4b28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_51b877d8e345418bae89716273615185 = L.popup({"maxWidth": 450});
+
+        
+            var html_f9060616b59c4452ab2e8b9260e00148 = $(`<div id="html_f9060616b59c4452ab2e8b9260e00148" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 29</br>Cluster diameter: 6.71 km (4.17 miles)</p></div>`)[0];
+            popup_51b877d8e345418bae89716273615185.setContent(html_f9060616b59c4452ab2e8b9260e00148);
+        
+
+        polygon_3d12cdc3df7d4877ab0a1a2976133540.bindPopup(popup_51b877d8e345418bae89716273615185)
+        ;
+
+        
+    
+    
+            var polygon_ff0e747156314d6999988e263f50e4ff = L.polygon(
+                [[42.012788273776295, 12.367267237429072], [42.01884948002683, 12.36048574330176], [42.00777550976964, 12.325136179731286], [41.97356771066513, 12.276671522263502], [41.93927040077356, 12.274430070658859], [41.931548268128736, 12.277256263210784], [41.933818323824326, 12.300049272032805], [41.961476722920644, 12.358243378108723]],
+                {"bubblingMouseEvents": true, "color": "#cc5c28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc5c28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_d18c35e7b9424f17992e2b26d9c4814b = L.popup({"maxWidth": 450});
+
+        
+            var html_c11f9971ffb74d42a6f84bfad2276ea2 = $(`<div id="html_c11f9971ffb74d42a6f84bfad2276ea2" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 27</br>Cluster diameter: 11.90 km (7.39 miles)</p></div>`)[0];
+            popup_d18c35e7b9424f17992e2b26d9c4814b.setContent(html_c11f9971ffb74d42a6f84bfad2276ea2);
+        
+
+        polygon_ff0e747156314d6999988e263f50e4ff.bindPopup(popup_d18c35e7b9424f17992e2b26d9c4814b)
+        ;
+
+        
+    
+    
+            var polygon_4ad0daa398a4428a94383720842d6ce4 = L.polygon(
+                [[41.8270759098679, 12.244484626888875], [41.81800492679084, 12.242249465912039], [41.81792101411278, 12.242680664940822], [41.817920604999806, 12.242683899426108], [41.81779915932505, 12.244249981200547], [41.820669329749926, 12.251200935924336], [41.82413491422302, 12.257417402158435], [41.82607630558484, 12.258378176171925], [41.826571600882374, 12.25809788950178], [41.82818410697087, 12.255495201085028], [41.82854355604978, 12.247896555190282], [41.82850143301557, 12.246013734632408], [41.827845470740044, 12.24526757398228]],
+                {"bubblingMouseEvents": true, "color": "#cc6d28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc6d28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_e65928d31fcf4cd8a48799a118626d75 = L.popup({"maxWidth": 450});
+
+        
+            var html_4364e8e930f9432f85089aaa4da74816 = $(`<div id="html_4364e8e930f9432f85089aaa4da74816" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 1.62 km (1.01 miles)</p></div>`)[0];
+            popup_e65928d31fcf4cd8a48799a118626d75.setContent(html_4364e8e930f9432f85089aaa4da74816);
+        
+
+        polygon_4ad0daa398a4428a94383720842d6ce4.bindPopup(popup_e65928d31fcf4cd8a48799a118626d75)
+        ;
+
+        
+    
+    
+            var polygon_4c220900fa7948f3ba632fe7079457cc = L.polygon(
+                [[41.79637106456822, 12.481242646224564], [41.79131551108076, 12.515470032346412], [41.812479683565556, 12.540971640547637], [41.8354076240079, 12.544995507566242], [41.83264667443805, 12.492931443126254]],
+                {"bubblingMouseEvents": true, "color": "#cc7e28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc7e28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_3d242f2d49324047947207b7bde9208b = L.popup({"maxWidth": 450});
+
+        
+            var html_65f983784ca04c249add92f68070b122 = $(`<div id="html_65f983784ca04c249add92f68070b122" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 28</br>Cluster diameter: 6.84 km (4.25 miles)</p></div>`)[0];
+            popup_3d242f2d49324047947207b7bde9208b.setContent(html_65f983784ca04c249add92f68070b122);
+        
+
+        polygon_4c220900fa7948f3ba632fe7079457cc.bindPopup(popup_3d242f2d49324047947207b7bde9208b)
+        ;
+
+        
+    
+    
+            var polygon_21c87157193649fa9b0f872ed28970d3 = L.polygon(
+                [[41.818273637599546, 12.28509556882986], [41.8141196696933, 12.281258486732614], [41.810666232182086, 12.282518716637014], [41.80842627369952, 12.297408561388487], [41.81003258738427, 12.300615448808921], [41.81240759586452, 12.301060438848761], [41.81386223980478, 12.300973826917218], [41.825379334658955, 12.295525925760025]],
+                {"bubblingMouseEvents": true, "color": "#cc8f28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc8f28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_7ee826f90bcd42b4914fec7e64ecc88f = L.popup({"maxWidth": 450});
+
+        
+            var html_4991b351938b4fd8b7a8d0b9d3090c14 = $(`<div id="html_4991b351938b4fd8b7a8d0b9d3090c14" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 1.96 km (1.22 miles)</p></div>`)[0];
+            popup_7ee826f90bcd42b4914fec7e64ecc88f.setContent(html_4991b351938b4fd8b7a8d0b9d3090c14);
+        
+
+        polygon_21c87157193649fa9b0f872ed28970d3.bindPopup(popup_7ee826f90bcd42b4914fec7e64ecc88f)
+        ;
+
+        
+    
+    
+            var polygon_c7a7105d3c1e48908a23893038cce7cb = L.polygon(
+                [[41.80121890841972, 12.467133688601482], [41.85030837134506, 12.489393939567476], [41.879326586369636, 12.469696025424215], [41.89568322091576, 12.45562214914208], [41.852885485436296, 12.4193618074058], [41.82387113104152, 12.43868794517591]],
+                {"bubblingMouseEvents": true, "color": "#cca128", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cca128", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_972c4b3a37a24c7bb53e17f310251801 = L.popup({"maxWidth": 450});
+
+        
+            var html_0c906aaacd724612816fa60337e3851e = $(`<div id="html_0c906aaacd724612816fa60337e3851e" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 20</br>Cluster diameter: 10.55 km (6.55 miles)</p></div>`)[0];
+            popup_972c4b3a37a24c7bb53e17f310251801.setContent(html_0c906aaacd724612816fa60337e3851e);
+        
+
+        polygon_c7a7105d3c1e48908a23893038cce7cb.bindPopup(popup_972c4b3a37a24c7bb53e17f310251801)
+        ;
+
+        
+    
+    
+            var polygon_1abbfb834d554711b93c9a4627d1c7d5 = L.polygon(
+                [[41.76528308219991, 12.292697089741582], [41.77209003447823, 12.313443130588622], [41.782431420414326, 12.306743021412808], [41.78229620244002, 12.302715593132998], [41.78070172414753, 12.27982131583802], [41.77250759081389, 12.284715959875365], [41.769750485067355, 12.286959922365266]],
+                {"bubblingMouseEvents": true, "color": "#ccb228", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ccb228", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_f2a51e981590403ba2a3d38c3f7416f8 = L.popup({"maxWidth": 450});
+
+        
+            var html_ebbc34fdc11648f781e61e8f6a3e47ee = $(`<div id="html_ebbc34fdc11648f781e61e8f6a3e47ee" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 2.95 km (1.83 miles)</p></div>`)[0];
+            popup_f2a51e981590403ba2a3d38c3f7416f8.setContent(html_ebbc34fdc11648f781e61e8f6a3e47ee);
+        
+
+        polygon_1abbfb834d554711b93c9a4627d1c7d5.bindPopup(popup_f2a51e981590403ba2a3d38c3f7416f8)
+        ;
+
+        
+    
+    
+            var polygon_1b9453a6c13644daa287277a1cf7bb1a = L.polygon(
+                [[41.7463551629134, 12.487591543957496], [41.73206444690278, 12.486148654501802], [41.716130346554245, 12.492107077479117], [41.71573226872273, 12.508693948573702], [41.735315891320276, 12.53473329977468], [41.75837056031404, 12.546074004629972], [41.77550630107401, 12.513653241841011], [41.77971473543891, 12.503606856152322]],
+                {"bubblingMouseEvents": true, "color": "#ccc328", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ccc328", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_6f456ce982db460b99a54bff3582c3ce = L.popup({"maxWidth": 450});
+
+        
+            var html_b3ba7b813c18433a864a3303c70823c7 = $(`<div id="html_b3ba7b813c18433a864a3303c70823c7" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 26</br>Cluster diameter: 7.13 km (4.43 miles)</p></div>`)[0];
+            popup_6f456ce982db460b99a54bff3582c3ce.setContent(html_b3ba7b813c18433a864a3303c70823c7);
+        
+
+        polygon_1b9453a6c13644daa287277a1cf7bb1a.bindPopup(popup_6f456ce982db460b99a54bff3582c3ce)
+        ;
+
+        
+    
+    
+            var polygon_2352b59354ab450f9b5f206f6b6ef10b = L.polygon(
+                [[41.822819024373466, 12.300627458605462], [41.811856015244764, 12.255809022111494], [41.81030198749893, 12.255945218371306], [41.80934189413828, 12.2563525870661], [41.808515160401235, 12.25694266341351], [41.78243538833301, 12.278283032197345], [41.78473784046059, 12.302589474804716]],
+                {"bubblingMouseEvents": true, "color": "#c3cc28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c3cc28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_ab06a63d84084e09a520ca10268f502d = L.popup({"maxWidth": 450});
+
+        
+            var html_f4f1d4a51dff42f793d7e5380a84b765 = $(`<div id="html_f4f1d4a51dff42f793d7e5380a84b765" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 4.91 km (3.05 miles)</p></div>`)[0];
+            popup_ab06a63d84084e09a520ca10268f502d.setContent(html_f4f1d4a51dff42f793d7e5380a84b765);
+        
+
+        polygon_2352b59354ab450f9b5f206f6b6ef10b.bindPopup(popup_ab06a63d84084e09a520ca10268f502d)
+        ;
+
+        
+    
+    
+            var polygon_312101ad6cb14b82b8e416a73720ec58 = L.polygon(
+                [[41.99922349157016, 12.245619740254185], [41.983524844019115, 12.257454664479889], [41.98764362154989, 12.270860749150925], [41.9997845933348, 12.304412505284452], [42.00946400203322, 12.323406980482716], [42.037399825827116, 12.326400745155356], [42.031755799561914, 12.251101436554563]],
+                {"bubblingMouseEvents": true, "color": "#b2cc28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b2cc28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_d6701735c3f34e1aa75a6512b070346b = L.popup({"maxWidth": 450});
+
+        
+            var html_c8c6e8401aee4f51aa8315a4e8ad1e49 = $(`<div id="html_c8c6e8401aee4f51aa8315a4e8ad1e49" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 29</br>Cluster diameter: 8.27 km (5.14 miles)</p></div>`)[0];
+            popup_d6701735c3f34e1aa75a6512b070346b.setContent(html_c8c6e8401aee4f51aa8315a4e8ad1e49);
+        
+
+        polygon_312101ad6cb14b82b8e416a73720ec58.bindPopup(popup_d6701735c3f34e1aa75a6512b070346b)
+        ;
+
+        
+    
+    
+            var polygon_afc03abac9ae4ea181f33d8824c6f000 = L.polygon(
+                [[41.79613125123, 12.279172521068938], [41.79447243398845, 12.28539428519528], [41.79731772123555, 12.29303746281944], [41.80128734209873, 12.300658975335985], [41.803186944953104, 12.301386465109927], [41.815018774907784, 12.303377233606845], [41.815884923703145, 12.30209571121449], [41.805752564623376, 12.282151725596474]],
+                {"bubblingMouseEvents": true, "color": "#a1cc28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a1cc28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_74ba6344ed564f3cbaad940956e70f4a = L.popup({"maxWidth": 450});
+
+        
+            var html_518bd14180124768b2f016557410ba5e = $(`<div id="html_518bd14180124768b2f016557410ba5e" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 34</br>Cluster diameter: 2.90 km (1.80 miles)</p></div>`)[0];
+            popup_74ba6344ed564f3cbaad940956e70f4a.setContent(html_518bd14180124768b2f016557410ba5e);
+        
+
+        polygon_afc03abac9ae4ea181f33d8824c6f000.bindPopup(popup_74ba6344ed564f3cbaad940956e70f4a)
+        ;
+
+        
+    
+    
+            var polygon_2180b63ef8c142389a16a5ee3d89b8aa = L.polygon(
+                [[41.760805407098196, 12.64047792421961], [41.825356103745065, 12.716825156429833], [41.823285697705224, 12.673160427373208], [41.82228991772057, 12.663775551165516], [41.81601041612352, 12.645100831031618], [41.81294249292285, 12.637886388320222], [41.79171066904088, 12.605374751607846], [41.76381866756327, 12.611033359071344]],
+                {"bubblingMouseEvents": true, "color": "#8fcc28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8fcc28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_dbb95a034b9142869a72fda81d5ed007 = L.popup({"maxWidth": 450});
+
+        
+            var html_4bbb20af0d4a49d5a399f85b5d56eebc = $(`<div id="html_4bbb20af0d4a49d5a399f85b5d56eebc" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 30</br>Cluster diameter: 11.12 km (6.91 miles)</p></div>`)[0];
+            popup_dbb95a034b9142869a72fda81d5ed007.setContent(html_4bbb20af0d4a49d5a399f85b5d56eebc);
+        
+
+        polygon_2180b63ef8c142389a16a5ee3d89b8aa.bindPopup(popup_dbb95a034b9142869a72fda81d5ed007)
+        ;
+
+        
+    
+    
+            var polygon_770074fc4e5c4092be0f2501d3fb364e = L.polygon(
+                [[42.04341826355958, 12.447226193588438], [41.97496401807608, 12.483316742952292], [42.01051860318756, 12.520542520754805], [42.077170726628346, 12.529283264261666], [42.08650324709948, 12.529598154009332], [42.093934491789256, 12.504310490361997], [42.08530965060552, 12.486799891148667], [42.0674311405185, 12.455227448117423]],
+                {"bubblingMouseEvents": true, "color": "#7ecc28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7ecc28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_a901abac97a0400ba170559c823d2b18 = L.popup({"maxWidth": 450});
+
+        
+            var html_fef2a687ccf74ddb82c18e11b161ff45 = $(`<div id="html_fef2a687ccf74ddb82c18e11b161ff45" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 27</br>Cluster diameter: 13.34 km (8.29 miles)</p></div>`)[0];
+            popup_a901abac97a0400ba170559c823d2b18.setContent(html_fef2a687ccf74ddb82c18e11b161ff45);
+        
+
+        polygon_770074fc4e5c4092be0f2501d3fb364e.bindPopup(popup_a901abac97a0400ba170559c823d2b18)
+        ;
+
+        
+    
+    
+            var polygon_4bc1f6b57f7040ee986baf7d91b4cf87 = L.polygon(
+                [[41.82501816677132, 12.717012800941601], [41.890007991714086, 12.647481203481934], [41.88828682994171, 12.630575709471183], [41.885161699241884, 12.61949550980387], [41.868249972229215, 12.596147070054602], [41.85815169502431, 12.598711887535808], [41.857007456765956, 12.599071421679646], [41.84497886819164, 12.622495216902543], [41.818896750257835, 12.703025741159973]],
+                {"bubblingMouseEvents": true, "color": "#6dcc28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6dcc28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_5718911027784043b4e8abc6969154fe = L.popup({"maxWidth": 450});
+
+        
+            var html_2537f88d42644d7eab8490a81e8a1a4d = $(`<div id="html_2537f88d42644d7eab8490a81e8a1a4d" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 20</br>Cluster diameter: 11.11 km (6.90 miles)</p></div>`)[0];
+            popup_5718911027784043b4e8abc6969154fe.setContent(html_2537f88d42644d7eab8490a81e8a1a4d);
+        
+
+        polygon_4bc1f6b57f7040ee986baf7d91b4cf87.bindPopup(popup_5718911027784043b4e8abc6969154fe)
+        ;
+
+        
+    
+    
+            var polygon_7e5a2df390124c4882245f4a1b05c550 = L.polygon(
+                [[42.122566111478065, 12.506444713103644], [42.144256361948564, 12.478306387524086], [42.127897642505644, 12.443194931002111], [42.11494664053109, 12.424673343662125], [42.08729051925915, 12.423372047874679], [42.07761694987687, 12.444386550489396], [42.07835568184708, 12.463647704730477]],
+                {"bubblingMouseEvents": true, "color": "#5ccc28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5ccc28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_e24c2e45d1df414aac9a08e68ba8aed2 = L.popup({"maxWidth": 450});
+
+        
+            var html_5ede2184c262452c8a3f913a91e79a66 = $(`<div id="html_5ede2184c262452c8a3f913a91e79a66" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 23</br>Cluster diameter: 7.92 km (4.92 miles)</p></div>`)[0];
+            popup_e24c2e45d1df414aac9a08e68ba8aed2.setContent(html_5ede2184c262452c8a3f913a91e79a66);
+        
+
+        polygon_7e5a2df390124c4882245f4a1b05c550.bindPopup(popup_e24c2e45d1df414aac9a08e68ba8aed2)
+        ;
+
+        
+    
+    
+            var polygon_a6e5b66fcb764d3cbdca3eb9865a9d23 = L.polygon(
+                [[41.99521712068946, 12.511366289922192], [41.98865629668263, 12.560652718205011], [41.991960492480196, 12.585744348755984], [42.01649615191823, 12.617189336532673], [42.065991455080194, 12.620091782608204], [42.01455926054817, 12.532107662224147]],
+                {"bubblingMouseEvents": true, "color": "#4bcc28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4bcc28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_b36a8654cdce468788fcca3a19526473 = L.popup({"maxWidth": 450});
+
+        
+            var html_7aed99cff4794f269b620f1824b9dc90 = $(`<div id="html_7aed99cff4794f269b620f1824b9dc90" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 29</br>Cluster diameter: 11.94 km (7.42 miles)</p></div>`)[0];
+            popup_b36a8654cdce468788fcca3a19526473.setContent(html_7aed99cff4794f269b620f1824b9dc90);
+        
+
+        polygon_a6e5b66fcb764d3cbdca3eb9865a9d23.bindPopup(popup_b36a8654cdce468788fcca3a19526473)
+        ;
+
+        
+    
+    
+            var polygon_6c4fd3bbcad949408ceab621366ca1f4 = L.polygon(
+                [[41.81420112344499, 12.242554969428056], [41.80873866875409, 12.253031874290544], [41.809084244725646, 12.254429105956092], [41.81289477776395, 12.254609485356209], [41.814466282075756, 12.253187398252468], [41.81621504379442, 12.247114409951237], [41.81652829209344, 12.244826263241613]],
+                {"bubblingMouseEvents": true, "color": "#39cc28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#39cc28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_b8ddd54c349e4ad8b0f30f996e2f29d0 = L.popup({"maxWidth": 450});
+
+        
+            var html_557515b0818040728cc5af80b535f28f = $(`<div id="html_557515b0818040728cc5af80b535f28f" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 1.15 km (0.71 miles)</p></div>`)[0];
+            popup_b8ddd54c349e4ad8b0f30f996e2f29d0.setContent(html_557515b0818040728cc5af80b535f28f);
+        
+
+        polygon_6c4fd3bbcad949408ceab621366ca1f4.bindPopup(popup_b8ddd54c349e4ad8b0f30f996e2f29d0)
+        ;
+
+        
+    
+    
+            var polygon_26e1b9e5bbec49d1b2db02142765ca23 = L.polygon(
+                [[42.09244324092343, 12.302990775221332], [42.083208190586056, 12.275914082114683], [42.07531056772133, 12.267144290194487], [42.062489845324095, 12.256427307324207], [42.05525445324527, 12.259383347796769], [42.04879822212551, 12.271130277223588], [42.04118240457848, 12.290635875351292], [42.04163688386111, 12.313430636743126], [42.063619430472365, 12.322223469423182], [42.07073086211348, 12.32181887854332]],
+                {"bubblingMouseEvents": true, "color": "#28cc28", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cc28", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_6f221dbe8c60451982c8c2cd4e349685 = L.popup({"maxWidth": 450});
+
+        
+            var html_76148a789a7f437b86acb02177eb633a = $(`<div id="html_76148a789a7f437b86acb02177eb633a" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 25</br>Cluster diameter: 5.79 km (3.60 miles)</p></div>`)[0];
+            popup_6f221dbe8c60451982c8c2cd4e349685.setContent(html_76148a789a7f437b86acb02177eb633a);
+        
+
+        polygon_26e1b9e5bbec49d1b2db02142765ca23.bindPopup(popup_6f221dbe8c60451982c8c2cd4e349685)
+        ;
+
+        
+    
+    
+            var polygon_91f7ecbd4afb47f6aa9c6057b3ef7cc9 = L.polygon(
+                [[41.86520402455574, 12.412616760962443], [41.88049113082806, 12.437529321255129], [41.89493194773568, 12.443912815350648], [41.91120424188344, 12.447108587750657], [41.909347909209366, 12.427520335452172], [41.90348341473953, 12.394597364636653], [41.87952273647064, 12.396377153499404]],
+                {"bubblingMouseEvents": true, "color": "#28cc39", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cc39", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_0151679a05f24c06a08424f5d58a58eb = L.popup({"maxWidth": 450});
+
+        
+            var html_32b46211ec2a4b1fa30fa52ba7d6f458 = $(`<div id="html_32b46211ec2a4b1fa30fa52ba7d6f458" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 27</br>Cluster diameter: 5.86 km (3.64 miles)</p></div>`)[0];
+            popup_0151679a05f24c06a08424f5d58a58eb.setContent(html_32b46211ec2a4b1fa30fa52ba7d6f458);
+        
+
+        polygon_91f7ecbd4afb47f6aa9c6057b3ef7cc9.bindPopup(popup_0151679a05f24c06a08424f5d58a58eb)
+        ;
+
+        
+    
+    
+            var polygon_acf2e88d5d6146829ffe246bed20dde8 = L.polygon(
+                [[41.80835121629005, 12.431390585682971], [41.80298601057328, 12.410292144803922], [41.79662205979607, 12.41179321449493], [41.7673111241296, 12.43194165280873], [41.79110100883829, 12.467571794162772], [41.792884251446026, 12.469766768596537], [41.79382975241763, 12.469576092744608], [41.80044428865694, 12.461780922118603], [41.80364529291914, 12.455510659038742]],
+                {"bubblingMouseEvents": true, "color": "#28cc4b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cc4b", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_892670d54b53450898b0593e3182f913 = L.popup({"maxWidth": 450});
+
+        
+            var html_ae5863d32f4c4ddeabdc87425daf7a22 = $(`<div id="html_ae5863d32f4c4ddeabdc87425daf7a22" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 28</br>Cluster diameter: 5.06 km (3.14 miles)</p></div>`)[0];
+            popup_892670d54b53450898b0593e3182f913.setContent(html_ae5863d32f4c4ddeabdc87425daf7a22);
+        
+
+        polygon_acf2e88d5d6146829ffe246bed20dde8.bindPopup(popup_892670d54b53450898b0593e3182f913)
+        ;
+
+        
+    
+    
+            var polygon_345d6e18e5b742bbb78b64ce92d8b119 = L.polygon(
+                [[41.80034700066004, 12.379869521912163], [41.8176860878896, 12.364765393929986], [41.806255165250306, 12.342662709831222], [41.800831212215215, 12.336141039001873], [41.77929643518653, 12.334504537334848], [41.77451693422766, 12.34653612571941], [41.79330465017801, 12.377518739821749]],
+                {"bubblingMouseEvents": true, "color": "#28cc5c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cc5c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_860f4055c0f344e3a3a889e131bc2d49 = L.popup({"maxWidth": 450});
+
+        
+            var html_481dc4d4f7e24613ae3ba5218377ea97 = $(`<div id="html_481dc4d4f7e24613ae3ba5218377ea97" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 29</br>Cluster diameter: 5.03 km (3.13 miles)</p></div>`)[0];
+            popup_860f4055c0f344e3a3a889e131bc2d49.setContent(html_481dc4d4f7e24613ae3ba5218377ea97);
+        
+
+        polygon_345d6e18e5b742bbb78b64ce92d8b119.bindPopup(popup_860f4055c0f344e3a3a889e131bc2d49)
+        ;
+
+        
+    
+    
+            var polygon_f973acd47d94425ea35c49261797bc49 = L.polygon(
+                [[42.00171392979548, 12.464560670797367], [41.96976106122683, 12.438962596255001], [41.95546026801109, 12.455808284635955], [41.9814831933705, 12.481422406144475], [41.9876287644399, 12.48563451377459], [41.990308004159054, 12.48326579184805]],
+                {"bubblingMouseEvents": true, "color": "#28cc6d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cc6d", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_6142d317fce74f149ee21cb2188b7a65 = L.popup({"maxWidth": 450});
+
+        
+            var html_1f7c3ba8ff764f2f83c1343cc0e7264e = $(`<div id="html_1f7c3ba8ff764f2f83c1343cc0e7264e" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 28</br>Cluster diameter: 5.19 km (3.23 miles)</p></div>`)[0];
+            popup_6142d317fce74f149ee21cb2188b7a65.setContent(html_1f7c3ba8ff764f2f83c1343cc0e7264e);
+        
+
+        polygon_f973acd47d94425ea35c49261797bc49.bindPopup(popup_6142d317fce74f149ee21cb2188b7a65)
+        ;
+
+        
+    
+    
+            var polygon_55bc4a66b84241eebfacc73e5c268654 = L.polygon(
+                [[42.08068122507987, 12.551150481531371], [42.04146817684578, 12.517799924602077], [42.025145095313604, 12.528520430788927], [42.02279177460284, 12.545320365418117], [42.02504493914631, 12.54842829956713], [42.03869514377816, 12.566316033636449], [42.050813594316125, 12.57684550552216], [42.07752567300744, 12.590494838093063], [42.08496175255981, 12.581917932854894]],
+                {"bubblingMouseEvents": true, "color": "#28cc7e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cc7e", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_486ee0f4e22e4eb3963eb863547469b6 = L.popup({"maxWidth": 450});
+
+        
+            var html_8ae9b37b8c9041fd9478c8ff86d0e16e = $(`<div id="html_8ae9b37b8c9041fd9478c8ff86d0e16e" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 26</br>Cluster diameter: 7.98 km (4.96 miles)</p></div>`)[0];
+            popup_486ee0f4e22e4eb3963eb863547469b6.setContent(html_8ae9b37b8c9041fd9478c8ff86d0e16e);
+        
+
+        polygon_55bc4a66b84241eebfacc73e5c268654.bindPopup(popup_486ee0f4e22e4eb3963eb863547469b6)
+        ;
+
+        
+    
+    
+            var polygon_41f6848cd9ca4e8fbfaeed9e08fb8f0a = L.polygon(
+                [[41.75270142201583, 12.44112461520613], [41.734848650524015, 12.446632711729269], [41.738746799394306, 12.46115029212995], [41.74263003429713, 12.466968996071794], [41.75978496473891, 12.49256047509709], [41.77592998596206, 12.506773369699102], [41.77961055181557, 12.503280264834036], [41.78688143309103, 12.492261355442817], [41.768822803949135, 12.448675065651617]],
+                {"bubblingMouseEvents": true, "color": "#28cc8f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cc8f", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_45230b1ef3c148b6a6f2c90519ad2d93 = L.popup({"maxWidth": 450});
+
+        
+            var html_f7d0d83fc61642f0837439bd6496ac8f = $(`<div id="html_f7d0d83fc61642f0837439bd6496ac8f" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 30</br>Cluster diameter: 6.91 km (4.30 miles)</p></div>`)[0];
+            popup_45230b1ef3c148b6a6f2c90519ad2d93.setContent(html_f7d0d83fc61642f0837439bd6496ac8f);
+        
+
+        polygon_41f6848cd9ca4e8fbfaeed9e08fb8f0a.bindPopup(popup_45230b1ef3c148b6a6f2c90519ad2d93)
+        ;
+
+        
+    
+    
+            var polygon_53cf7eeb954d4983804f6023cebb1020 = L.polygon(
+                [[41.99128305094241, 12.488215939672866], [41.99470379534992, 12.525891514399667], [42.0221564463531, 12.524132588107383], [42.03220384250755, 12.518516285326909], [42.03024010506737, 12.480737082493574], [42.025936828011766, 12.473460415012779], [42.02004706088951, 12.465928345469383], [42.00932241347346, 12.468444509765241]],
+                {"bubblingMouseEvents": true, "color": "#28cca1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28cca1", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_b6e4260985fc4b89a6f3b868ba6f8837 = L.popup({"maxWidth": 450});
+
+        
+            var html_2738ad572d544cfab033c1df12b8025e = $(`<div id="html_2738ad572d544cfab033c1df12b8025e" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 26</br>Cluster diameter: 5.70 km (3.54 miles)</p></div>`)[0];
+            popup_b6e4260985fc4b89a6f3b868ba6f8837.setContent(html_2738ad572d544cfab033c1df12b8025e);
+        
+
+        polygon_53cf7eeb954d4983804f6023cebb1020.bindPopup(popup_b6e4260985fc4b89a6f3b868ba6f8837)
+        ;
+
+        
+    
+    
+            var polygon_588d6b57be2343b782d088c7034d41ed = L.polygon(
+                [[41.82913846347501, 12.287873626283583], [41.854313592203276, 12.251910224297085], [41.85491843481164, 12.246658845414286], [41.8545490480125, 12.24468948644841], [41.851777404880764, 12.231037404152621], [41.82981509577609, 12.241076304139884], [41.80763002195216, 12.25776603437872], [41.828791486857874, 12.28755835762116]],
+                {"bubblingMouseEvents": true, "color": "#28ccb2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28ccb2", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_95a4d24a6d794c52b38a58030aa54fc8 = L.popup({"maxWidth": 450});
+
+        
+            var html_5b378b6228b1431797f71e2b9bbf4d0c = $(`<div id="html_5b378b6228b1431797f71e2b9bbf4d0c" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 32</br>Cluster diameter: 5.39 km (3.35 miles)</p></div>`)[0];
+            popup_95a4d24a6d794c52b38a58030aa54fc8.setContent(html_5b378b6228b1431797f71e2b9bbf4d0c);
+        
+
+        polygon_588d6b57be2343b782d088c7034d41ed.bindPopup(popup_95a4d24a6d794c52b38a58030aa54fc8)
+        ;
+
+        
+    
+    
+            var polygon_5d6c6fa8d38b429286f88b01163b9577 = L.polygon(
+                [[41.76951058850356, 12.338089139891311], [41.75965205645993, 12.326996905061577], [41.753271582583935, 12.375128622151394], [41.75501880144927, 12.394615253877028], [41.76623882750623, 12.40429033742319], [41.771792852228636, 12.404572215833927], [41.781573569939106, 12.403751205676796], [41.79208064578683, 12.398505631146623], [41.797637189767116, 12.394351847357648], [41.80527981466227, 12.386644227015816]],
+                {"bubblingMouseEvents": true, "color": "#28ccc3", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28ccc3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_6e0232021f3040aba6b70a5156bb76a1 = L.popup({"maxWidth": 450});
+
+        
+            var html_f148d4efa5224ea9a36fa846759c6038 = $(`<div id="html_f148d4efa5224ea9a36fa846759c6038" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 28</br>Cluster diameter: 7.09 km (4.40 miles)</p></div>`)[0];
+            popup_6e0232021f3040aba6b70a5156bb76a1.setContent(html_f148d4efa5224ea9a36fa846759c6038);
+        
+
+        polygon_5d6c6fa8d38b429286f88b01163b9577.bindPopup(popup_6e0232021f3040aba6b70a5156bb76a1)
+        ;
+
+        
+    
+    
+            var polygon_de57348781314b48b9bb07046d3fe128 = L.polygon(
+                [[41.931216240801774, 12.545665495058175], [41.916358006246114, 12.581165575388], [41.9684958090301, 12.630150431846161], [41.98579182750852, 12.645462549767931], [41.993421156188795, 12.632457409891574], [41.98481186973248, 12.589953549842816], [41.97438863352453, 12.581277699496283]],
+                {"bubblingMouseEvents": true, "color": "#28c3cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28c3cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_168ab5ccd85744c9a4a0cb6657060134 = L.popup({"maxWidth": 450});
+
+        
+            var html_c9a99457283144b084a5ac562716ab9f = $(`<div id="html_c9a99457283144b084a5ac562716ab9f" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 21</br>Cluster diameter: 10.24 km (6.36 miles)</p></div>`)[0];
+            popup_168ab5ccd85744c9a4a0cb6657060134.setContent(html_c9a99457283144b084a5ac562716ab9f);
+        
+
+        polygon_de57348781314b48b9bb07046d3fe128.bindPopup(popup_168ab5ccd85744c9a4a0cb6657060134)
+        ;
+
+        
+    
+    
+            var polygon_5a6a4557aa7e4bcc9fe3d0020eae5f1a = L.polygon(
+                [[41.781406900341594, 12.309986943041212], [41.79087357009271, 12.328720883843271], [41.80755832674151, 12.327187619942519], [41.81382481320626, 12.313776459617603], [41.80601160383466, 12.305678794035526], [41.80509386625772, 12.304935850726379], [41.79552348230346, 12.303550753045567], [41.793769999510076, 12.304079121006907]],
+                {"bubblingMouseEvents": true, "color": "#28b2cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28b2cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_d01663ec589a4012bec442cac9f3f545 = L.popup({"maxWidth": 450});
+
+        
+            var html_a331b5cf60e3489784f61519f5922d7c = $(`<div id="html_a331b5cf60e3489784f61519f5922d7c" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 33</br>Cluster diameter: 3.62 km (2.25 miles)</p></div>`)[0];
+            popup_d01663ec589a4012bec442cac9f3f545.setContent(html_a331b5cf60e3489784f61519f5922d7c);
+        
+
+        polygon_5a6a4557aa7e4bcc9fe3d0020eae5f1a.bindPopup(popup_d01663ec589a4012bec442cac9f3f545)
+        ;
+
+        
+    
+    
+            var polygon_fa651620f4f8473abf2471b95d74841f = L.polygon(
+                [[41.747950446578024, 12.317914278147983], [41.77003007951843, 12.31501310719284], [41.77293022872768, 12.31088444688292], [41.773109964573784, 12.308939746833591], [41.76515185248978, 12.298118451024456], [41.760435214872054, 12.294531614315371], [41.759476189039994, 12.295430056794618], [41.7524108187861, 12.304098763843497], [41.747768066356066, 12.311575197584226], [41.74640794067156, 12.314399678504573]],
+                {"bubblingMouseEvents": true, "color": "#28a1cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#28a1cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_26d5dbde9e014e2da9c1c3ddf90ef356 = L.popup({"maxWidth": 450});
+
+        
+            var html_2911a2d7c6324d598f1e4b7088582a20 = $(`<div id="html_2911a2d7c6324d598f1e4b7088582a20" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 34</br>Cluster diameter: 3.00 km (1.87 miles)</p></div>`)[0];
+            popup_26d5dbde9e014e2da9c1c3ddf90ef356.setContent(html_2911a2d7c6324d598f1e4b7088582a20);
+        
+
+        polygon_fa651620f4f8473abf2471b95d74841f.bindPopup(popup_26d5dbde9e014e2da9c1c3ddf90ef356)
+        ;
+
+        
+    
+    
+            var polygon_be5d82a5dddc4d61b0c54a3d367cadc0 = L.polygon(
+                [[41.886571528411565, 12.27571879864167], [41.87109350062084, 12.313578774410582], [41.89069530531539, 12.370988988728572], [41.89575438876856, 12.377022392103123], [41.896749064655474, 12.377321645736354], [41.90641055456448, 12.31259440923769], [41.90453722518624, 12.294978503104373]],
+                {"bubblingMouseEvents": true, "color": "#288fcc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#288fcc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_f0e6799c9243411fb337672d645f50e1 = L.popup({"maxWidth": 450});
+
+        
+            var html_5954082a9dd848a48583ef33b8f0603c = $(`<div id="html_5954082a9dd848a48583ef33b8f0603c" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 26</br>Cluster diameter: 8.49 km (5.27 miles)</p></div>`)[0];
+            popup_f0e6799c9243411fb337672d645f50e1.setContent(html_5954082a9dd848a48583ef33b8f0603c);
+        
+
+        polygon_be5d82a5dddc4d61b0c54a3d367cadc0.bindPopup(popup_f0e6799c9243411fb337672d645f50e1)
+        ;
+
+        
+    
+    
+            var polygon_192875c49fef418d919905d1642fe196 = L.polygon(
+                [[41.728644504151006, 12.35995616920309], [41.748664015274315, 12.357921782964018], [41.75076010888012, 12.355287481692034], [41.756627230422495, 12.332942713051631], [41.75460236438653, 12.327025254588388], [41.74133095246349, 12.313902942324043], [41.73762593786603, 12.314456359598246], [41.734504868517234, 12.322266925000163], [41.723705766807875, 12.351732876656476]],
+                {"bubblingMouseEvents": true, "color": "#287ecc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#287ecc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_83d0fd717ec04f23855529247551a38f = L.popup({"maxWidth": 450});
+
+        
+            var html_73ef4618045c450fa4450868d90ed9cc = $(`<div id="html_73ef4618045c450fa4450868d90ed9cc" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 33</br>Cluster diameter: 4.07 km (2.53 miles)</p></div>`)[0];
+            popup_83d0fd717ec04f23855529247551a38f.setContent(html_73ef4618045c450fa4450868d90ed9cc);
+        
+
+        polygon_192875c49fef418d919905d1642fe196.bindPopup(popup_83d0fd717ec04f23855529247551a38f)
+        ;
+
+        
+    
+    
+            var polygon_cee54d65e22d44f7a533a779db293788 = L.polygon(
+                [[41.8010361345457, 12.275097999282599], [41.80292939978387, 12.274025460416905], [41.80382723960463, 12.27068554405102], [41.80551697617358, 12.264070119727599], [41.805999432496975, 12.259364301668814], [41.79768003248273, 12.263921697677858], [41.79527886203305, 12.265831285822445], [41.799269848332806, 12.274446467919633]],
+                {"bubblingMouseEvents": true, "color": "#286dcc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#286dcc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_6c9a736f40d943278f8b94abfd87ba1c = L.popup({"maxWidth": 450});
+
+        
+            var html_4c410d478acf488196464ded6910fd78 = $(`<div id="html_4c410d478acf488196464ded6910fd78" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 1.46 km (0.91 miles)</p></div>`)[0];
+            popup_6c9a736f40d943278f8b94abfd87ba1c.setContent(html_4c410d478acf488196464ded6910fd78);
+        
+
+        polygon_cee54d65e22d44f7a533a779db293788.bindPopup(popup_6c9a736f40d943278f8b94abfd87ba1c)
+        ;
+
+        
+    
+    
+            var polygon_2a072941876f4ce49f821fbfcf071d55 = L.polygon(
+                [[41.97560229871226, 12.202468347561872], [41.96954795133419, 12.148947614318846], [41.92409818981489, 12.152125652054481], [41.90359344055111, 12.16241242587163]],
+                {"bubblingMouseEvents": true, "color": "#285ccc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#285ccc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_1b1a06033741480498cf5c222845f52f = L.popup({"maxWidth": 450});
+
+        
+            var html_a89cb35f170d419bbf817fceeba0c5a7 = $(`<div id="html_a89cb35f170d419bbf817fceeba0c5a7" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 11</br>Cluster diameter: 8.67 km (5.38 miles)</p></div>`)[0];
+            popup_1b1a06033741480498cf5c222845f52f.setContent(html_a89cb35f170d419bbf817fceeba0c5a7);
+        
+
+        polygon_2a072941876f4ce49f821fbfcf071d55.bindPopup(popup_1b1a06033741480498cf5c222845f52f)
+        ;
+
+        
+    
+    
+            var polygon_79857ba71afb4bfcb287ff97522d3383 = L.polygon(
+                [[41.78868892812291, 12.278505100697295], [41.782499694927104, 12.288678136988137], [41.78415440600567, 12.29666094300896], [41.7915060612144, 12.302706783892301], [41.79513405057226, 12.295069083103993], [41.79512770142525, 12.29259921235506], [41.79493308252632, 12.289567572965503]],
+                {"bubblingMouseEvents": true, "color": "#284bcc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#284bcc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_6093952f04954620a62e3f2e505d7cbc = L.popup({"maxWidth": 450});
+
+        
+            var html_5c02e578cd594a0c97f8fa9e20897557 = $(`<div id="html_5c02e578cd594a0c97f8fa9e20897557" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 2.03 km (1.26 miles)</p></div>`)[0];
+            popup_6093952f04954620a62e3f2e505d7cbc.setContent(html_5c02e578cd594a0c97f8fa9e20897557);
+        
+
+        polygon_79857ba71afb4bfcb287ff97522d3383.bindPopup(popup_6093952f04954620a62e3f2e505d7cbc)
+        ;
+
+        
+    
+    
+            var polygon_e43e62bad07d47e9a4ab98ef6d925560 = L.polygon(
+                [[42.08386761492761, 12.211085316877877], [42.03668012329517, 12.102546185894122], [41.9922966349646, 12.20418611181265], [42.03663638061358, 12.243429311865356], [42.05301253746563, 12.239769759607732]],
+                {"bubblingMouseEvents": true, "color": "#2839cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2839cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_4614f5c7a8cb40f0a422438d0b3569a5 = L.popup({"maxWidth": 450});
+
+        
+            var html_10ca8fa68b70482ab6280663ad934d0d = $(`<div id="html_10ca8fa68b70482ab6280663ad934d0d" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 29</br>Cluster diameter: 11.64 km (7.23 miles)</p></div>`)[0];
+            popup_4614f5c7a8cb40f0a422438d0b3569a5.setContent(html_10ca8fa68b70482ab6280663ad934d0d);
+        
+
+        polygon_e43e62bad07d47e9a4ab98ef6d925560.bindPopup(popup_4614f5c7a8cb40f0a422438d0b3569a5)
+        ;
+
+        
+    
+    
+            var polygon_4b4127860410486abc3d988a29431ca2 = L.polygon(
+                [[41.86276660369136, 12.494182345797343], [41.849250532039186, 12.509198695866223], [41.85009900167492, 12.521296405423685], [41.85252461809891, 12.551539189332054], [41.85912989210186, 12.56577359541864], [41.90466040110719, 12.567144946527202], [41.90782805895551, 12.543453942645016], [41.88971765396351, 12.505466300168798]],
+                {"bubblingMouseEvents": true, "color": "#2828cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2828cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_13a265e6a62240949b0d3603104ce5ea = L.popup({"maxWidth": 450});
+
+        
+            var html_e88a30e388b24a5dbd61ff423f4cde16 = $(`<div id="html_e88a30e388b24a5dbd61ff423f4cde16" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 22</br>Cluster diameter: 7.81 km (4.85 miles)</p></div>`)[0];
+            popup_13a265e6a62240949b0d3603104ce5ea.setContent(html_e88a30e388b24a5dbd61ff423f4cde16);
+        
+
+        polygon_4b4127860410486abc3d988a29431ca2.bindPopup(popup_13a265e6a62240949b0d3603104ce5ea)
+        ;
+
+        
+    
+    
+            var polygon_6132f0392cd0499ab0fa20528d401587 = L.polygon(
+                [[41.785325755756965, 12.277919385502534], [41.82643312371468, 12.302103424110758], [41.85978255109801, 12.289211294107094], [41.85863295011828, 12.28684714647958], [41.84761761270891, 12.272643763327501], [41.830001889070935, 12.258877819028951], [41.82367049566445, 12.259526237523707], [41.81664127933839, 12.260323704537191]],
+                {"bubblingMouseEvents": true, "color": "#3928cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3928cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_a859c84ceeb74f4492072f2acae46afc = L.popup({"maxWidth": 450});
+
+        
+            var html_1f20d9dbebef49e080b6ec8888e7c180 = $(`<div id="html_1f20d9dbebef49e080b6ec8888e7c180" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 8.33 km (5.18 miles)</p></div>`)[0];
+            popup_a859c84ceeb74f4492072f2acae46afc.setContent(html_1f20d9dbebef49e080b6ec8888e7c180);
+        
+
+        polygon_6132f0392cd0499ab0fa20528d401587.bindPopup(popup_a859c84ceeb74f4492072f2acae46afc)
+        ;
+
+        
+    
+    
+            var polygon_376b3fcd79094a40b4c31ee81585c07c = L.polygon(
+                [[42.02352846256863, 12.403196434119177], [41.96474157314453, 12.384450458703045], [41.94784804431967, 12.392837277608105], [41.94587232111868, 12.394824606759837], [41.95806297660586, 12.421183193780697], [41.96463662541185, 12.426955839682886], [41.965831049748516, 12.427796861078338], [41.99267233402243, 12.435844776204819], [42.021321682535564, 12.40785092347132]],
+                {"bubblingMouseEvents": true, "color": "#4b28cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4b28cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_7a97ee2ccf0b461b9029dbf49c47689c = L.popup({"maxWidth": 450});
+
+        
+            var html_9d27aae35faf4006b9a6e44f0be8e6f4 = $(`<div id="html_9d27aae35faf4006b9a6e44f0be8e6f4" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 30</br>Cluster diameter: 8.66 km (5.38 miles)</p></div>`)[0];
+            popup_7a97ee2ccf0b461b9029dbf49c47689c.setContent(html_9d27aae35faf4006b9a6e44f0be8e6f4);
+        
+
+        polygon_376b3fcd79094a40b4c31ee81585c07c.bindPopup(popup_7a97ee2ccf0b461b9029dbf49c47689c)
+        ;
+
+        
+    
+    
+            var polygon_640714913ae7415b83649d4ec64219a0 = L.polygon(
+                [[41.703845224503944, 12.536941962009571], [41.68625995181381, 12.566512885878307], [41.683974036661944, 12.587471974783785], [41.68419920045309, 12.611801707271134], [41.7523522185487, 12.621828417121524], [41.75005241679308, 12.56815120184978], [41.74281870859122, 12.550524660623473], [41.723446734364884, 12.537640306437927]],
+                {"bubblingMouseEvents": true, "color": "#5c28cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5c28cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_bb89bddc877541ad83f84bde010cd060 = L.popup({"maxWidth": 450});
+
+        
+            var html_ec6a988b8a8745658dfcc6a97474f4f2 = $(`<div id="html_ec6a988b8a8745658dfcc6a97474f4f2" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 21</br>Cluster diameter: 8.87 km (5.51 miles)</p></div>`)[0];
+            popup_bb89bddc877541ad83f84bde010cd060.setContent(html_ec6a988b8a8745658dfcc6a97474f4f2);
+        
+
+        polygon_640714913ae7415b83649d4ec64219a0.bindPopup(popup_bb89bddc877541ad83f84bde010cd060)
+        ;
+
+        
+    
+    
+            var polygon_cf61bdbbccb64fbbb66d06ebaddef470 = L.polygon(
+                [[41.82780120497885, 12.558799520574045], [41.787835289025104, 12.526652770473449], [41.784982278190576, 12.527517540178556], [41.77127872425591, 12.547403214237672], [41.76598404489197, 12.56481321969874], [41.78332599708461, 12.577516528202803], [41.80391005268279, 12.581770441378131], [41.82053886472844, 12.579238582006711]],
+                {"bubblingMouseEvents": true, "color": "#6d28cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6d28cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_79876f13546a480b9b2ac00159c9bf64 = L.popup({"maxWidth": 450});
+
+        
+            var html_412782ad686a4183b0ba0f5aaf1cc17c = $(`<div id="html_412782ad686a4183b0ba0f5aaf1cc17c" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 22</br>Cluster diameter: 6.89 km (4.28 miles)</p></div>`)[0];
+            popup_79876f13546a480b9b2ac00159c9bf64.setContent(html_412782ad686a4183b0ba0f5aaf1cc17c);
+        
+
+        polygon_cf61bdbbccb64fbbb66d06ebaddef470.bindPopup(popup_79876f13546a480b9b2ac00159c9bf64)
+        ;
+
+        
+    
+    
+            var polygon_bea75300ef5143c687f9282ee993a75e = L.polygon(
+                [[41.6492041340656, 12.587109937324946], [41.677671534669734, 12.563146061059035], [41.67003765147791, 12.541476622808224], [41.66019631256498, 12.517787203122946], [41.65436960186171, 12.50616489834977], [41.61586707254538, 12.48183260853268], [41.59349704958262, 12.507216447109691]],
+                {"bubblingMouseEvents": true, "color": "#7e28cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7e28cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_573e08b5756b4cbe9752a24cb6c5f560 = L.popup({"maxWidth": 450});
+
+        
+            var html_b6f64516837341a69f8588ab387dc6a4 = $(`<div id="html_b6f64516837341a69f8588ab387dc6a4" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 26</br>Cluster diameter: 10.45 km (6.49 miles)</p></div>`)[0];
+            popup_573e08b5756b4cbe9752a24cb6c5f560.setContent(html_b6f64516837341a69f8588ab387dc6a4);
+        
+
+        polygon_bea75300ef5143c687f9282ee993a75e.bindPopup(popup_573e08b5756b4cbe9752a24cb6c5f560)
+        ;
+
+        
+    
+    
+            var polygon_280fc8cfc90f45c797e494f6aac1d215 = L.polygon(
+                [[41.662050247094726, 12.437218449748098], [41.703760188803706, 12.449701297372526], [41.72411468110084, 12.434196041925622], [41.72259564628115, 12.42005765999663], [41.70413652366166, 12.391788331799155], [41.69813069397726, 12.396060152132446]],
+                {"bubblingMouseEvents": true, "color": "#8f28cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8f28cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_106b1292946f4e289ded7facc9b01c08 = L.popup({"maxWidth": 450});
+
+        
+            var html_96010c80699c4738a80fbfd63293693e = $(`<div id="html_96010c80699c4738a80fbfd63293693e" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 27</br>Cluster diameter: 6.91 km (4.29 miles)</p></div>`)[0];
+            popup_106b1292946f4e289ded7facc9b01c08.setContent(html_96010c80699c4738a80fbfd63293693e);
+        
+
+        polygon_280fc8cfc90f45c797e494f6aac1d215.bindPopup(popup_106b1292946f4e289ded7facc9b01c08)
+        ;
+
+        
+    
+    
+            var polygon_7b849b38b50140fb92c6561e3ce9811d = L.polygon(
+                [[41.812742551284835, 12.255437555793721], [41.816780406771755, 12.259587732422384], [41.81710503326398, 12.259584238784399], [41.818390532587415, 12.259542333916894], [41.82265104501159, 12.257676028782592], [41.82217421821175, 12.256062189562268], [41.821584487884635, 12.254986314152037], [41.81886366134847, 12.251533602038556], [41.81493295896053, 12.253205940381743]],
+                {"bubblingMouseEvents": true, "color": "#a128cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a128cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_629eb4b7e25142d18e08c34393622e81 = L.popup({"maxWidth": 450});
+
+        
+            var html_93b5051c31ae4739affe6025bdcb2117 = $(`<div id="html_93b5051c31ae4739affe6025bdcb2117" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 1.12 km (0.69 miles)</p></div>`)[0];
+            popup_629eb4b7e25142d18e08c34393622e81.setContent(html_93b5051c31ae4739affe6025bdcb2117);
+        
+
+        polygon_7b849b38b50140fb92c6561e3ce9811d.bindPopup(popup_629eb4b7e25142d18e08c34393622e81)
+        ;
+
+        
+    
+    
+            var polygon_b17a393f0c0a49f6bb6f3cb53a9da5de = L.polygon(
+                [[41.82016796873758, 12.266745174848914], [41.81524266109944, 12.279601632843068], [41.81819532768159, 12.281061526520375], [41.82146863183342, 12.281697461890012], [41.82577389758467, 12.28141198397099], [41.82710486168554, 12.278557936650797]],
+                {"bubblingMouseEvents": true, "color": "#b228cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b228cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_e1f22660ea004e74b365fa52fa0fb81a = L.popup({"maxWidth": 450});
+
+        
+            var html_8feed8b30239428f8e162b729ba560b9 = $(`<div id="html_8feed8b30239428f8e162b729ba560b9" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 1.37 km (0.85 miles)</p></div>`)[0];
+            popup_e1f22660ea004e74b365fa52fa0fb81a.setContent(html_8feed8b30239428f8e162b729ba560b9);
+        
+
+        polygon_b17a393f0c0a49f6bb6f3cb53a9da5de.bindPopup(popup_e1f22660ea004e74b365fa52fa0fb81a)
+        ;
+
+        
+    
+    
+            var polygon_6549e75fba684e45ad2868c89c36ddcd = L.polygon(
+                [[41.71207094453722, 12.497802642990957], [41.672891861620336, 12.454481420941756], [41.66047975186531, 12.455557398501162], [41.6562603022114, 12.484173852724046], [41.65702512046031, 12.489190528285835], [41.676548050777306, 12.518806434597293], [41.69366002281967, 12.538129658680077], [41.69828505836425, 12.535905535619627], [41.70621575006644, 12.528614310188384], [41.71187950669467, 12.50419163785009]],
+                {"bubblingMouseEvents": true, "color": "#c328cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c328cc", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_44f5d47fdbeb40ccae0356c71450bcd0 = L.popup({"maxWidth": 450});
+
+        
+            var html_5dbca63432c74466b6543319308a0147 = $(`<div id="html_5dbca63432c74466b6543319308a0147" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 30</br>Cluster diameter: 7.92 km (4.92 miles)</p></div>`)[0];
+            popup_44f5d47fdbeb40ccae0356c71450bcd0.setContent(html_5dbca63432c74466b6543319308a0147);
+        
+
+        polygon_6549e75fba684e45ad2868c89c36ddcd.bindPopup(popup_44f5d47fdbeb40ccae0356c71450bcd0)
+        ;
+
+        
+    
+    
+            var polygon_d0d760ff35eb4caf9d7e280d28836f63 = L.polygon(
+                [[41.84916450176761, 12.3485714470217], [41.81333653795738, 12.310303346358372], [41.802038037661866, 12.331173977929732], [41.81786751459152, 12.381265045729549], [41.83307789857998, 12.391211519856247], [41.848320860229826, 12.368636543300726]],
+                {"bubblingMouseEvents": true, "color": "#cc28c3", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc28c3", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_47d428b4331742199b7fa96ec650819e = L.popup({"maxWidth": 450});
+
+        
+            var html_3338e25bd27344bbad59c2a6b306429f = $(`<div id="html_3338e25bd27344bbad59c2a6b306429f" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 27</br>Cluster diameter: 7.05 km (4.38 miles)</p></div>`)[0];
+            popup_47d428b4331742199b7fa96ec650819e.setContent(html_3338e25bd27344bbad59c2a6b306429f);
+        
+
+        polygon_d0d760ff35eb4caf9d7e280d28836f63.bindPopup(popup_47d428b4331742199b7fa96ec650819e)
+        ;
+
+        
+    
+    
+            var polygon_408bdb4b1b7644dd83e688545a590148 = L.polygon(
+                [[41.936037829873385, 12.47812499184764], [41.90434281964249, 12.453791256580883], [41.90121017922133, 12.457472857136747], [41.896391033789904, 12.494159223780498], [41.91418772753285, 12.531908928536698], [41.94158375969101, 12.544243090660013]],
+                {"bubblingMouseEvents": true, "color": "#cc28b2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc28b2", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_c0144d2de89f407494c04b69a75496d7 = L.popup({"maxWidth": 450});
+
+        
+            var html_b1158133d53a4b2bb8fc54e65f3f00d1 = $(`<div id="html_b1158133d53a4b2bb8fc54e65f3f00d1" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 26</br>Cluster diameter: 8.55 km (5.31 miles)</p></div>`)[0];
+            popup_c0144d2de89f407494c04b69a75496d7.setContent(html_b1158133d53a4b2bb8fc54e65f3f00d1);
+        
+
+        polygon_408bdb4b1b7644dd83e688545a590148.bindPopup(popup_c0144d2de89f407494c04b69a75496d7)
+        ;
+
+        
+    
+    
+            var polygon_7a2b7e9ebeec4be1a0eeef269847d371 = L.polygon(
+                [[41.921671471080025, 12.38397092027401], [41.89424814914585, 12.450393992147422], [41.93177184171775, 12.460470794262914], [41.94308211845492, 12.463153204434189], [41.98087323183219, 12.436121630577452], [41.93291495937836, 12.387886615437107]],
+                {"bubblingMouseEvents": true, "color": "#cc28a1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc28a1", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_4cb8a88b4d1949e992865a80d96df53c = L.popup({"maxWidth": 450});
+
+        
+            var html_7ec5a89b56414705adfcdc18965feaad = $(`<div id="html_7ec5a89b56414705adfcdc18965feaad" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 29</br>Cluster diameter: 9.70 km (6.03 miles)</p></div>`)[0];
+            popup_4cb8a88b4d1949e992865a80d96df53c.setContent(html_7ec5a89b56414705adfcdc18965feaad);
+        
+
+        polygon_7a2b7e9ebeec4be1a0eeef269847d371.bindPopup(popup_4cb8a88b4d1949e992865a80d96df53c)
+        ;
+
+        
+    
+    
+            var polygon_0d8101f37a63454bbab9ec65b67e3910 = L.polygon(
+                [[41.85438216247654, 12.22949266392465], [41.897346048746115, 12.257256596036761], [41.90128852149357, 12.198784140201743], [41.89321136424831, 12.1759838691185], [41.8689823512881, 12.188466716556315], [41.854276272851386, 12.209755177317938]],
+                {"bubblingMouseEvents": true, "color": "#cc288f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc288f", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_2d5fb87062fd488595dea883af53519c = L.popup({"maxWidth": 450});
+
+        
+            var html_561aa5e7803b4e258b0801db7b9cdadc = $(`<div id="html_561aa5e7803b4e258b0801db7b9cdadc" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 23</br>Cluster diameter: 6.74 km (4.19 miles)</p></div>`)[0];
+            popup_2d5fb87062fd488595dea883af53519c.setContent(html_561aa5e7803b4e258b0801db7b9cdadc);
+        
+
+        polygon_0d8101f37a63454bbab9ec65b67e3910.bindPopup(popup_2d5fb87062fd488595dea883af53519c)
+        ;
+
+        
+    
+    
+            var polygon_9af6e06ea1eb4c8b8135935826a8d777 = L.polygon(
+                [[41.79705578799751, 12.27085587230598], [41.79485312388275, 12.266723171075977], [41.79324070637135, 12.267906504493968], [41.7886436629522, 12.272912084791972], [41.78828422912368, 12.274656392055258], [41.79189501871652, 12.277065279647342], [41.79627722169115, 12.276141273100931], [41.79711462913531, 12.27550447774665]],
+                {"bubblingMouseEvents": true, "color": "#cc287e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc287e", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_8621156b358d45ba8a3dafe8a75cbadf = L.popup({"maxWidth": 450});
+
+        
+            var html_7fbe9afd304841cf9e7ecc6b216c49c4 = $(`<div id="html_7fbe9afd304841cf9e7ecc6b216c49c4" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 35</br>Cluster diameter: 1.02 km (0.64 miles)</p></div>`)[0];
+            popup_8621156b358d45ba8a3dafe8a75cbadf.setContent(html_7fbe9afd304841cf9e7ecc6b216c49c4);
+        
+
+        polygon_9af6e06ea1eb4c8b8135935826a8d777.bindPopup(popup_8621156b358d45ba8a3dafe8a75cbadf)
+        ;
+
+        
+    
+    
+            var polygon_ec9387458beb40528b20815d5006c1ca = L.polygon(
+                [[42.061655493432134, 12.407878947569177], [42.093492219136365, 12.396757817603781], [42.107320355845545, 12.344114877974524], [42.096775160706656, 12.330993394889274], [42.094559951083596, 12.329528881039408], [42.049877808219904, 12.331897314835553], [42.0296113109922, 12.364522860959944], [42.04722990737459, 12.397699055085553]],
+                {"bubblingMouseEvents": true, "color": "#cc286d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc286d", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_df1663c748264cdabe4ab44ef63bff46 = L.popup({"maxWidth": 450});
+
+        
+            var html_51aa5f6172374d098da35c4336a964fb = $(`<div id="html_51aa5f6172374d098da35c4336a964fb" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 23</br>Cluster diameter: 8.80 km (5.47 miles)</p></div>`)[0];
+            popup_df1663c748264cdabe4ab44ef63bff46.setContent(html_51aa5f6172374d098da35c4336a964fb);
+        
+
+        polygon_ec9387458beb40528b20815d5006c1ca.bindPopup(popup_df1663c748264cdabe4ab44ef63bff46)
+        ;
+
+        
+    
+    
+            var polygon_4d1213febaf843e59e468204bae6ed0a = L.polygon(
+                [[41.95534667403155, 12.356713650607057], [41.930303852688134, 12.33097097808464], [41.90594949198057, 12.348891634603696], [41.89366331641042, 12.361027028757068], [41.91413199691197, 12.379848208284539], [41.92239471936334, 12.385775331829432], [41.9343625295814, 12.394115076179194]],
+                {"bubblingMouseEvents": true, "color": "#cc285c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc285c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_72434f9843e940a5b9baa363e9eea8c9 = L.popup({"maxWidth": 450});
+
+        
+            var html_484fd51a75a145f098ad997eea6a3cba = $(`<div id="html_484fd51a75a145f098ad997eea6a3cba" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 33</br>Cluster diameter: 6.87 km (4.27 miles)</p></div>`)[0];
+            popup_72434f9843e940a5b9baa363e9eea8c9.setContent(html_484fd51a75a145f098ad997eea6a3cba);
+        
+
+        polygon_4d1213febaf843e59e468204bae6ed0a.bindPopup(popup_72434f9843e940a5b9baa363e9eea8c9)
+        ;
+
+        
+    
+    
+            var polygon_4618a0f26a3840fa9674abde4592f0bb = L.polygon(
+                [[41.74615822481148, 12.361072320526656], [41.730013923981275, 12.361121622902488], [41.72083147418767, 12.36721561375759], [41.707442289321655, 12.382469614075184], [41.719497629789736, 12.404351168380542], [41.73520230210496, 12.415406305294553], [41.75023299635423, 12.425478929071703], [41.74894831101282, 12.371711398897634]],
+                {"bubblingMouseEvents": true, "color": "#cc284b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc284b", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_2c30cd7520704441ab01239afc703678 = L.popup({"maxWidth": 450});
+
+        
+            var html_63d7fc2305f54a29ab3e7c2487b25174 = $(`<div id="html_63d7fc2305f54a29ab3e7c2487b25174" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 22</br>Cluster diameter: 5.95 km (3.70 miles)</p></div>`)[0];
+            popup_2c30cd7520704441ab01239afc703678.setContent(html_63d7fc2305f54a29ab3e7c2487b25174);
+        
+
+        polygon_4618a0f26a3840fa9674abde4592f0bb.bindPopup(popup_2c30cd7520704441ab01239afc703678)
+        ;
+
+        
+    
+    
+            var polygon_1906fee50f7548dcbe0e0791fc15bd90 = L.polygon(
+                [[41.871167246767854, 12.33275028332759], [41.86646771626353, 12.324162024213157], [41.85379580045233, 12.325542638929461], [41.85072365557352, 12.32590406044257], [41.84295710863803, 12.331224814981704], [41.84046556465539, 12.336198008443976], [41.85231264133162, 12.342942159235317], [41.86225934546916, 12.34637186544602], [41.865235215889484, 12.345937365193272], [41.86788883093067, 12.341568357839378]],
+                {"bubblingMouseEvents": true, "color": "#cc2839", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc2839", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f4f85001c1f74ba68b6e469a95084a33);
+        
+    
+        var popup_1fedf9f4a4b14355b0054b755727c414 = L.popup({"maxWidth": 450});
+
+        
+            var html_1670c47726ae404992ae9a34f3967cec = $(`<div id="html_1670c47726ae404992ae9a34f3967cec" style="width: 100.0%; height: 100.0%;"><p>Cluster points: 33</br>Cluster diameter: 3.43 km (2.13 miles)</p></div>`)[0];
+            popup_1fedf9f4a4b14355b0054b755727c414.setContent(html_1670c47726ae404992ae9a34f3967cec);
+        
+
+        polygon_1906fee50f7548dcbe0e0791fc15bd90.bindPopup(popup_1fedf9f4a4b14355b0054b755727c414)
+        ;
+
+        
+    
+</script>
