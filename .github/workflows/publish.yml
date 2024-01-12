@@ -13,24 +13,13 @@ on:
                 type: boolean
 
 jobs:
-    publish:
+    bump: # This job is used to bump the version and create a release
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                include:
-                    - target-env: pypi
-                      target-url: https://pypi.org/p/nextplot
-                    - target-env: testpypi
-                      target-url: https://test.pypi.org/p/nextplot
         env:
             VERSION: ${{ inputs.VERSION }}
             GH_TOKEN: ${{ github.token }}
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        environment:
-            name: ${{ matrix.target-env }}
-            url: ${{ matrix.target-url }}
         permissions:
-            id-token: write # This is required for trusted publishing to PyPI
             contents: write
         steps:
             - name: set up Python
@@ -41,7 +30,7 @@ jobs:
             - name: install dependencies
               run: |
                   pip install --upgrade pip
-                  pip install build twine hatch
+                  pip install build hatch
 
             - name: configure git with the bot credentials
               run: |
@@ -86,16 +75,48 @@ jobs:
                   --title $VERSION $PRERELEASE_FLAG
               working-directory: ./nextplot
 
+            - name: ensure passing build
+              run: python -m build
+              working-directory: ./nextplot
+
+    publish: # This job is used to publish the release to PyPI/TestPyPI
+        runs-on: ubuntu-latest
+        needs: bump
+        strategy:
+            matrix:
+                include:
+                    - target-env: pypi
+                      target-url: https://pypi.org/p/nextplot
+                    - target-env: testpypi
+                      target-url: https://test.pypi.org/p/nextplot
+        environment:
+            name: ${{ matrix.target-env }}
+            url: ${{ matrix.target-url }}
+        permissions:
+            id-token: write # This is required for trusted publishing to PyPI
+        steps:
+            - name: set up Python
+              uses: actions/setup-python@v4
+              with:
+                  python-version: "3.12"
+
+            - name: install dependencies
+              run: |
+                  pip install --upgrade pip
+                  pip install build hatch
+
             - name: build binary wheel and source tarball
               run: python -m build
               working-directory: ./nextplot
 
             - name: Publish package distributions to PyPI
+              if: ${{ matrix.target-env == 'pypi' }}
               uses: pypa/gh-action-pypi-publish@release/v1
               with:
                   packages-dir: ./nextplot/dist
 
             - name: Publish package distributions to TestPyPI
+              if: ${{ matrix.target-env == 'testpypi' }}
               uses: pypa/gh-action-pypi-publish@release/v1
               with:
                   repository-url: https://test.pypi.org/legacy/
