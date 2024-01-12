@@ -23,11 +23,11 @@ nextplot route \
 
 Image result:
 
-![dortmund-route.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/dortmund-route/dortmund-route.png)
+![dortmund-route.png](https://nextmv-io.github.io/nextplot/gallery/dortmund-route/dortmund-route.png)
 
-Map result ([link](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/dortmund-route)):
+Map result ([link](https://nextmv-io.github.io/nextplot/gallery/dortmund-route)):
 
-![dortmund-route.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/dortmund-route/dortmund-route.html.png)
+![dortmund-route.html.png](https://nextmv-io.github.io/nextplot/gallery/dortmund-route/dortmund-route.html.png)
 
 ---
 
@@ -52,11 +52,11 @@ nextplot cluster \
 
 Image result:
 
-![dortmund-cluster.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/dortmund-cluster/dortmund-cluster.png)
+![dortmund-cluster.png](https://nextmv-io.github.io/nextplot/gallery/dortmund-cluster/dortmund-cluster.png)
 
-Map result ([link](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/dortmund-cluster)):
+Map result ([link](https://nextmv-io.github.io/nextplot/gallery/dortmund-cluster)):
 
-![dortmund-cluster.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/dortmund-cluster/dortmund-cluster.html.png)
+![dortmund-cluster.html.png](https://nextmv-io.github.io/nextplot/gallery/dortmund-cluster/dortmund-cluster.html.png)
 
 ---
 
@@ -77,11 +77,11 @@ nextplot point \
 
 Image result:
 
-![dortmund-point.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/dortmund-point/dortmund-point.png)
+![dortmund-point.png](https://nextmv-io.github.io/nextplot/gallery/dortmund-point/dortmund-point.png)
 
-Map result ([link](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/dortmund-point)):
+Map result ([link](https://nextmv-io.github.io/nextplot/gallery/dortmund-point)):
 
-![dortmund-point.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/dortmund-point/dortmund-point.html.png)
+![dortmund-point.html.png](https://nextmv-io.github.io/nextplot/gallery/dortmund-point/dortmund-point.html.png)
 
 ---
 
@@ -106,11 +106,11 @@ nextplot route \
 
 Image result:
 
-![paris-route.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-route/paris-route.png)
+![paris-route.png](https://nextmv-io.github.io/nextplot/gallery/paris-route/paris-route.png)
 
-Map result ([link](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-route)):
+Map result ([link](https://nextmv-io.github.io/nextplot/gallery/paris-route)):
 
-![paris-route.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-route/paris-route.html.png)
+![paris-route.html.png](https://nextmv-io.github.io/nextplot/gallery/paris-route/paris-route.html.png)
 
 ---
 
@@ -137,11 +137,11 @@ nextplot route \
 
 Image result:
 
-![fleet-cloud.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/fleet-cloud/fleet-cloud.png)
+![fleet-cloud.png](https://nextmv-io.github.io/nextplot/gallery/fleet-cloud/fleet-cloud.png)
 
-Map result ([link](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/fleet-cloud)):
+Map result ([link](https://nextmv-io.github.io/nextplot/gallery/fleet-cloud)):
 
-![fleet-cloud.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/fleet-cloud/fleet-cloud.html.png)
+![fleet-cloud.html.png](https://nextmv-io.github.io/nextplot/gallery/fleet-cloud/fleet-cloud.html.png)
 
 ---
 
@@ -173,9 +173,9 @@ nextplot route \
 
 Image result:
 
-Map result ([link](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-markers)):
+Map result ([link](https://nextmv-io.github.io/nextplot/gallery/paris-markers)):
 
-![fleet-cloud.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-markers/paris-markers.html.png)
+![fleet-cloud.html.png](https://nextmv-io.github.io/nextplot/gallery/paris-markers/paris-markers.html.png)
 
 ---
 
@@ -194,9 +194,9 @@ nextplot route \
         --route_direction animation
 ```
 
-Map result ([link](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/fleet-cloud/fleet-cloud-animation.html)):
+Map result ([link](https://nextmv-io.github.io/nextplot/gallery/fleet-cloud/fleet-cloud-animation.html)):
 
-![fleet-cloud-animation.html.gif](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/fleet-cloud/fleet-cloud-animation.gif)
+![fleet-cloud-animation.html.gif](https://nextmv-io.github.io/nextplot/gallery/fleet-cloud/fleet-cloud-animation.gif)
 
 ---
 
@@ -218,11 +218,11 @@ nextplot point \
 
 Image result:
 
-![paris-point-grouped.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-point-grouped/paris-point-grouped.png)
+![paris-point-grouped.png](https://nextmv-io.github.io/nextplot/gallery/paris-point-grouped/paris-point-grouped.png)
 
-Map result ([link](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-point-grouped)):
+Map result ([link](https://nextmv-io.github.io/nextplot/gallery/paris-point-grouped)):
 
-![paris-point-grouped.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-point-grouped/paris-point-grouped.html.png)
+![paris-point-grouped.html.png](https://nextmv-io.github.io/nextplot/gallery/paris-point-grouped/paris-point-grouped.html.png)
 
 ---
 
@@ -243,11 +243,11 @@ nextplot point \
 
 Image result:
 
-![paris-point-ungrouped.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-point-ungrouped/paris-point-ungrouped.png)
+![paris-point-ungrouped.png](https://nextmv-io.github.io/nextplot/gallery/paris-point-ungrouped/paris-point-ungrouped.png)
 
-Map result ([link](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-point-ungrouped)):
+Map result ([link](https://nextmv-io.github.io/nextplot/gallery/paris-point-ungrouped)):
 
-![paris-point-ungrouped.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/paris-point-ungrouped/paris-point-ungrouped.html.png)
+![paris-point-ungrouped.html.png](https://nextmv-io.github.io/nextplot/gallery/paris-point-ungrouped/paris-point-ungrouped.html.png)
 
 ---
 
@@ -265,8 +265,8 @@ nextplot progression \
         --title "Fleet cloud comparison"
 ```
 
-Interactive result: [link](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/fleet-cloud-comparison)
+Interactive result: [link](https://nextmv-io.github.io/nextplot/gallery/fleet-cloud-comparison)
 
 Image result:
 
-![fleet-cloud-comparison.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/gallery/fleet-cloud-comparison/fleet-cloud-comparison.png)
+![fleet-cloud-comparison.png](https://nextmv-io.github.io/nextplot/gallery/fleet-cloud-comparison/fleet-cloud-comparison.png)

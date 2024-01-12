@@ -99,19 +99,19 @@ A more detailed introduction and a plot gallery can be found [here](examples/REA
 
 Preview _route_ plot (screenshot of .html-file, cartodbdark_matter selected):
 
-![sample-plot-html](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/plots/sneak/example-route-html.png)
+![sample-plot-html](https://nextmv-io.github.io/nextplot/plots/sneak/example-route-html.png)
 
 Preview _route_ plot (full .png-file):
 
-![sample-plot-png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/plots/sneak/example-route-png.png)
+![sample-plot-png](https://nextmv-io.github.io/nextplot/plots/sneak/example-route-png.png)
 
 Preview _cluster_ plot (screenshot of .html-file, cartodbdark_matter selected):
 
-![sample-plot-html](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/plots/sneak/example-cluster-html.png)
+![sample-plot-html](https://nextmv-io.github.io/nextplot/plots/sneak/example-cluster-html.png)
 
 Preview _cluster_ plot (full .png-file):
 
-![sample-plot-png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/plots/sneak/example-cluster-png.png)
+![sample-plot-png](https://nextmv-io.github.io/nextplot/plots/sneak/example-cluster-png.png)
 
 ## Auto-completion
 

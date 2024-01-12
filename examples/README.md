@@ -83,8 +83,8 @@ written to `data/<original_name>.png` & `data/<original_name>.html`. At default,
 the plots are written to the same directory as the input file using its name.
 This can be changed via the `--output_image` & `--output_map` parameters.
 
-The map plot should look like [this](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/plots/dortmund-route):
-![dortmund-route.json.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/plots/dortmund-route/dortmund-route.json.html.png)
+The map plot should look like [this](https://nextmv-io.github.io/nextplot/plots/dortmund-route):
+![dortmund-route.json.html.png](https://nextmv-io.github.io/nextplot/plots/dortmund-route/dortmund-route.json.html.png)
 
 ## Route plotting with routingkit support
 
@@ -123,8 +123,8 @@ nextplot route \
         --rk_osm kansai-latest.osm.pbf
 ```
 
-The map plot should look like [this](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/plots/kyoto-route):
-![kyoto-route.json.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/plots/kyoto-route/kyoto-route.json.html.png)
+The map plot should look like [this](https://nextmv-io.github.io/nextplot/plots/kyoto-route):
+![kyoto-route.json.html.png](https://nextmv-io.github.io/nextplot/plots/kyoto-route/kyoto-route.json.html.png)
 
 ## Cluster plotting
 
@@ -206,8 +206,8 @@ Plotting map to data/rome-cluster.json.html
 We again get some statistics about our clusters and the plots are also available
 at the data file location.
 
-The map plot should look like [this](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/plots/rome-cluster):
-![rome-cluster.json.html.png](http://nextplot-docs.s3-website-us-west-2.amazonaws.com/plots/rome-cluster/rome-cluster.json.html.png)
+The map plot should look like [this](https://nextmv-io.github.io/nextplot/plots/rome-cluster):
+![rome-cluster.json.html.png](https://nextmv-io.github.io/nextplot/plots/rome-cluster/rome-cluster.json.html.png)
 
 ## Additional information
 
