@@ -23,12 +23,7 @@ jobs:
             GH_TOKEN: ${{ github.token }}
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         steps:
-            - name: git clone develop
-              uses: actions/checkout@v4
-              with:
-                  ref: develop
-
-            - name: Set up Python
+            - name: set up Python
               uses: actions/setup-python@v4
               with:
                   python-version: "3.12"
@@ -38,9 +33,6 @@ jobs:
                   pip install --upgrade pip
                   pip install build twine hatch
 
-            - name: upgrade version with hatch
-              run: hatch version ${{ env.VERSION }}
-
             - name: configure git with the bot credentials
               run: |
                   mkdir -p ~/.ssh
@@ -48,16 +40,28 @@ jobs:
                   ssh-agent -a $SSH_AUTH_SOCK > /dev/null
                   ssh-add - <<< "${{ secrets.NEXTMVBOT_SSH_KEY }}"
 
+                  echo "${{ secrets.NEXTMVBOT_SIGNING_KEY }}" > ~/.ssh/signing.key
+                  chmod 600 ~/.ssh/signing.key
+
                   git config --global user.name "nextmv-bot"
                   git config --global user.email "tech+gh-nextmv-bot@nextmv.io"
+                  git config --global gpg.format ssh
+                  git config --global user.signingkey ~/.ssh/signing.key
+
+                  git clone git@github.com:nextmv-io/nextplot.git
+
+            - name: upgrade version with hatch
+              run: hatch version ${{ env.VERSION }}
+              working-directory: ./nextplot
 
             - name: commit new version
               run: |
                   git add nextplot/__about__.py
-                  git commit -m "Bump version to $VERSION"
+                  git commit -S -m "Bump version to $VERSION"
                   git push
                   git tag $VERSION
                   git push origin $VERSION
+              working-directory: ./nextplot
 
             - name: create release
               run: |
@@ -66,23 +70,26 @@ jobs:
                     PRERELEASE_FLAG="--prerelease"
                   fi
 
-                  gh release create -R nextmv-io/nextplot $VERSION \
+                  gh release create $VERSION \
                   --verify-tag \
                   --generate-notes \
                   --title $VERSION $PRERELEASE_FLAG
+              working-directory: ./nextplot
 
             - name: build binary wheel and source tarball
-              run: |
-                  python -m build
+              run: python -m build
+              working-directory: ./nextplot
 
             - name: publish to TestPyPI
               env:
                   TWINE_USERNAME: ${{ secrets.TESTPYPI_USERNAME }}
                   TWINE_PASSWORD: ${{ secrets.TESTPYPI_PASSWORD }}
               run: twine upload --repository testpypi dist/*
+              working-directory: ./nextplot
 
             - name: publish to PyPI
               env:
                   TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
                   TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
               run: twine upload dist/*
+              working-directory: ./nextplot
