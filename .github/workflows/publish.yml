@@ -95,6 +95,11 @@ jobs:
         permissions:
             id-token: write # This is required for trusted publishing to PyPI
         steps:
+            - name: git clone develop
+              uses: actions/checkout@v4
+              with:
+                  ref: develop
+
             - name: set up Python
               uses: actions/setup-python@v4
               with:
@@ -107,17 +112,16 @@ jobs:
 
             - name: build binary wheel and source tarball
               run: python -m build
-              working-directory: ./nextplot
 
             - name: Publish package distributions to PyPI
               if: ${{ matrix.target-env == 'pypi' }}
               uses: pypa/gh-action-pypi-publish@release/v1
               with:
-                  packages-dir: ./nextplot/dist
+                  packages-dir: ./dist
 
             - name: Publish package distributions to TestPyPI
               if: ${{ matrix.target-env == 'testpypi' }}
               uses: pypa/gh-action-pypi-publish@release/v1
               with:
                   repository-url: https://test.pypi.org/legacy/
-                  packages-dir: ./nextplot/dist
+                  packages-dir: ./dist
