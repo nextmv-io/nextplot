@@ -23,10 +23,10 @@ jobs:
             GH_TOKEN: ${{ github.token }}
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         steps:
-            - name: git clone develop
+            - name: git clone stable
               uses: actions/checkout@v4
               with:
-                  ref: develop
+                  ref: stable
 
             - name: Set up Python
               uses: actions/setup-python@v4
