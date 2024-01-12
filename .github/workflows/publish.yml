@@ -72,9 +72,6 @@ jobs:
                   --title $VERSION $PRERELEASE_FLAG
 
             - name: build binary wheel and source tarball
-              env:
-                  TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-                  TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
               run: |
                   python -m build
 
