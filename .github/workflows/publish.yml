@@ -22,6 +22,11 @@ jobs:
             VERSION: ${{ inputs.VERSION }}
             GH_TOKEN: ${{ github.token }}
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        environment:
+            name: pypi
+            url: https://pypi.org/p/nextplot
+        permissions:
+            id-token: write # This is required for trusted publishing to PyPI
         steps:
             - name: set up Python
               uses: actions/setup-python@v4
@@ -80,16 +85,7 @@ jobs:
               run: python -m build
               working-directory: ./nextplot
 
-            - name: publish to TestPyPI
-              env:
-                  TWINE_USERNAME: ${{ secrets.TESTPYPI_USERNAME }}
-                  TWINE_PASSWORD: ${{ secrets.TESTPYPI_PASSWORD }}
-              run: twine upload --repository testpypi dist/*
-              working-directory: ./nextplot
-
-            - name: publish to PyPI
-              env:
-                  TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-                  TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-              run: twine upload dist/*
-              working-directory: ./nextplot
+            - name: Publish package distributions to PyPI
+              uses: pypa/gh-action-pypi-publish@release/v1
+              with:
+                  packages-dir: ./nextplot/dist
