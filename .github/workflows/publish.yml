@@ -12,9 +12,6 @@ on:
                 default: false
                 type: boolean
 
-permissions:
-    contents: write
-
 jobs:
     publish:
         runs-on: ubuntu-latest
@@ -27,6 +24,7 @@ jobs:
             url: https://pypi.org/p/nextplot
         permissions:
             id-token: write # This is required for trusted publishing to PyPI
+            contents: write
         steps:
             - name: set up Python
               uses: actions/setup-python@v4
