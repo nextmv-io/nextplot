@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ = L.map(
+                "map_",
+                {
+                    center: [48.86421464185859, 2.324933624095614],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                    zoomSnap: 0.25,
+                    zoomDelta: 0.25,
+                    wheelPxPerZoomLevel: 180,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var feature_group_ = L.featureGroup(
+                {}
+            );
+        
+    
+            var polygon_ = L.polygon(
+                [[48.85814487640506, 2.2945793548805833], [48.842085594729355, 2.321845363923588], [48.880769277577656, 2.3552878933106447], [48.873730646108235, 2.2950561481174456]],
+                {"bubblingMouseEvents": true, "color": "#4e79a7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4e79a7", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Cluster: 0 / 2</br>Cluster points: 7</br>Cluster diameter: 5.10 km (3.17 miles)</br></p></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        polygon_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            feature_group_.addTo(map_);
+        
+    
+            var feature_group_ = L.featureGroup(
+                {}
+            );
+        
+    
+            var polygon_ = L.polygon(
+                [[48.880769277577656, 2.3552878933106447], [48.88634368898782, 2.343046834223321], [48.84616060048901, 2.346233405549605], [48.853070514317345, 2.349489020192572]],
+                {"bubblingMouseEvents": true, "color": "#f28e2c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f28e2c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Cluster: 1 / 2</br>Cluster points: 5</br>Cluster diameter: 4.47 km (2.78 miles)</br></p></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        polygon_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            feature_group_.addTo(map_);
+        
+    
+            var layer_control__layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_,
+                    "cartodbdarkmatter" : tile_layer_,
+                    "openstreetmap" : tile_layer_,
+                    "DarkMatter no labels" : tile_layer_,
+                },
+                overlays :  {
+                    "Cluster 1" : feature_group_,
+                    "Cluster 2" : feature_group_,
+                },
+            };
+            let layer_control_ = L.control.layers(
+                layer_control__layers.base_layers,
+                layer_control__layers.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_);
+
+        
+</script>
+</html>

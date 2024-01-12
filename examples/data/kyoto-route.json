@@ -1,0 +1,78 @@
+{
+    "unassigned": [],
+    "vehicles": [
+        {
+            "id": "v1",
+            "route": [
+                {
+                    "id": "v1-start",
+                    "position": {
+                        "lon": 135.73723,
+                        "lat": 35.04381
+                    }
+                },
+                {
+                    "id": "Kinkaku-ji",
+                    "position": {
+                        "lon": 135.728898,
+                        "lat": 35.039705
+                    }
+                },
+                {
+                    "id": "Nijō Castle",
+                    "position": {
+                        "lon": 135.748134,
+                        "lat": 35.014239
+                    }
+                },
+                {
+                    "id": "Arashiyama Bamboo Forest",
+                    "position": {
+                        "lon": 135.672009,
+                        "lat": 35.017209
+                    }
+                }
+            ]
+        },
+        {
+            "id": "v2",
+            "route": [
+                {
+                    "id": "v2-start",
+                    "position": {
+                        "lon": 135.771716,
+                        "lat": 34.951317
+                    }
+                },
+                {
+                    "id": "Fushimi Inari Taisha",
+                    "position": {
+                        "lon": 135.772695,
+                        "lat": 34.967146
+                    }
+                },
+                {
+                    "id": "Kiyomizu-dera",
+                    "position": {
+                        "lon": 135.78506,
+                        "lat": 34.994857
+                    }
+                },
+                {
+                    "id": "Gionmachi",
+                    "position": {
+                        "lon": 135.775682,
+                        "lat": 35.002457
+                    }
+                },
+                {
+                    "id": "Kyoto Imperial Palace",
+                    "position": {
+                        "lon": 135.762057,
+                        "lat": 35.025431
+                    }
+                }
+            ]
+        }
+    ]
+}

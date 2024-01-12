@@ -1,0 +1,12 @@
+argcomplete>=2.0.0
+colorutils>=0.3.0
+folium>=0.12.1
+jsonpath_ng>=1.5.3
+kaleido>=0.2.1
+numpy>=1.22.3
+plotly>=5.7.0
+scipy>=1.8.0
+pytest>=7.1.1
+imagehash>=4.2.1
+ruff>=0.1.7
+twine>=4.0.2

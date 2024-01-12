@@ -1,0 +1,15 @@
+Cluster stats
+Total points: 12.00
+Cluster count: 2.00
+Cluster size (max): 7.00
+Cluster size (min): 5.00
+Cluster size (avg): 6.00
+Cluster size (variance): 1.00
+Cluster diameter (max): 5.10
+Cluster diameter (min): 4.47
+Cluster diameter (avg): 4.79
+Sum of max distances from centroid: 5.31
+Max distance from centroid: 2.71
+Sum of distances from centroid: 23.33
+Sum of squares from centroid: 52.17
+Bad assignments: 2.00

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ = L.map(
+                "map_",
+                {
+                    center: [48.86421464185859, 2.324933624095614],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                    zoomSnap: 0.25,
+                    zoomDelta: 0.25,
+                    wheelPxPerZoomLevel: 180,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var feature_group_ = L.featureGroup(
+                {}
+            );
+        
+    
+            var poly_line_ = L.polyline(
+                [[48.86064983816991, 2.3373478124467524], [48.86548659130954, 2.3211691026573686], [48.873730646108235, 2.2950561481174456], [48.85814487640506, 2.2945793548805833], [48.842085594729355, 2.321845363923588]],
+                {"bubblingMouseEvents": true, "color": "#4e79a7", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#4e79a7", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 20.0}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Route: 1 / 2</br>Route points: 7</br>Route length: 15.37 km (9.55 miles)</br></p></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        poly_line_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            var circle_marker_ = L.circleMarker(
+                [48.86064983816991, 2.3373478124467524],
+                {"bubblingMouseEvents": true, "color": "#4e79a7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4e79a7", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 1 / 7</br>Distance: 2.59 km (1.61 miles)</br>Location (lon/lat): 2.3373478124467524, 48.86064983816991</p>JSON:</br><pre><code>{<br/>  "id": "Louvre",<br/>  "location": [<br/>    48.86064983816991,<br/>    2.3373478124467524<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        circle_marker_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            var circle_marker_ = L.circleMarker(
+                [48.86548659130954, 2.3211691026573686],
+                {"bubblingMouseEvents": true, "color": "#4e79a7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4e79a7", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 2 / 7</br>Distance: 3.89 km (2.42 miles)</br>Location (lon/lat): 2.3211691026573686, 48.86548659130954</p>JSON:</br><pre><code>{<br/>  "id": "Place de la Concorde",<br/>  "location": [<br/>    48.86548659130954,<br/>    2.3211691026573686<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        circle_marker_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            var circle_marker_ = L.circleMarker(
+                [48.873730646108235, 2.2950561481174456],
+                {"bubblingMouseEvents": true, "color": "#4e79a7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4e79a7", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 3 / 7</br>Distance: 6.01 km (3.74 miles)</br>Location (lon/lat): 2.2950561481174456, 48.873730646108235</p>JSON:</br><pre><code>{<br/>  "id": "Arc de Triomphe",<br/>  "location": [<br/>    48.873730646108235,<br/>    2.2950561481174456<br/>  ],<br/>  "quantity": 1<br/>}</code></pre></br></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        circle_marker_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            var circle_marker_ = L.circleMarker(
+                [48.85814487640506, 2.2945793548805833],
+                {"bubblingMouseEvents": true, "color": "#4e79a7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4e79a7", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 4 / 7</br>Distance: 7.75 km (4.81 miles)</br>Location (lon/lat): 2.2945793548805833, 48.85814487640506</p>JSON:</br><pre><code>{<br/>  "id": "Tour Eiffel",<br/>  "location": [<br/>    48.85814487640506,<br/>    2.2945793548805833<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        circle_marker_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            var circle_marker_ = L.circleMarker(
+                [48.842085594729355, 2.321845363923588],
+                {"bubblingMouseEvents": true, "color": "#4e79a7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4e79a7", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 5 / 7</br>Distance: 10.42 km (6.48 miles)</br>Location (lon/lat): 2.321845363923588, 48.842085594729355</p>JSON:</br><pre><code>{<br/>  "id": "Tour Montparnasse",<br/>  "location": [<br/>    48.842085594729355,<br/>    2.321845363923588<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        circle_marker_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            feature_group_.addTo(map_);
+        
+    
+            var feature_group_ = L.featureGroup(
+                {}
+            );
+        
+    
+            var poly_line_ = L.polyline(
+                [[48.84616060048901, 2.346233405549605], [48.853070514317345, 2.349489020192572], [48.88634368898782, 2.343046834223321]],
+                {"bubblingMouseEvents": true, "color": "#f28e2c", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#f28e2c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 20.0}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Route: 2 / 2</br>Route points: 5</br>Route length: 9.53 km (5.92 miles)</br></p></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        poly_line_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            var circle_marker_ = L.circleMarker(
+                [48.84616060048901, 2.346233405549605],
+                {"bubblingMouseEvents": true, "color": "#f28e2c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f28e2c", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 1 / 5</br>Distance: 3.90 km (2.43 miles)</br>Location (lon/lat): 2.346233405549605, 48.84616060048901</p>JSON:</br><pre><code>{<br/>  "id": "Panth\u00e9on",<br/>  "location": [<br/>    48.84616060048901,<br/>    2.346233405549605<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        circle_marker_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            var circle_marker_ = L.circleMarker(
+                [48.853070514317345, 2.349489020192572],
+                {"bubblingMouseEvents": true, "color": "#f28e2c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f28e2c", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 2 / 5</br>Distance: 4.71 km (2.93 miles)</br>Location (lon/lat): 2.349489020192572, 48.853070514317345</p>JSON:</br><pre><code>{<br/>  "id": "Notre-Dame",<br/>  "location": [<br/>    48.853070514317345,<br/>    2.349489020192572<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        circle_marker_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            var circle_marker_ = L.circleMarker(
+                [48.88634368898782, 2.343046834223321],
+                {"bubblingMouseEvents": true, "color": "#f28e2c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f28e2c", "fillOpacity": 1.0, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_);
+        
+    
+        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
+
+        
+            
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 3 / 5</br>Distance: 8.44 km (5.24 miles)</br>Location (lon/lat): 2.343046834223321, 48.88634368898782</p>JSON:</br><pre><code>{<br/>  "id": "Sacr\u00e9-C\u0153ur",<br/>  "location": [<br/>    48.88634368898782,<br/>    2.343046834223321<br/>  ],<br/>  "quantity": 1<br/>}</code></pre></br></div>`)[0];
+                popup_.setContent(html_);
+            
+        
+
+        circle_marker_.bindPopup(popup_)
+        ;
+
+        
+    
+    
+            feature_group_.addTo(map_);
+        
+    
+            var layer_control__layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_,
+                    "cartodbdarkmatter" : tile_layer_,
+                    "openstreetmap" : tile_layer_,
+                    "DarkMatter no labels" : tile_layer_,
+                },
+                overlays :  {
+                    "Route 1" : feature_group_,
+                    "Route 2" : feature_group_,
+                },
+            };
+            let layer_control_ = L.control.layers(
+                layer_control__layers.base_layers,
+                layer_control__layers.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_);
+
+        
+</script>
+</html>

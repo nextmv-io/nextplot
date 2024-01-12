@@ -1,0 +1,68 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling >= 1.13.0"]
+
+[project]
+authors = [
+    { email = "tech@nextmv.io", name = "Nextmv" }
+]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "argcomplete>=2.0.0",
+    "colorutils>=0.3.0",
+    "folium>=0.12.1",
+    "jsonpath_ng>=1.5.3",
+    "kaleido>=0.2.1",
+    "numpy>=1.22.3",
+    "plotly>=5.7.0",
+    "scipy>=1.8.0",
+]
+description = "Tools for plotting routes, clusters and more from JSON"
+dynamic = [
+    "version",
+]
+keywords = [
+    "visualization",
+    "vehicle routing",
+    "clustering",
+    "locations",
+    "geospatial",
+    "operations research",
+]
+license = { file = "LICENSE" }
+maintainers = [
+    { email = "tech@nextmv.io", name = "Nextmv" }
+]
+name = "nextplot"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.urls]
+Homepage = "https://www.nextmv.io"
+Documentation = "https://github.com/nextmv-io/nextplot"
+Repository = "https://github.com/nextmv-io/nextplot"
+
+[project.scripts]
+nextplot = "nextplot.main:entry_point"
+
+[tool.ruff]
+target-version = "py312"
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "UP",  # pyupgrade
+]
+line-length = 120
+[tool.ruff.lint.mccabe]
+max-complexity = 30
+
+[tool.hatch.version]
+path = "nextplot/__about__.py"

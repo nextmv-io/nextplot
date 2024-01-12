@@ -1,0 +1,76 @@
+{
+  "state": {
+    "tours": [
+      {
+        "id": "tour1",
+        "route": [
+          {
+            "id": "Gare du Nord",
+            "location": [48.880769277577656, 2.3552878933106447],
+            "quantity": 0
+          },
+          {
+            "id": "Louvre",
+            "location": [48.86064983816991, 2.3373478124467524],
+            "quantity": -1
+          },
+          {
+            "id": "Place de la Concorde",
+            "location": [48.86548659130954, 2.3211691026573686],
+            "quantity": -1
+          },
+          {
+            "id": "Arc de Triomphe",
+            "location": [48.873730646108235, 2.2950561481174456],
+            "quantity": 1
+          },
+          {
+            "id": "Tour Eiffel",
+            "location": [48.85814487640506, 2.2945793548805833],
+            "quantity": -1
+          },
+          {
+            "id": "Tour Montparnasse",
+            "location": [48.842085594729355, 2.321845363923588],
+            "quantity": -1
+          },
+          {
+            "id": "Gare du Nord",
+            "location": [48.880769277577656, 2.3552878933106447],
+            "quantity": 0
+          }
+        ]
+      },
+      {
+        "id": "tour2",
+        "route": [
+          {
+            "id": "Gare du Nord",
+            "location": [48.880769277577656, 2.3552878933106447],
+            "quantity": 0
+          },
+          {
+            "id": "Panthéon",
+            "location": [48.84616060048901, 2.346233405549605],
+            "quantity": 0
+          },
+          {
+            "id": "Notre-Dame",
+            "location": [48.853070514317345, 2.349489020192572],
+            "quantity": 0
+          },
+          {
+            "id": "Sacré-Cœur",
+            "location": [48.88634368898782, 2.343046834223321],
+            "quantity": 1
+          },
+          {
+            "id": "Gare du Nord",
+            "location": [48.880769277577656, 2.3552878933106447],
+            "quantity": 0
+          }
+        ]
+      }
+    ]
+  }
+}
