@@ -381,6 +381,7 @@ def create_map(
                     + f"Distance: {point.distance:.2f} km "
                     + f"({common.km_to_miles(point.distance):.2f} miles)</br>"
                     + f"Location (lon/lat): {point[0]}, {point[1]}"
+                    + "".join(["&nbsp;" for _ in range(0, 80)])
                     + "</p>"
                     + f"JSON:</br><pre><code>{d}</code></pre></br>"
                 )
@@ -401,6 +402,7 @@ def create_map(
                     "<p>"
                     + f"First stop in route {i+1}</br>"
                     + f"Location (lon/lat): {start[0]}, {start[1]}"
+                    + "".join(["&nbsp;" for _ in range(0, 80)])
                     + "</p>"
                     + f"JSON:</br><pre><code>{d}</code></pre></br>"
                 )
@@ -418,6 +420,7 @@ def create_map(
                     "<p>"
                     + f"Last stop in route {i+1}</br>"
                     + f"Location (lon/lat): {end[0]}, {end[1]}"
+                    + "".join(["&nbsp;" for _ in range(0, 80)])
                     + "</p>"
                     + f"JSON:</br><pre><code>{d}</code></pre></br>"
                 )
@@ -435,6 +438,7 @@ def create_map(
                 "<p>"
                 + f"Unassigned point: {p+1} / {len(group)}</br>"
                 + f"Location (lon/lat): {point[0]}, {point[1]}"
+                + "".join(["&nbsp;" for _ in range(0, 80)])
                 + "</p>"
                 + f"JSON:</br><pre><code>{d}</code></pre></br>"
             )
