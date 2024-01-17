@@ -135,7 +135,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 1 / 7</br>Distance: 0.00 km (0.00 miles)</br>Location (lon/lat): 2.3552878933106447, 48.880769277577656</p>JSON:</br><pre><code>[<br/>  48.880769277577656,<br/>  2.3552878933106447<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 1 / 7</br>Distance: 0.00 km (0.00 miles)</br>Location (lon/lat): 2.3552878933106447, 48.880769277577656&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.880769277577656,<br/>  2.3552878933106447<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -156,7 +156,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 2 / 7</br>Distance: 2.59 km (1.61 miles)</br>Location (lon/lat): 2.3373478124467524, 48.86064983816991</p>JSON:</br><pre><code>[<br/>  48.86064983816991,<br/>  2.3373478124467524<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 2 / 7</br>Distance: 2.59 km (1.61 miles)</br>Location (lon/lat): 2.3373478124467524, 48.86064983816991&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.86064983816991,<br/>  2.3373478124467524<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -177,7 +177,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 3 / 7</br>Distance: 3.89 km (2.42 miles)</br>Location (lon/lat): 2.3211691026573686, 48.86548659130954</p>JSON:</br><pre><code>[<br/>  48.86548659130954,<br/>  2.3211691026573686<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 3 / 7</br>Distance: 3.89 km (2.42 miles)</br>Location (lon/lat): 2.3211691026573686, 48.86548659130954&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.86548659130954,<br/>  2.3211691026573686<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -198,7 +198,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 4 / 7</br>Distance: 6.01 km (3.74 miles)</br>Location (lon/lat): 2.2950561481174456, 48.873730646108235</p>JSON:</br><pre><code>[<br/>  48.873730646108235,<br/>  2.2950561481174456<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 4 / 7</br>Distance: 6.01 km (3.74 miles)</br>Location (lon/lat): 2.2950561481174456, 48.873730646108235&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.873730646108235,<br/>  2.2950561481174456<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -219,7 +219,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 5 / 7</br>Distance: 7.75 km (4.81 miles)</br>Location (lon/lat): 2.2945793548805833, 48.85814487640506</p>JSON:</br><pre><code>[<br/>  48.85814487640506,<br/>  2.2945793548805833<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 5 / 7</br>Distance: 7.75 km (4.81 miles)</br>Location (lon/lat): 2.2945793548805833, 48.85814487640506&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.85814487640506,<br/>  2.2945793548805833<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -240,7 +240,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 6 / 7</br>Distance: 10.42 km (6.48 miles)</br>Location (lon/lat): 2.321845363923588, 48.842085594729355</p>JSON:</br><pre><code>[<br/>  48.842085594729355,<br/>  2.321845363923588<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 6 / 7</br>Distance: 10.42 km (6.48 miles)</br>Location (lon/lat): 2.321845363923588, 48.842085594729355&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.842085594729355,<br/>  2.321845363923588<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -261,7 +261,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 7 / 7</br>Distance: 15.37 km (9.55 miles)</br>Location (lon/lat): 2.3552878933106447, 48.880769277577656</p>JSON:</br><pre><code>[<br/>  48.880769277577656,<br/>  2.3552878933106447<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 7 / 7</br>Distance: 15.37 km (9.55 miles)</br>Location (lon/lat): 2.3552878933106447, 48.880769277577656&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.880769277577656,<br/>  2.3552878933106447<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -311,7 +311,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 1 / 5</br>Distance: 0.00 km (0.00 miles)</br>Location (lon/lat): 2.3552878933106447, 48.880769277577656</p>JSON:</br><pre><code>[<br/>  48.880769277577656,<br/>  2.3552878933106447<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 1 / 5</br>Distance: 0.00 km (0.00 miles)</br>Location (lon/lat): 2.3552878933106447, 48.880769277577656&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.880769277577656,<br/>  2.3552878933106447<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -332,7 +332,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 2 / 5</br>Distance: 3.90 km (2.43 miles)</br>Location (lon/lat): 2.346233405549605, 48.84616060048901</p>JSON:</br><pre><code>[<br/>  48.84616060048901,<br/>  2.346233405549605<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 2 / 5</br>Distance: 3.90 km (2.43 miles)</br>Location (lon/lat): 2.346233405549605, 48.84616060048901&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.84616060048901,<br/>  2.346233405549605<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -353,7 +353,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 3 / 5</br>Distance: 4.71 km (2.93 miles)</br>Location (lon/lat): 2.349489020192572, 48.853070514317345</p>JSON:</br><pre><code>[<br/>  48.853070514317345,<br/>  2.349489020192572<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 3 / 5</br>Distance: 4.71 km (2.93 miles)</br>Location (lon/lat): 2.349489020192572, 48.853070514317345&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.853070514317345,<br/>  2.349489020192572<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -374,7 +374,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 4 / 5</br>Distance: 8.44 km (5.24 miles)</br>Location (lon/lat): 2.343046834223321, 48.88634368898782</p>JSON:</br><pre><code>[<br/>  48.88634368898782,<br/>  2.343046834223321<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 4 / 5</br>Distance: 8.44 km (5.24 miles)</br>Location (lon/lat): 2.343046834223321, 48.88634368898782&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.88634368898782,<br/>  2.343046834223321<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
@@ -395,7 +395,7 @@
 
         
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 5 / 5</br>Distance: 9.53 km (5.92 miles)</br>Location (lon/lat): 2.3552878933106447, 48.880769277577656</p>JSON:</br><pre><code>[<br/>  48.880769277577656,<br/>  2.3552878933106447<br/>]</code></pre></br></div>`)[0];
+                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Stop: 5 / 5</br>Distance: 9.53 km (5.92 miles)</br>Location (lon/lat): 2.3552878933106447, 48.880769277577656&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>JSON:</br><pre><code>[<br/>  48.880769277577656,<br/>  2.3552878933106447<br/>]</code></pre></br></div>`)[0];
                 popup_.setContent(html_);
             
         
