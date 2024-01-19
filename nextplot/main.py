@@ -4,7 +4,7 @@ import argparse
 
 import argcomplete
 
-from . import cluster, common, geojson, point, progression, route, test
+from . import __about__, cluster, common, geojson, point, progression, route, test
 
 # ==================== Argument parsing
 
@@ -17,25 +17,15 @@ MODE_ROUTE = "route"
 MODE_TEST = "test"
 
 
-# Try to get the version info
-try:
-    import pkg_resources
-
-    # pylint: disable-msg=E1103
-    __version__ = pkg_resources.get_distribution("nextplot").version
-except Exception:  # pylint: disable-msg=W0703
-    __version__ = "develop"
-
-
 def argparse_generate():
     """
     Creates the CLI argument parser.
     """
-    parser = argparse.ArgumentParser(description=f"nextmv.io plotting tools (version: {__version__})")
+    parser = argparse.ArgumentParser(description=f"nextmv.io plotting tools (version: {__about__.__version__})")
     parser.add_argument(
         "--version",
         action="version",
-        version=f"%(prog)s {__version__}",
+        version=f"%(prog)s {__about__.__version__}",
     )
     subparsers = parser.add_subparsers(dest="command")
     routeparser = subparsers.add_parser(MODE_ROUTE)
