@@ -142,3 +142,4 @@ tmp/
 *.pbf
 *.ch
 build/
+*.json
