@@ -148,7 +148,11 @@ def extract_position(value, jpath_x="", jpath_y="") -> types.Position:
         else:
             return types.Position(float(value[0]), float(value[1]), desc)
     except Exception:
-        print("error parsing point," + " is the given JSON path pointing to the correct data?")
+        print(
+            f"error parsing point using {jpath_x} and {jpath_y}, "
+            + "please make sure the paths point to valid numbers x/y. point data:"
+        )
+        print(desc)
         raise
 
 
@@ -195,6 +199,10 @@ def extract_position_groups(
     # Extract all groups
     groups, oob_indices = [], []
     for match in group_expression.find(group_data):
+        # If the value is null, we skip it (with a warning)
+        if match.value is None:
+            print(f"Warning! Found 'null' value at {str(match.full_path)}, skipping...")
+            continue
         # If no separate position file was given, we expect positions to be given
         group = []
         if len(positions) == 0:
