@@ -252,7 +252,7 @@ handle certain data formats. Find an outline of these options here:
   (more details) and CartoDB Dark Matter (black to focus colored
   routes/cluster). Additional custom map tiles can be added via
   `--custom_map_tile [CUSTOM_MAP_TILE]`. An overview can be found here:
-  https://deparkes.co.uk/2016/06/10/folium-map-tiles/
+  [folium-tiles][folium-tiles].
   - Custom tile providers can even be used by supplying them in the format
     `"<tile-url>,<layer-name>,<attribution>"`.
     Example:
@@ -261,7 +261,7 @@ handle certain data formats. Find an outline of these options here:
       --custom_map_tile "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png,DarkMatter no labels,OpenStreetMap authors"
       ```
 
-    (an overview of custom tile providers can be found [here](custom-layers))
+    (an overview of custom tile providers can be found [here][custom-layers])
 - `--jpath_x` & `--jpath_y`:
   `nextplot` expects to find arrays of points or indices, if a path like
   `state.drivers[*].geometry.coordinates` is given. I.e., either
@@ -300,9 +300,9 @@ handle certain data formats. Find an outline of these options here:
   If provided, statistics will be written to the given file in addition to
   stdout.
 - `rk_bin` (route only):
-  Path to the [go-routingkit](go-rk) standalone binary. Alternatively,
+  Path to the [go-routingkit][go-rk] standalone binary. Alternatively,
   `routingkit` command will be used at default (requires go-routingkit
-  [installation](go-rk-install)).
+  [installation][go-rk-install]).
 - `rk_osm` (route only):
   Path to the OpenStreetMap data file to be used for routing. All points must be
   contained within the region of the file. This file is mandatory when using
@@ -316,3 +316,4 @@ handle certain data formats. Find an outline of these options here:
 [go-rk]: https://github.com/nextmv-io/go-routingkit/tree/stable/cmd/routingkit
 [go-rk-install]: https://github.com/nextmv-io/go-routingkit/tree/stable/cmd/routingkit#install
 [custom-layers]: http://leaflet-extras.github.io/leaflet-providers/preview/
+[folium-tiles]: https://deparkes.co.uk/2016/06/10/folium-map-tiles/
