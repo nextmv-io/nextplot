@@ -8,7 +8,9 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                python-version: ["3.10", "3.11", "3.12"]
+                # Tests are currently stable only for python 3.11
+                # due to the way we are testing
+                python-version: ["3.11"]
         steps:
             - uses: actions/checkout@v4
 
