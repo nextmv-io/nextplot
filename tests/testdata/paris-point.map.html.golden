@@ -11,14 +11,14 @@
     
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
     
@@ -32,7 +32,6 @@
                     left: 0.0%;
                     top: 0.0%;
                 }
-                .leaflet-container { font-size: 1rem; }
             </style>
         
 </head>
@@ -64,30 +63,21 @@
         
     
             var tile_layer_ = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
-            );
-        
-    
-            tile_layer_.addTo(map_);
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_);
         
     
             var tile_layer_ = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
-            );
-        
-    
-            tile_layer_.addTo(map_);
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_);
         
     
             var tile_layer_ = L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            );
-        
-    
-            tile_layer_.addTo(map_);
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_);
         
     
             var circle_ = L.circle(
@@ -99,10 +89,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3552878933106447, 48.880769277577656</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Gare du Nord",<br/>  "location": [<br/>    48.880769277577656,<br/>    2.3552878933106447<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3552878933106447, 48.880769277577656</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Gare du Nord",<br/>  "location": [<br/>    48.880769277577656,<br/>    2.3552878933106447<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -120,10 +108,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3373478124467524, 48.86064983816991</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Louvre",<br/>  "location": [<br/>    48.86064983816991,<br/>    2.3373478124467524<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3373478124467524, 48.86064983816991</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Louvre",<br/>  "location": [<br/>    48.86064983816991,<br/>    2.3373478124467524<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -141,10 +127,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3211691026573686, 48.86548659130954</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Place de la Concorde",<br/>  "location": [<br/>    48.86548659130954,<br/>    2.3211691026573686<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3211691026573686, 48.86548659130954</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Place de la Concorde",<br/>  "location": [<br/>    48.86548659130954,<br/>    2.3211691026573686<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -162,10 +146,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.2950561481174456, 48.873730646108235</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Arc de Triomphe",<br/>  "location": [<br/>    48.873730646108235,<br/>    2.2950561481174456<br/>  ],<br/>  "quantity": 1<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.2950561481174456, 48.873730646108235</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Arc de Triomphe",<br/>  "location": [<br/>    48.873730646108235,<br/>    2.2950561481174456<br/>  ],<br/>  "quantity": 1<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -183,10 +165,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.2945793548805833, 48.85814487640506</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Tour Eiffel",<br/>  "location": [<br/>    48.85814487640506,<br/>    2.2945793548805833<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.2945793548805833, 48.85814487640506</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Tour Eiffel",<br/>  "location": [<br/>    48.85814487640506,<br/>    2.2945793548805833<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -204,10 +184,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.321845363923588, 48.842085594729355</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Tour Montparnasse",<br/>  "location": [<br/>    48.842085594729355,<br/>    2.321845363923588<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.321845363923588, 48.842085594729355</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Tour Montparnasse",<br/>  "location": [<br/>    48.842085594729355,<br/>    2.321845363923588<br/>  ],<br/>  "quantity": -1<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -225,10 +203,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3552878933106447, 48.880769277577656</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Gare du Nord",<br/>  "location": [<br/>    48.880769277577656,<br/>    2.3552878933106447<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3552878933106447, 48.880769277577656</br>Group: 1</br>Group size: 7</br></p>JSON:</br><pre><code>{<br/>  "id": "Gare du Nord",<br/>  "location": [<br/>    48.880769277577656,<br/>    2.3552878933106447<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -246,10 +222,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3552878933106447, 48.880769277577656</br>Group: 2</br>Group size: 5</br></p>JSON:</br><pre><code>{<br/>  "id": "Gare du Nord",<br/>  "location": [<br/>    48.880769277577656,<br/>    2.3552878933106447<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3552878933106447, 48.880769277577656</br>Group: 2</br>Group size: 5</br></p>JSON:</br><pre><code>{<br/>  "id": "Gare du Nord",<br/>  "location": [<br/>    48.880769277577656,<br/>    2.3552878933106447<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -267,10 +241,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.346233405549605, 48.84616060048901</br>Group: 2</br>Group size: 5</br></p>JSON:</br><pre><code>{<br/>  "id": "Panth\u00e9on",<br/>  "location": [<br/>    48.84616060048901,<br/>    2.346233405549605<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.346233405549605, 48.84616060048901</br>Group: 2</br>Group size: 5</br></p>JSON:</br><pre><code>{<br/>  "id": "Panth\u00e9on",<br/>  "location": [<br/>    48.84616060048901,<br/>    2.346233405549605<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -288,10 +260,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.349489020192572, 48.853070514317345</br>Group: 2</br>Group size: 5</br></p>JSON:</br><pre><code>{<br/>  "id": "Notre-Dame",<br/>  "location": [<br/>    48.853070514317345,<br/>    2.349489020192572<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.349489020192572, 48.853070514317345</br>Group: 2</br>Group size: 5</br></p>JSON:</br><pre><code>{<br/>  "id": "Notre-Dame",<br/>  "location": [<br/>    48.853070514317345,<br/>    2.349489020192572<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -309,10 +279,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.343046834223321, 48.88634368898782</br>Group: 2</br>Group size: 5</br></p>JSON:</br><pre><code>{<br/>  "id": "Sacr\u00e9-C\u0153ur",<br/>  "location": [<br/>    48.88634368898782,<br/>    2.343046834223321<br/>  ],<br/>  "quantity": 1<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.343046834223321, 48.88634368898782</br>Group: 2</br>Group size: 5</br></p>JSON:</br><pre><code>{<br/>  "id": "Sacr\u00e9-C\u0153ur",<br/>  "location": [<br/>    48.88634368898782,<br/>    2.343046834223321<br/>  ],<br/>  "quantity": 1<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -330,10 +298,8 @@
         var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
         
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3552878933106447, 48.880769277577656</br>Group: 2</br>Group size: 5</br></p>JSON:</br><pre><code>{<br/>  "id": "Gare du Nord",<br/>  "location": [<br/>    48.880769277577656,<br/>    2.3552878933106447<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
-                popup_.setContent(html_);
-            
+            var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Location (lon/lat): 2.3552878933106447, 48.880769277577656</br>Group: 2</br>Group size: 5</br></p>JSON:</br><pre><code>{<br/>  "id": "Gare du Nord",<br/>  "location": [<br/>    48.880769277577656,<br/>    2.3552878933106447<br/>  ],<br/>  "quantity": 0<br/>}</code></pre></br></div>`)[0];
+            popup_.setContent(html_);
         
 
         circle_.bindPopup(popup_)
@@ -342,21 +308,22 @@
         
     
     
-            var layer_control__layers = {
+            var layer_control_ = {
                 base_layers : {
                     "cartodbpositron" : tile_layer_,
-                    "cartodbdarkmatter" : tile_layer_,
+                    "cartodbdark_matter" : tile_layer_,
                     "openstreetmap" : tile_layer_,
                 },
                 overlays :  {
                 },
             };
-            let layer_control_ = L.control.layers(
-                layer_control__layers.base_layers,
-                layer_control__layers.overlays,
+            L.control.layers(
+                layer_control_.base_layers,
+                layer_control_.overlays,
                 {"autoZIndex": true, "collapsed": true, "position": "topright"}
             ).addTo(map_);
-
+            tile_layer_.remove();
+            tile_layer_.remove();
         
 </script>
 </html>

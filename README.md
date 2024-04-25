@@ -125,16 +125,16 @@ Then, add the following line to your `~/.bashrc`:
 eval "$(register-python-argcomplete nextplot)"
 ```
 
-## Development setup
-
-### Install development dependencies
-
-```bash
-pip install -r requirements-dev.txt
-```
-
-### Tests
+## Tests
 
 Tests are located in `tests/` and can be run via `python -m pytest`. Update test
 expectations (golden files) by running `UPDATE=1 python test_cli.py` from the
-test directory.
+test directory. Tests require specific versions of the dependencies to be
+installed. These can be installed via `pip install -r requirements-dev.txt`.
+It is recommended to update the expectations in a docker container to avoid
+messing up local dependencies. This can be done by running the following
+commands:
+
+```bash
+docker run --rm -it -v $(pwd):/app -w /app python:3.9 bash -c "pip install -r requirements-dev.txt && cd tests && UPDATE=1 python test_cli.py"
+```
