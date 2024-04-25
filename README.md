@@ -136,5 +136,5 @@ messing up local dependencies. This can be done by running the following
 commands:
 
 ```bash
-docker run --rm -it -v $(pwd):/app -w /app python:3.9 bash -c "pip install -r requirements-dev.txt && cd tests && UPDATE=1 python test_cli.py"
+docker run --rm -it -v $(pwd):/app -w /app python:3.11 bash -c "pip install -r requirements-dev.txt && cd tests && UPDATE=1 python test_cli.py"
 ```
