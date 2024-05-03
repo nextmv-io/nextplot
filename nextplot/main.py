@@ -67,6 +67,8 @@ def entry_point():
             jpath_unassigned=args.jpath_unassigned,
             jpath_unassigned_x=args.jpath_unassigned_x,
             jpath_unassigned_y=args.jpath_unassigned_y,
+            jpath_polyline=args.jpath_polyline,
+            polyline_encoding=args.polyline_encoding,
             swap=args.swap,
             coords=args.coords,
             omit_start=args.omit_start,

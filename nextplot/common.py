@@ -164,13 +164,14 @@ def is_two_tuple(value, type):
 
 
 def extract_position_groups(
-    json_groups,
-    jpath_groups,
-    json_pos,
-    jpath_pos,
+    json_groups: str,
+    jpath_groups: str,
+    json_pos: str,
+    jpath_pos: str,
     jpath_x="",
     jpath_y="",
-) -> list[list[types.Position]]:
+    property_extractor: list[tuple[str, callable]] = None,
+) -> list[types.PositionGroup]:
     """
     Extracts grouped positions (as in clusters, routes) from JSON.
     If no specific path for positions (jpath_pos) is given,
@@ -204,19 +205,19 @@ def extract_position_groups(
             print(f"Warning! Found 'null' value at {str(match.full_path)}, skipping...")
             continue
         # If no separate position file was given, we expect positions to be given
-        group = []
+        group_positions = []
         if len(positions) == 0:
             if is_two_tuple(match.value, float) or is_two_tuple(match.value, int):
-                group.append(extract_position(match.value))
+                group_positions.append(extract_position(match.value))
             else:
                 if isinstance(match.value, list):
                     for val in match.value:
                         if is_two_tuple(val, float) or is_two_tuple(val, int):
-                            group.append(extract_position(val))
+                            group_positions.append(extract_position(val))
                         else:
-                            group.append(extract_position(val, jpath_x, jpath_y))
+                            group_positions.append(extract_position(val, jpath_x, jpath_y))
                 else:
-                    group.append(extract_position(match.value, jpath_x, jpath_y))
+                    group_positions.append(extract_position(match.value, jpath_x, jpath_y))
         # Else we expect indices pointing to the list of positions
         else:
             # Extract full list of indices for the group
@@ -237,10 +238,17 @@ def extract_position_groups(
             # Convert indices to points
             for index in indices:
                 if 0 <= index < len(positions):
-                    group.append(positions[index].clone())
+                    group_positions.append(positions[index].clone())
                 else:
                     oob_indices.append(index)
-        groups.append(group)
+        pg = types.PositionGroup(group_positions)
+        asdlakshdljkashdlkjaljksnd
+        # Extract additional properties
+        if property_extractor:
+            for prop in property_extractor:
+                prop_name, prop_extractor = prop
+                pg.__dict__[prop_name] = prop_extractor(match.value)
+        groups.append(pg)
     # Warn about out-of-bound indices
     if len(oob_indices) > 0:
         oobs = ", ".join([str(e) for e in oob_indices])
@@ -249,26 +257,45 @@ def extract_position_groups(
     return groups
 
 
-def preprocess_coordinates(points, swap, desired_coordinates):
+def extract_polylines(json_content: str, jpath: str, encoding: types.PolylineEncoding) -> list[list[types.Position]]:
+    """
+    Extracts polylines from JSON.
+    """
+    # Extract all polylines
+    group_data = json.loads(json_content)
+    group_expression = jsonpath_ng.parse(jpath)
+    polylines = []
+    for match in group_expression.find(group_data):
+        if match.value is None:
+            print(f"Warning! No polyline found at {str(match.full_path)}, skipping...")
+            polylines.append(None)
+            continue
+        polylines.append(types.decode_polyline(match.value, encoding))
+    return polylines
+
+
+def preprocess_coordinates(
+    position_groups: list[types.PositionGroup], swap: bool, desired_coordinates: str
+) -> tuple[list[types.PositionGroup], bool, str]:
     """
     Checks the given positions for being from world coordinate domain
     and performs some additional checks.
     """
     # Swap points, if desired
     if swap:
-        for pl in points:
-            for p in pl:
+        for pl in position_groups:
+            for p in pl.positions:
                 p.lon, p.lat = p.lat, p.lon
     # Check all positions against valid world coordinate ranges
-    all_lon_ok = all((-180 <= p[0] <= 180) for point in points for p in point)
-    all_lat_ok = all((-90 <= p[1] <= 90) for point in points for p in point)
+    all_lon_ok = all((-180 <= p[0] <= 180) for pg in position_groups for p in pg.positions)
+    all_lat_ok = all((-90 <= p[1] <= 90) for pg in position_groups for p in pg.positions)
     # Determine position nature
     world_coords = all_lon_ok and all_lat_ok
     if desired_coordinates == "euclidean":
         world_coords = False
     elif desired_coordinates == "haversine" and not world_coords:
         return None, None, "positions do not satisfy lon/lat ranges"
-    return points, world_coords, ""
+    return position_groups, world_coords, ""
 
 
 def km_to_miles(km):
@@ -330,13 +357,13 @@ def euclidean(p1, p2):
     return math.sqrt(math.pow(p1[0] - p2[0], 2) + math.pow(p1[1] - p2[1], 2))
 
 
-def bounding_box(points) -> types.BoundingBox:
+def bounding_box(points: list[types.PositionGroup]) -> types.BoundingBox:
     """
     Calculates the bounding box of the given points.
     """
     # Determine size
-    pos_x = [p[0] for pl in points for p in pl]
-    pos_y = [p[1] for pl in points for p in pl]
+    pos_x = [p[0] for pg in points for p in pg.positions]
+    pos_y = [p[1] for pg in points for p in pg.positions]
     return types.BoundingBox(min(pos_x), max(pos_x), min(pos_y), max(pos_y))
 
 

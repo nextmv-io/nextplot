@@ -88,7 +88,7 @@ def parse(
     jpath_pos: str,
     jpath_x: str,
     jpath_y: str,
-) -> tuple[list[list[types.Position]], list[list[types.Position]]]:
+) -> list[types.PositionGroup]:
     """
     Parses the cluster data from the file(s).
     """
@@ -140,7 +140,7 @@ def plot(
         base_name = input_cluster
 
     # Parse data
-    points = parse(
+    point_groups = parse(
         input_cluster,
         jpath_cluster,
         input_pos,
@@ -150,21 +150,21 @@ def plot(
     )
 
     # Quit on no points
-    if len(points) <= 0:
+    if len(point_groups) <= 0:
         print("no points found in given file(s) using given filter(s)")
         return
 
     # Conduct some checks
-    points, world_coords, dataerror = common.preprocess_coordinates(points, swap, coords)
+    point_groups, world_coords, dataerror = common.preprocess_coordinates(point_groups, swap, coords)
     if dataerror:
         print(dataerror)
         return
 
     # Determine bbox
-    bbox = common.bounding_box(points)
+    bbox = common.bounding_box(point_groups)
 
     # Wrap in clusters
-    clusters = [types.Cluster(p) for p in points]  # Wrap it
+    clusters = [types.Cluster(p.positions) for p in point_groups]  # Wrap it
     if len(clusters) <= 0:
         print(f"no clusters could be extracted at the given path: {jpath_cluster}")
         return

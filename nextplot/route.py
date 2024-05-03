@@ -1,6 +1,7 @@
 import json
 
 import folium
+import jsonpath_ng
 import plotly.graph_objects as go
 from folium import plugins
 
@@ -28,6 +29,8 @@ class RoutePlotProfile:
         jpath_unassigned: str = "",
         jpath_unassigned_x: str = "",
         jpath_unassigned_y: str = "",
+        jpath_polyline: str = "",
+        polyline_encoding: types.PolylineEncoding = types.PolylineEncoding.polyline,
     ):
         self.jpath_route = jpath_route
         self.jpath_pos = jpath_pos
@@ -36,6 +39,8 @@ class RoutePlotProfile:
         self.jpath_unassigned = jpath_unassigned
         self.jpath_unassigned_x = jpath_unassigned_x
         self.jpath_unassigned_y = jpath_unassigned_y
+        self.jpath_polyline = jpath_polyline
+        self.polyline_encoding = polyline_encoding
 
     def __str__(self):
         return (
@@ -46,7 +51,9 @@ class RoutePlotProfile:
             + f"jpath_y={self.jpath_y}, "
             + f"jpath_unassigned={self.jpath_unassigned}, "
             + f"jpath_unassigned_x={self.jpath_unassigned_x}, "
-            + f"jpath_unassigned_y={self.jpath_unassigned_y})"
+            + f"jpath_unassigned_y={self.jpath_unassigned_y}, "
+            + f"jpath_polyline={self.jpath_polyline}, "
+            + f"polyline_encoding={self.polyline_encoding})"
         )
 
 
@@ -86,14 +93,30 @@ def arguments(parser):
         type=str,
         nargs="?",
         default="",
-        help="JSON path to to the x-coordinate of the unassigned point. If not given, " + "--jpath_x will be used.",
+        help="JSON path to to the x-coordinate of the unassigned point. If not given, --jpath_x will be used.",
     )
     parser.add_argument(
         "--jpath_unassigned_y",
         type=str,
         nargs="?",
         default="",
-        help="JSON path to to the y-coordinate of the unassigned point. If not given, " + "--jpath_y will be used.",
+        help="JSON path to to the y-coordinate of the unassigned point. If not given, --jpath_y will be used.",
+    )
+    parser.add_argument(
+        "--jpath_polyline",
+        type=str,
+        nargs="?",
+        default="",
+        help="JSON path to the polyline of the route. "
+        + "If given, the polyline will be used instead of the points of the route.",
+    )
+    parser.add_argument(
+        "--polyline_encoding",
+        type=types.PolylineEncoding,
+        choices=list(types.PolylineEncoding),
+        default=types.PolylineEncoding.polyline,
+        help="specifies the encoding of the polyline "
+        + f"(default: polyline, options: {', '.join([str(e) for e in types.PolylineEncoding])})",
     )
     parser.add_argument(
         "--input_pos",
@@ -220,21 +243,42 @@ def parse(
     jpath_pos: str,
     jpath_x: str,
     jpath_y: str,
-) -> tuple[list[list[types.Position]], list[list[types.Position]]]:
+    jpath_polyline: str,
+    polyline_encoding: types.PolylineEncoding,
+) -> tuple[list[types.PositionGroup], list[types.PositionGroup]]:
     """
     Parses the route data from the file(s).
     """
     # Load json data
     content_route, content_pos = common.load_data(input_route, input_pos)
 
+    # Define polyline extractor (if needed)
+    polymatcher = None
+    if jpath_polyline:
+        polymatcher = jsonpath_ng.parse(jpath_polyline)
+
+    def extract_polyline(content):
+        """
+        Extracts the polyline from the group element.
+        """
+        poly_matches = polymatcher.find(content)
+        if len(poly_matches) <= 0:
+            return []
+        return polyline_encoding.decode(poly_matches[0].value)
+
+    prop_extractors = []
+    if jpath_polyline:
+        prop_extractors = [("polyline", extract_polyline)]
+
     # Extract routes
-    points = common.extract_position_groups(
+    position_groups = common.extract_position_groups(
         content_route,
         jpath_route,
         content_pos,
         jpath_pos,
         jpath_x,
         jpath_y,
+        prop_extractors,
     )
 
     # Extract unassigned (if given)
@@ -249,7 +293,7 @@ def parse(
             jpath_unassigned_y if jpath_unassigned_y else jpath_y,
         )
 
-    return points, unassigned
+    return position_groups, unassigned
 
 
 def create_plot(
@@ -307,11 +351,10 @@ def create_plot(
             )
 
     # Plot the unassigned points
-    unassigned_points = [p for g in unassigned for p in g]
     fig.add_trace(
         go.Scatter(
-            x=[p.lon for p in unassigned_points],
-            y=[p.lat for p in unassigned_points],
+            x=[p.lon for p in unassigned],
+            y=[p.lat for p in unassigned],
             mode="markers",
             marker={"color": COLOR_UNASSIGNED, "size": 5 * weight_points},
             name="Unassigned",
@@ -325,6 +368,7 @@ def create_plot(
 def create_map(
     routes: list[types.Route],
     unassigned: list[types.Position],
+    polylines: dict[int, list[types.Position]],
     no_points: bool,
     weight_points: float,
     weight_route: float,
@@ -431,18 +475,17 @@ def create_map(
                     "glyphicon glyphicon-chevron-down",
                     "black",
                 )
-    for group in unassigned:
-        for p, point in enumerate(group):
-            d = point.desc.replace("\n", "<br/>").replace(r"`", r"\`")
-            text = (
-                "<p>"
-                + f"Unassigned point: {p+1} / {len(group)}</br>"
-                + f"Location (lon/lat): {point[0]}, {point[1]}"
-                + "".join(["&nbsp;" for _ in range(0, 80)])
-                + "</p>"
-                + f"JSON:</br><pre><code>{d}</code></pre></br>"
-            )
-            plot_map_point(unassigned_group, point, text, weight_points, COLOR_UNASSIGNED)
+    for p, point in enumerate(unassigned):
+        d = point.desc.replace("\n", "<br/>").replace(r"`", r"\`")
+        text = (
+            "<p>"
+            + f"Unassigned point: {p+1} / {len(unassigned)}</br>"
+            + f"Location (lon/lat): {point.lon}, {point.lat}"
+            + "".join(["&nbsp;" for _ in range(0, 80)])
+            + "</p>"
+            + f"JSON:</br><pre><code>{d}</code></pre></br>"
+        )
+        plot_map_point(unassigned_group, point, text, weight_points, COLOR_UNASSIGNED)
 
     # Add all grouped parts to the map
     for k in route_groups:
@@ -467,6 +510,8 @@ def plot(
     jpath_unassigned: str,
     jpath_unassigned_x: str,
     jpath_unassigned_y: str,
+    jpath_polyline: str,
+    polyline_encoding: types.PolylineEncoding,
     swap: bool,
     coords: str,
     omit_start: bool,
@@ -512,12 +557,14 @@ def plot(
         jpath_unassigned,
         jpath_unassigned_x,
         jpath_unassigned_y,
+        jpath_polyline,
+        polyline_encoding,
     )
     if nextroute:
         profile = nextroute_profile()
 
     # Parse data
-    points, unassigned = parse(
+    position_groups, unassigned_groups = parse(
         input_route,
         profile.jpath_route,
         profile.jpath_unassigned,
@@ -527,29 +574,42 @@ def plot(
         profile.jpath_pos,
         profile.jpath_x,
         profile.jpath_y,
+        profile.jpath_polyline,
+        profile.polyline_encoding,
     )
 
+    # Parse polyline, if given
+    polylines = {}
+    if jpath_polyline:
+        polylines = dict(enumerate(common.extract_polylines(input_route, jpath_polyline, polyline_encoding)))
+
     # Quit on no points
-    if len(points) <= 0:
+    if len(position_groups) <= 0:
         print("no points found in given file(s) using given filter(s)")
         return
 
     # Conduct some checks
-    points, world_coords, dataerror = common.preprocess_coordinates(points, swap, coords)
+    position_groups, world_coords, dataerror = common.preprocess_coordinates(position_groups, swap, coords)
     if dataerror:
         print(dataerror)
         return
-    if len(unassigned) > 0:
-        unassigned, world_coords, dataerror = common.preprocess_coordinates(unassigned, swap, coords)
+    if len(unassigned_groups) > 0:
+        unassigned_groups, world_coords, dataerror = common.preprocess_coordinates(unassigned_groups, swap, coords)
         if dataerror:
             print(dataerror)
             return
 
     # Wrap in routes
-    routes = [types.Route(r) for r in points]  # Wrap it
+    routes = [types.Route(r.positions) for r in position_groups]  # Wrap it
     if len(routes) <= 0:
         print(f"no routes could be extracted at the given path: {jpath_route}")
         return
+    unassigned = [types.Position(p.lon, p.lat, "") for g in unassigned_groups for p in g.positions]
+
+    # Add polylines
+    for i, polyline in polylines.items():
+        if i < len(routes):
+            routes[i].polyline = polyline
 
     # Process routes
     for route in routes:
@@ -630,6 +690,7 @@ def plot(
     m = create_map(
         routes,
         unassigned,
+        polylines,
         no_points,
         weight_points,
         weight_route,
@@ -746,7 +807,7 @@ def plot_map_route(
         polyline.add_to(map)
         plugins.PolyLineTextPath(
             polyline,
-            "\u25BA     ",
+            "\u25ba     ",
             repeat=True,
             center=True,
             offset=10.35 * weight,
@@ -769,7 +830,7 @@ def plot_map_route(
 
 def statistics(
     routes: list[types.Route],
-    unassigned: list[list[types.Point]],
+    unassigned: list[types.Position],
     stats_file: str,
     world_coords: bool,
 ):
@@ -804,7 +865,7 @@ def statistics(
         types.Stat("diameter_max", "Route diameter (max)", max(diameters)),
         types.Stat("diameter_min", "Route diameter (min)", min(diameters)),
         types.Stat("diameter_avg", "Route diameter (avg)", sum(diameters) / float(len(routes))),
-        types.Stat("nunassigned", "Unassigned stops", sum([len(g) for g in unassigned])),
+        types.Stat("nunassigned", "Unassigned stops", len(unassigned)),
     ]
 
     if all((r.legs is not None) for r in routes):

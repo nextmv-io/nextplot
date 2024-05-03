@@ -1,6 +1,8 @@
 import dataclasses
 import enum
 
+import polyline
+
 
 class ColorProfile(enum.Enum):
     auto = "auto"
@@ -73,9 +75,21 @@ class Position:
         return Position(self.lon, self.lat, self.desc, self.distance)
 
 
-class Point:
+class PositionGroup:
     """
-    Defines one point and is used to append additional info to it.
+    Defines a group of positions and is used to append additional info to it.
+    """
+
+    def __init__(self, positions: list[Position]):
+        self.positions = positions
+
+    def __str__(self):
+        return ",".join([str(p) for p in self.positions])
+
+
+class PointGroup:
+    """
+    Defines one point group and is used to append additional info to it.
     """
 
     def __init__(self, points):
@@ -106,6 +120,7 @@ class Route:
         self.points = points
         self.legs = None
         self.leg_costs = 0
+        self.polyline = None
 
     def to_points(self, omit_start: bool, omit_end: bool) -> list[Position]:
         """
@@ -122,6 +137,8 @@ class Route:
         """
         Returns the full polyline that can be used for plotting.
         """
+        if self.polyline is not None:
+            return self.polyline
         line = []
         start = 1 if omit_start else 0
         stop = len(self.points) - 1 if omit_end else len(self.points)
@@ -148,3 +165,46 @@ class RouteDirectionIndicator(enum.Enum):
 
     def __str__(self):
         return self.value
+
+
+def decode_polyline(encoded: str) -> list[Position]:
+    """Decode a polyline5 encoded string into a list of coordinates."""
+    return [Position(lat=lat, lon=lon, desc="") for lat, lon in polyline.decode(encoded, precision=5)]
+
+
+def decode_polyline6(encoded: str) -> list[Position]:
+    """Decode a polyline6 encoded string into a list of coordinates."""
+    return [Position(lat=lat, lon=lon, desc="") for lat, lon in polyline.decode(encoded, precision=6)]
+
+
+def decode_geojson(geojson: dict) -> list[Position]:
+    """Decode a geojson object into a list of coordinates."""
+    if "geometry" in geojson and "coordinates" in geojson["geometry"]:
+        coords = geojson["geometry"]["coordinates"]
+        if geojson["geometry"]["type"] == "LineString":
+            return [Position(lat=lat, lon=lon, desc="") for lon, lat in coords]
+        elif geojson["geometry"]["type"] == "MultiLineString":
+            return [Position(lat=lat, lon=lon, desc="") for lon, lat in coords[0]]
+
+
+class PolylineEncoding(enum.Enum):
+    """
+    Distinguishes the different polyline encodings.
+    """
+
+    polyline = "polyline"
+    polyline6 = "polyline6"
+    geojson = "geojson"
+
+    def __str__(self):
+        return self.value
+
+    def decode(self, encoded):
+        if self == PolylineEncoding.polyline:
+            return decode_polyline(encoded)
+        elif self == PolylineEncoding.polyline6:
+            return decode_polyline6(encoded)
+        elif self == PolylineEncoding.geojson:
+            return decode_geojson(encoded)
+        else:
+            raise Exception(f"Unsupported polyline encoding: {self}")

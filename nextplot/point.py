@@ -66,7 +66,7 @@ def parse(
     jpath_pos: str,
     jpath_x: str,
     jpath_y: str,
-) -> tuple[list[list[types.Position]], list[list[types.Position]]]:
+) -> list[types.PositionGroup]:
     """
     Parses the point data from the file(s).
     """
@@ -74,7 +74,7 @@ def parse(
     content_point, content_coordinate = common.load_data(input_point, input_pos)
 
     # Extract points
-    positions = common.extract_position_groups(
+    position_groups = common.extract_position_groups(
         content_point,
         jpath_point,
         content_coordinate,
@@ -83,7 +83,7 @@ def parse(
         jpath_y,
     )
 
-    return positions
+    return position_groups
 
 
 def plot(
@@ -117,7 +117,7 @@ def plot(
         base_name = input_point
 
     # Parse data
-    positions = parse(
+    position_groups = parse(
         input_point,
         jpath_point,
         input_pos,
@@ -127,21 +127,21 @@ def plot(
     )
 
     # Quit on no points
-    if len(positions) <= 0:
+    if len(position_groups) <= 0:
         print("no points found in given file(s) using given filter(s)")
         return
 
     # Conduct some checks
-    positions, world_coords, dataerror = common.preprocess_coordinates(positions, swap, coords)
+    position_groups, world_coords, dataerror = common.preprocess_coordinates(position_groups, swap, coords)
     if dataerror:
         print(dataerror)
         return
 
     # Determine bbox
-    bbox = common.bounding_box(positions)
+    bbox = common.bounding_box(position_groups)
 
     # Wrap in meta object
-    points = [types.Point(p) for p in positions]  # Wrap it
+    points = [types.PointGroup(p.positions) for p in position_groups]  # Wrap it
     if len(points) <= 0:
         print(f"no points could be extracted at the given path: {jpath_point}")
         return
