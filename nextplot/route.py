@@ -453,6 +453,9 @@ def create_map(
     # Add control for all layers and write file
     folium.LayerControl().add_to(m)
 
+    # Fit map to bounds
+    m.fit_bounds([[bbox.min_y, bbox.min_x], [bbox.max_y, bbox.max_x]])
+
     # Return map
     return m
 
@@ -746,7 +749,7 @@ def plot_map_route(
         polyline.add_to(map)
         plugins.PolyLineTextPath(
             polyline,
-            "\u25BA     ",
+            "\u25ba     ",
             repeat=True,
             center=True,
             offset=10.35 * weight,

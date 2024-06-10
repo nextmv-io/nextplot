@@ -250,6 +250,11 @@ def plot(
 
     # Add control for all layers and write file
     folium.LayerControl().add_to(m)
+
+    # Fit bounds
+    m.fit_bounds([[bbox.min_y, bbox.min_x], [bbox.max_y, bbox.max_x]])
+
+    # Save map
     m.save(map_file)
 
 
