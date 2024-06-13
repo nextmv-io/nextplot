@@ -66,3 +66,7 @@ max-complexity = 30
 
 [tool.hatch.version]
 path = "nextplot/__about__.py"
+
+# TODO: remove allowing direct references after new folium release
+[tool.hatch.metadata]
+allow-direct-references = true
