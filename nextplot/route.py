@@ -343,19 +343,22 @@ def create_map(
     bbox = common.bounding_box([r.points for r in routes])
 
     # Make map plot of routes
-    m = common.create_map(
+    m, base_tree = common.create_map(
         (bbox.max_x + bbox.min_x) / 2.0,
         (bbox.max_y + bbox.min_y) / 2.0,
         custom_map_tile,
     )
     route_groups = {}
+    route_layer_names = {}
     unassigned_group = folium.FeatureGroup("Unassigned")
 
     # Plot the routes themselves
     for i, route in enumerate(routes):
         if len(route.points) <= 0:
             continue
-        route_groups[route] = folium.FeatureGroup(f"Route {i+1}")
+        layer_name = f"Route {i+1}"
+        route_groups[route] = folium.FeatureGroup(layer_name)
+        route_layer_names[route_groups[route]] = layer_name
         plot_map_route(
             route_groups[route],
             route,
@@ -450,8 +453,33 @@ def create_map(
     if len(unassigned) > 0:
         unassigned_group.add_to(m)
 
+    # Add button to expand the map to fullscreen
+    plugins.Fullscreen(
+        position="topright",
+        title="Expand me",
+        title_cancel="Exit me",
+    ).add_to(m)
+
+    # Create overlay tree for advanced control of route/unassigned layers
+    overlay_tree = {
+        "label": "Overlays",
+        "select_all_checkbox": "Un/select all",
+        "children": [],
+    }
+    if len(unassigned) > 0:
+        overlay_tree["children"].append({"label": "Unassigned", "layer": unassigned_group})
+    if len(route_groups) > 0:
+        overlay_tree["children"].append(
+            {
+                "label": "Routes",
+                "select_all_checkbox": True,
+                "collapsed": True,
+                "children": [{"label": route_layer_names[v], "layer": v} for v in route_groups.values()],
+            },
+        )
+
     # Add control for all layers and write file
-    folium.LayerControl().add_to(m)
+    plugins.TreeLayerControl(base_tree=base_tree, overlay_tree=overlay_tree).add_to(m)
 
     # Fit map to bounds
     m.fit_bounds([[bbox.min_y, bbox.min_x], [bbox.max_y, bbox.max_x]])

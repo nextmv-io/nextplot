@@ -2,6 +2,7 @@ import json
 
 import folium
 import jsonpath_ng
+from folium import plugins
 from folium.elements import JSCSSMixin
 from folium.map import Layer
 from jinja2 import Template
@@ -23,14 +24,14 @@ def arguments(parser):
         type=str,
         nargs="?",
         default="",
-        help="path to the geojson file to plot",
+        help="path to the GeoJSON file to plot",
     )
     parser.add_argument(
         "--jpath_geojson",
         type=str,
         nargs="?",
         default="",
-        help="JSON path to the geojson elements (XPATH like,"
+        help="JSON path to the GeoJSON elements (XPATH like,"
         + " see https://goessner.net/articles/JsonPath/,"
         + ' example: "state.routes[*].geojson")',
     )
@@ -149,27 +150,56 @@ def plot(
         bbox_sw[0], bbox_sw[1] = min(bbox_sw[0], sw[0]), min(bbox_sw[1], sw[1])
         bbox_ne[0], bbox_ne[1] = max(bbox_ne[0], ne[0]), max(bbox_ne[1], ne[1])
 
-    # Make map plot of routes
+    # Make map plot of geojson data
     map_file = output_map
     if not map_file:
         map_file = base_name + ".map.html"
         print(f"Plotting map to {map_file}")
-    m = common.create_map(
+    m, base_tree = common.create_map(
         (bbox_sw[1] + bbox_ne[1]) / 2.0,
         (bbox_sw[0] + bbox_ne[0]) / 2.0,
         custom_map_tile,
     )
+    plot_groups = {}
+    group_names = {}
     for i, gj in enumerate(geojsons):
-        group = folium.FeatureGroup(f"geojson {i}")
+        group_name = f"GeoJSON {i}"
+        plot_groups[i] = folium.FeatureGroup(name=group_name)
+        group_names[plot_groups[i]] = group_name
         if style:
-            StyledGeoJson(gj).add_to(group)
+            StyledGeoJson(gj).add_to(plot_groups[i])
         else:
-            folium.GeoJson(gj).add_to(group)
-        group.add_to(m)
+            folium.GeoJson(gj).add_to(plot_groups[i])
+        plot_groups[i].add_to(m)
+
+    # Add button to expand the map to fullscreen
+    plugins.Fullscreen(
+        position="topright",
+        title="Expand me",
+        title_cancel="Exit me",
+    ).add_to(m)
+
+    # Create overlay tree for advanced control of route/unassigned layers
+    overlay_tree = {
+        "label": "Overlays",
+        "select_all_checkbox": "Un/select all",
+        "children": [
+            {
+                "label": "GeoJSONs",
+                "select_all_checkbox": True,
+                "collapsed": True,
+                "children": [{"label": group_names[v], "layer": v} for v in plot_groups.values()],
+            }
+        ],
+    }
 
     # Add control for all layers and write file
-    folium.LayerControl().add_to(m)
+    plugins.TreeLayerControl(base_tree=base_tree, overlay_tree=overlay_tree).add_to(m)
+
+    # Fit bounds
     m.fit_bounds([sw, ne])
+
+    # Save map
     m.save(map_file)
 
 

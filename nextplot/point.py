@@ -4,6 +4,7 @@ from collections.abc import Callable
 
 import folium
 import plotly.graph_objects as go
+from folium import plugins
 
 from . import common, types
 
@@ -219,12 +220,20 @@ def plot(
     if not map_file:
         map_file = base_name + ".map.html"
         print(f"Plotting map to {map_file}")
-    m = common.create_map(
+    m, base_tree = common.create_map(
         (bbox.max_x + bbox.min_x) / 2.0,
         (bbox.max_y + bbox.min_y) / 2.0,
         custom_map_tile,
     )
-    for ps in points:
+    plot_groups = {}
+    group_names = {}
+
+    for i, ps in enumerate(points):
+        if len(ps.points) <= 0:
+            continue
+        layer_name = f"Point group {i+1}"
+        plot_groups[i] = folium.FeatureGroup(name=layer_name)
+        group_names[plot_groups[i]] = layer_name
         for point in ps.points:
             d = point.desc.replace("\n", "<br/>").replace(r"`", r"\`")
             popup_text = folium.Html(
@@ -246,10 +255,35 @@ def plot(
                 fillOpacity=1.0,
             )
             marker.options["fillOpacity"] = 1.0
-            marker.add_to(m)
+            marker.add_to(plot_groups[i])
+
+    # Add all grouped parts to the map
+    for g in plot_groups:
+        plot_groups[g].add_to(m)
+
+    # Add button to expand the map to fullscreen
+    plugins.Fullscreen(
+        position="topright",
+        title="Expand me",
+        title_cancel="Exit me",
+    ).add_to(m)
+
+    # Create overlay tree for advanced control of route/unassigned layers
+    overlay_tree = {
+        "label": "Overlays",
+        "select_all_checkbox": "Un/select all",
+        "children": [
+            {
+                "label": "Point groups",
+                "select_all_checkbox": True,
+                "collapsed": True,
+                "children": [{"label": group_names[v], "layer": v} for v in plot_groups.values()],
+            }
+        ],
+    }
 
     # Add control for all layers and write file
-    folium.LayerControl().add_to(m)
+    plugins.TreeLayerControl(base_tree=base_tree, overlay_tree=overlay_tree).add_to(m)
 
     # Fit bounds
     m.fit_bounds([[bbox.min_y, bbox.min_x], [bbox.max_y, bbox.max_x]])
