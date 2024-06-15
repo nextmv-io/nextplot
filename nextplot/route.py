@@ -340,7 +340,7 @@ def create_map(
     Plots the given routes on a folium map.
     """
     # Determine bbox
-    bbox = common.bounding_box([r.points for r in routes])
+    bbox = common.bounding_box([r.points for r in routes] + unassigned)
 
     # Make map plot of routes
     m, base_tree = common.create_map(
@@ -689,7 +689,7 @@ def nextroute_profile() -> RoutePlotProfile:
         jpath_route="solutions[-1].vehicles[*].route",
         jpath_x="stop.location.lon",
         jpath_y="stop.location.lat",
-        jpath_unassigned="solutions[-1].unplanned",
+        jpath_unassigned="solutions[-1].unplanned[*]",
         jpath_unassigned_x="location.lon",
         jpath_unassigned_y="location.lat",
     )
