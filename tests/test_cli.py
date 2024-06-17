@@ -1,5 +1,6 @@
 import argparse
 import collections
+import difflib
 import os
 import pathlib
 import re
@@ -33,6 +34,16 @@ MapTest = collections.namedtuple(
         "golden_map",
     ],
 )
+GeoJSONTest = collections.namedtuple(
+    "Test",
+    [
+        "name",
+        "args",
+        "out_html",
+        "golden_log",
+        "golden_html",
+    ],
+)
 ProgressionTest = collections.namedtuple(
     "Test",
     [
@@ -45,6 +56,14 @@ ProgressionTest = collections.namedtuple(
         "golden_html",
     ],
 )
+
+
+def _diff_report(expected: str, got: str) -> str:
+    """
+    Create a unified diff report between two strings.
+    """
+    diff = difflib.unified_diff(expected.splitlines(), got.splitlines())
+    return "\n".join(list(diff))
 
 
 def _prepare_tests() -> None:
@@ -64,7 +83,8 @@ def _prepare_tests() -> None:
         UPDATE = args.update
 
         # Update if requested by env var
-        if os.environ.get("UPDATE", "0") == "1":
+        update_requested = os.environ.get("UPDATE", "0")
+        if update_requested == "1" or update_requested.lower() == "true":
             UPDATE = True
 
         # Set paths
@@ -93,18 +113,15 @@ def run_around_tests() -> None:
     # - nothing to do, we keep the output for manual inspection
 
 
-def _remove_guids(data: str) -> str:
+def _clean(data: str) -> str:
     """
-    Remove any GUID from an arbitrary string.
+    Remove data subject to change from the given string.
     """
-    return re.sub(r"[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}", "", data)
-
-
-def _remove_folium_ids(data: str) -> str:
-    """
-    Remove any folium ID from an arbitrary string.
-    """
-    return re.sub(r"[a-f0-9]{32}", "", data)
+    # Remove any GUIDs
+    data = re.sub(r"[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}", "", data)
+    # Remove folium IDs
+    data = re.sub(r"[a-f0-9]{32}", "", data)
+    return data
 
 
 def _run_map_test(test: MapTest) -> None:
@@ -147,37 +164,37 @@ def _run_map_test(test: MapTest) -> None:
         expected = ""
         with open(test.golden_log) as file:
             expected = file.read()
-        assert output == expected
+        assert output == expected, _diff_report(expected, output)
 
     # Compare plot file against expectation
     if UPDATE:
         # Copy plot file, but replace any GUIDs
         with open(test.out_plot) as fr:
             with open(test.golden_plot, "w") as fw:
-                fw.write(_remove_guids(fr.read()))
+                fw.write(_clean(fr.read()))
     else:
         # Compare plot file
         expected, got = "", ""
         with open(test.golden_plot) as f:
             expected = f.read()
         with open(test.out_plot) as f:
-            got = _remove_guids(f.read())
-        assert got == expected
+            got = _clean(f.read())
+        assert got == expected, _diff_report(expected, got)
 
     # Compare map file against expectation
     if UPDATE:
         # Copy map file, but replace any GUIDs
         with open(test.out_map) as fr:
             with open(test.golden_map, "w") as fw:
-                fw.write(_remove_folium_ids(fr.read()))
+                fw.write(_clean(fr.read()))
     else:
         # Compare map file
         expected, got = "", ""
         with open(test.golden_map) as f:
             expected = f.read()
         with open(test.out_map) as f:
-            got = _remove_folium_ids(f.read())
-        assert got == expected
+            got = _clean(f.read())
+        assert got == expected, _diff_report(expected, got)
 
     # Compare image file against expectation
     # (we cannot compare the html file, as it is not deterministic)
@@ -195,6 +212,58 @@ def _run_map_test(test: MapTest) -> None:
         assert distance < 7, (
             f"hash distance too large: {distance},\n" + f"got:\t{hash_gotten}\n" + f"want:\t{hash_expected}"
         )
+
+
+def _run_geojson_test(test: GeoJSONTest) -> None:
+    # Clear old results
+    if os.path.isfile(test.out_html):
+        os.remove(test.out_html)
+
+    # Assemble command and arguments
+    base = [sys.executable, NEXTPLOT_PATH]
+    cmd = [*base, *test.args]
+    cmd.extend(
+        [
+            "--output_map",
+            test.out_html,
+        ]
+    )
+
+    # Log
+    cmd_string = " ".join(test.args)
+    print(f"Invoking: {cmd_string}")
+
+    # Run command
+    result = subprocess.run(cmd, stdout=subprocess.PIPE)
+
+    # Expect no errors
+    assert result.returncode == 0
+
+    # Compare log output
+    output = result.stdout.decode("utf-8")
+    if UPDATE:
+        with open(test.golden_log, "w") as file:
+            file.write(output)
+    else:
+        expected = ""
+        with open(test.golden_log) as file:
+            expected = file.read()
+        assert output == expected, _diff_report(expected, output)
+
+    # Compare html file against expectation
+    if UPDATE:
+        # Copy html file, but replace any GUIDs
+        with open(test.out_html) as fr:
+            with open(test.golden_html, "w") as fw:
+                fw.write(_clean(fr.read()))
+    else:
+        # Compare html file
+        expected, got = "", ""
+        with open(test.golden_html) as f:
+            expected = f.read()
+        with open(test.out_html) as f:
+            got = _clean(f.read())
+        assert got == expected, _diff_report(expected, got)
 
 
 def _run_progression_test(test: ProgressionTest) -> None:
@@ -235,22 +304,22 @@ def _run_progression_test(test: ProgressionTest) -> None:
         expected = ""
         with open(test.golden_log) as file:
             expected = file.read()
-        assert output == expected
+        assert output == expected, _diff_report(expected, output)
 
     # Compare html file against expectation
     if UPDATE:
         # Copy html file, but replace any GUIDs
         with open(test.out_html) as fr:
             with open(test.golden_html, "w") as fw:
-                fw.write(_remove_guids(fr.read()))
+                fw.write(_clean(fr.read()))
     else:
         # Compare html file
         expected, got = "", ""
         with open(test.golden_html) as f:
             expected = f.read()
         with open(test.out_html) as f:
-            got = _remove_guids(f.read())
-        assert got == expected
+            got = _clean(f.read())
+        assert got == expected, _diff_report(expected, got)
 
     # Compare image file against expectation
     # (we cannot compare the html file, as it is not deterministic)
@@ -396,6 +465,21 @@ def test_map_plot_cli_paris_route_indexed():
     _run_map_test(test)
 
 
+def test_map_plot_cli_geojson():
+    test = GeoJSONTest(
+        "geojson",
+        [
+            "geojson",
+            "--input_geojson",
+            os.path.join(DATA_DIR, "geojson-data.json"),
+        ],
+        os.path.join(OUTPUT_DIR, "geojson-data.json.map.html"),
+        os.path.join(DATA_DIR, "geojson-data.json.golden"),
+        os.path.join(DATA_DIR, "geojson-data.json.map.html.golden"),
+    )
+    _run_geojson_test(test)
+
+
 def test_progression_plot_cli_fleet_cloud_comparison():
     test = ProgressionTest(
         "fleet-cloud-comparison",
@@ -422,5 +506,6 @@ if __name__ == "__main__":
     test_map_plot_cli_paris_cluster()
     test_map_plot_cli_paris_point()
     test_map_plot_cli_paris_route_indexed()
+    test_map_plot_cli_geojson()
     test_progression_plot_cli_fleet_cloud_comparison()
     print("Everything passed")

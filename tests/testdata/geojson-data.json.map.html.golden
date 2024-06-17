@@ -52,7 +52,7 @@
             var map_ = L.map(
                 "map_",
                 {
-                    center: [48.86421464185859, 2.324933624095614],
+                    center: [1.9262979815479042, 1.0619524389888824],
                     crs: L.CRS.EPSG3857,
                     zoom: 10,
                     zoomControl: true,
@@ -103,69 +103,32 @@
             tile_layer_.addTo(map_);
         
     
-            var tile_layer_ = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-                {"attribution": "\u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            );
-        
-    
-            tile_layer_.addTo(map_);
-        
-    
             var feature_group_ = L.featureGroup(
                 {}
             );
         
     
-            var polygon_ = L.polygon(
-                [[48.85814487640506, 2.2945793548805833], [48.842085594729355, 2.321845363923588], [48.880769277577656, 2.3552878933106447], [48.873730646108235, 2.2950561481174456]],
-                {"bubblingMouseEvents": true, "color": "#4e79a7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4e79a7", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
-            ).addTo(feature_group_);
-        
-    
-        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
 
-        
+        function geo_json__onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_ = L.geoJson(null, {
+                onEachFeature: geo_json__onEachFeature,
             
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Cluster: 0 / 2</br>Cluster points: 7</br>Cluster diameter: 5.10 km (3.17 miles)</br></p></div>`)[0];
-                popup_.setContent(html_);
-            
-        
+        });
 
-        polygon_.bindPopup(popup_)
-        ;
-
-        
-    
-    
-            feature_group_.addTo(map_);
-        
-    
-            var feature_group_ = L.featureGroup(
-                {}
-            );
-        
-    
-            var polygon_ = L.polygon(
-                [[48.880769277577656, 2.3552878933106447], [48.88634368898782, 2.343046834223321], [48.84616060048901, 2.346233405549605], [48.853070514317345, 2.349489020192572]],
-                {"bubblingMouseEvents": true, "color": "#f28e2c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f28e2c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
-            ).addTo(feature_group_);
-        
-    
-        var popup_ = L.popup({"autoClose": false, "closeOnClick": false, "maxWidth": 450});
-
-        
-            
-                var html_ = $(`<div id="html_" style="width: 100.0%; height: 100.0%;"><p>Cluster: 1 / 2</br>Cluster points: 5</br>Cluster diameter: 4.47 km (2.78 miles)</br></p></div>`)[0];
-                popup_.setContent(html_);
-            
-        
-
-        polygon_.bindPopup(popup_)
-        ;
+        function geo_json__add (data) {
+            geo_json_
+                .addData(data);
+        }
+            geo_json__add({"features": [{"geometry": {"coordinates": [-115.22033625210064, 18.575192081267197], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [26.063782545842447, 80.39436534400363], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [49.05261435048705, -4.815956446107803], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [8.298298403258588, 3.265395718979831], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [130.3834619679142, 17.94832898544832], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [41.0643987376985, 23.10496993075887], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [140.09288702107037, -79.82588120665534], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [-31.33508848342683, 65.68458929468702], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [58.44881548901721, 84.8853824878401], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [77.04454017583608, 29.486980779188666], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [107.47713770103157, 6.917930384972415], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [-68.17183799661818, 27.691434423742535], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [-105.87254645545934, -49.14751775337236], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [-155.62605321754808, 70.97382140916633], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [-123.7349853874018, -14.647829768918847], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [-0.36734519059763215, 88.2822470543127], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [157.74995809552584, 80.99874246047408], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [145.95945856456706, -84.4296510912169], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [42.96815134503646, -19.59615491929395], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [72.79396334324804, -34.56200984243971], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [-150.43597038790634, 28.109470894931103], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [116.74794885910944, 69.22591756002855], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [50.05807001557586, 74.29939249996231], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [5.2769045824745575, 86.27124808396252], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [79.23081298019815, 3.3840202530143326], "type": "Point"}, "properties": {}, "type": "Feature"}], "type": "FeatureCollection"});
+        geo_json_.setStyle(function(feature) {return feature.properties.style;});
 
         
     
+            geo_json_.addTo(feature_group_);
+        
     
             feature_group_.addTo(map_);
         
@@ -195,10 +158,6 @@
   "label": "cartodb positron",
   "layer": tile_layer_,
 },
-{
-  "label": "DarkMatter no labels",
-  "layer": tile_layer_,
-},
 ],
 },
 ],
@@ -208,16 +167,12 @@
   "selectAllCheckbox": "Un/select all",
   "children": [
 {
-  "label": "Clusters",
+  "label": "GeoJSONs",
   "selectAllCheckbox": true,
   "collapsed": true,
   "children": [
 {
-  "label": "Cluster 1",
-  "layer": feature_group_,
-},
-{
-  "label": "Cluster 2",
+  "label": "GeoJSON 0",
   "layer": feature_group_,
 },
 ],
@@ -229,7 +184,7 @@
         
     
             map_.fitBounds(
-                [[48.842085594729355, 2.2945793548805833], [48.88634368898782, 2.3552878933106447]],
+                [[-84.4296510912169, -155.62605321754808], [88.2822470543127, 157.74995809552584]],
                 {}
             );
         

@@ -340,31 +340,56 @@ def bounding_box(points) -> types.BoundingBox:
     return types.BoundingBox(min(pos_x), max(pos_x), min(pos_y), max(pos_y))
 
 
-def create_map(lon: float, lat: float, custom_layers: list[str] = None) -> folium.Map:
+def create_map(lon: float, lat: float, custom_layers: list[str] = None) -> tuple[folium.Map, dict[str, any]]:
     """
-    Creates a default folium map focused on the given coordinates.
+    Creates a default folium map focused on the given coordinates. Furthermore, it
+    returns a tree structure that can be used to select different base layers
+    using the TreeLayerControl.
     """
     m = folium.Map(
         location=[lat, lon],
-        tiles="cartodb positron",
         zoomSnap=0.25,
         zoomDelta=0.25,
         wheelPxPerZoomLevel=180,
     )
-    folium.TileLayer("cartodbdark_matter").add_to(m)
-    folium.TileLayer("openstreetmap").add_to(m)
+
+    tile_layers = [
+        ("openstreetmap", folium.TileLayer("openstreetmap").add_to(m)),
+        ("cartodbdark_matter", folium.TileLayer("cartodbdark_matter").add_to(m)),
+        ("cartodb positron", folium.TileLayer("cartodb positron").add_to(m)),
+    ]
+
     if custom_layers:
         for layer in custom_layers:
             if layer.startswith("http"):
                 elements = layer.split(",")
-                folium.TileLayer(
-                    tiles=elements[0],
-                    name=elements[1],
-                    attr=elements[2],
-                ).add_to(m)
+                if len(elements) != 3:
+                    raise Exception(f"Invalid custom layer definition: {layer}. Expected <url>,<name>,<attribution>")
+                tile_layers.append(
+                    (
+                        elements[1],
+                        folium.TileLayer(
+                            tiles=elements[0],
+                            name=elements[1],
+                            attr=elements[2],
+                        ).add_to(m),
+                    )
+                )
             else:
                 raise Exception(f"Invalid custom layer definition: {layer}. Expected <url>,<name>,<attribution>")
-    return m
+
+    base_tree = {
+        "label": "Base Layers",
+        "children": [
+            {
+                "label": "Tiles",
+                "radioGroup": "tiles",
+                "children": [{"label": name, "layer": layer} for name, layer in tile_layers],
+            },
+        ],
+    }
+
+    return m, base_tree
 
 
 # ==================== Color handling

@@ -5,6 +5,7 @@ import folium
 import numpy as np
 import plotly.graph_objects as go
 import scipy.spatial
+from folium import plugins
 
 from . import common, types
 
@@ -289,18 +290,21 @@ def plot(
     if not map_file:
         map_file = base_name + ".map.html"
         print(f"Plotting map to {map_file}")
-    m = common.create_map(
+    m, base_tree = common.create_map(
         (bbox.max_x + bbox.min_x) / 2.0,
         (bbox.max_y + bbox.min_y) / 2.0,
         custom_map_tile,
     )
     plot_groups = {}
+    group_names = {}
 
     # Plot the clusters themselves
     for i, cluster in enumerate(clusters):
         if len(cluster.points) <= 0:
             continue
-        plot_groups[i] = folium.FeatureGroup(f"Cluster {i+1}")
+        layer_name = f"Cluster {i+1}"
+        plot_groups[i] = folium.FeatureGroup(name=layer_name)
+        group_names[plot_groups[i]] = layer_name
         text = (
             "<p>"
             + f"Cluster: {i} / {len(clusters)}</br>"
@@ -331,8 +335,34 @@ def plot(
     for k in plot_groups:
         plot_groups[k].add_to(m)
 
+    # Add button to expand the map to fullscreen
+    plugins.Fullscreen(
+        position="topright",
+        title="Expand me",
+        title_cancel="Exit me",
+    ).add_to(m)
+
+    # Create overlay tree for advanced control of route/unassigned layers
+    overlay_tree = {
+        "label": "Overlays",
+        "select_all_checkbox": "Un/select all",
+        "children": [
+            {
+                "label": "Clusters",
+                "select_all_checkbox": True,
+                "collapsed": True,
+                "children": [{"label": group_names[v], "layer": v} for v in plot_groups.values()],
+            }
+        ],
+    }
+
     # Add control for all layers and write file
-    folium.LayerControl().add_to(m)
+    plugins.TreeLayerControl(base_tree=base_tree, overlay_tree=overlay_tree).add_to(m)
+
+    # Fit map to bounds
+    m.fit_bounds([[bbox.min_y, bbox.min_x], [bbox.max_y, bbox.max_x]])
+
+    # Save map
     m.save(map_file)
 
 

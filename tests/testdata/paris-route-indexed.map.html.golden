@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
@@ -35,6 +35,10 @@
                 .leaflet-container { font-size: 1rem; }
             </style>
         
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.control.layers.tree@1.1.0/L.Control.Layers.Tree.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.control.layers.tree@1.1.0/L.Control.Layers.Tree.min.css"/>
 </head>
 <body>
     
@@ -64,17 +68,8 @@
         
     
             var tile_layer_ = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
-            );
-        
-    
-            tile_layer_.addTo(map_);
-        
-    
-            var tile_layer_ = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
@@ -91,8 +86,26 @@
         
     
             var tile_layer_ = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
-                {"attribution": "\u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+                {"attribution": "\u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e", "detectRetina": false, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
@@ -409,24 +422,68 @@
             feature_group_.addTo(map_);
         
     
-            var layer_control__layers = {
-                base_layers : {
-                    "cartodbpositron" : tile_layer_,
-                    "cartodbdarkmatter" : tile_layer_,
-                    "openstreetmap" : tile_layer_,
-                    "DarkMatter no labels" : tile_layer_,
-                },
-                overlays :  {
-                    "Route 1" : feature_group_,
-                    "Route 2" : feature_group_,
-                },
-            };
-            let layer_control_ = L.control.layers(
-                layer_control__layers.base_layers,
-                layer_control__layers.overlays,
-                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            L.control.fullscreen(
+                {"forceSeparateButton": false, "position": "topright", "title": "Expand me", "titleCancel": "Exit me"}
             ).addTo(map_);
-
+        
+    
+            L.control.layers.tree(
+                {
+  "label": "Base Layers",
+  "children": [
+{
+  "label": "Tiles",
+  "radioGroup": "tiles",
+  "children": [
+{
+  "label": "openstreetmap",
+  "layer": tile_layer_,
+},
+{
+  "label": "cartodbdark_matter",
+  "layer": tile_layer_,
+},
+{
+  "label": "cartodb positron",
+  "layer": tile_layer_,
+},
+{
+  "label": "DarkMatter no labels",
+  "layer": tile_layer_,
+},
+],
+},
+],
+},
+                {
+  "label": "Overlays",
+  "selectAllCheckbox": "Un/select all",
+  "children": [
+{
+  "label": "Routes",
+  "selectAllCheckbox": true,
+  "collapsed": true,
+  "children": [
+{
+  "label": "Route 1",
+  "layer": feature_group_,
+},
+{
+  "label": "Route 2",
+  "layer": feature_group_,
+},
+],
+},
+],
+},
+                {"closedSymbol": "+", "collapseAll": "", "expandAll": "", "labelIsSelector": "both", "namedToggle": false, "openenedSymbol": "-", "selectorBack": false, "spaceSymbol": "\u0026nbsp;"}
+            ).addTo(map_);
+        
+    
+            map_.fitBounds(
+                [[48.842085594729355, 2.2945793548805833], [48.88634368898782, 2.3552878933106447]],
+                {}
+            );
         
 </script>
 </html>

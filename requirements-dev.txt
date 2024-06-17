@@ -1,6 +1,6 @@
 argcomplete==2.0.0
 colorutils==0.3.0
-folium==0.16.0
+folium @ git+https://github.com/python-visualization/folium@b80e7e92
 jsonpath_ng==1.6.1
 kaleido==0.2.1
 numpy==1.26.4
