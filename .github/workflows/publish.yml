@@ -126,3 +126,13 @@ jobs:
               with:
                   repository-url: https://test.pypi.org/legacy/
                   packages-dir: ./dist
+
+    notify:
+        runs-on: ubuntu-latest
+        needs: publish
+        if: ${{ needs.publish.result == 'success' && inputs.IS_PRE_RELEASE == false }}
+        steps:
+            - name: notify slack
+              run: |
+                  export DATA="{\"text\":\"Release notification - nextplot ${{ inputs.VERSION }} (see <https://github.com/nextmv-io/nextplot/releases/${{ inputs.VERSION }}|release notes> / <https://pypi.org/project/nextplot|PyPI>)\"}"
+                  curl -X POST -H 'Content-type: application/json' --data "$DATA" ${{ secrets.SLACK_URL_MISSION_CONTROL }}
