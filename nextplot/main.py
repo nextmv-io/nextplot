@@ -83,6 +83,7 @@ def entry_point():
             weight_points=args.weight_points,
             no_points=args.no_points,
             start_end_markers=args.start_end_markers,
+            osrm_host=args.osrm_host,
             rk_osm=args.rk_osm,
             rk_bin=args.rk_bin,
             rk_profile=args.rk_profile,

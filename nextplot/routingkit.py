@@ -83,7 +83,8 @@ def query_routes(
     # Clear any previously existing information
     for route in routes:
         route.legs = None
-        route.leg_costs = None
+        route.leg_distances = None
+        route.leg_durations = None
 
     # Add results to routes
     for i, path in enumerate(paths):
@@ -115,13 +116,22 @@ def query_routes(
                 end_cost /= travel_speed
             cost += start_cost + end_cost
 
+        # RK uses milliseconds and meters, convert to seconds and kilometers (same factor)
+        cost /= 1000.0
+
         # Add leg to route
         if route.legs is None:
             route.legs = [leg]
-            route.leg_costs = [cost]
+            if distance:
+                route.leg_distances = [cost]
+            else:
+                route.leg_durations = [cost]
         else:
             route.legs.append(leg)
-            route.leg_costs.append(cost)
+            if distance:
+                route.leg_distances.append(cost)
+            else:
+                route.leg_durations.append(cost)
 
 
 def query(

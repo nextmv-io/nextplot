@@ -105,7 +105,8 @@ class Route:
     def __init__(self, points: list[Position]):
         self.points = points
         self.legs = None
-        self.leg_costs = 0
+        self.leg_distances = None
+        self.leg_durations = None
 
     def to_points(self, omit_start: bool, omit_end: bool) -> list[Position]:
         """
