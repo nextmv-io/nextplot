@@ -19,6 +19,7 @@ dependencies = [
     "kaleido>=0.2.1",
     "numpy>=1.22.3",
     "plotly>=5.7.0",
+    "polyline>=2.0.2",
     "scipy>=1.8.0",
 ]
 description = "Tools for plotting routes, clusters and more from JSON"

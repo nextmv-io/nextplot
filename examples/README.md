@@ -86,14 +86,43 @@ This can be changed via the `--output_image` & `--output_map` parameters.
 The map plot should look like [this](https://nextmv-io.github.io/nextplot/plots/dortmund-route):
 ![dortmund-route.json.html.png](https://nextmv-io.github.io/nextplot/plots/dortmund-route/dortmund-route.json.html.png)
 
-## Route plotting with routingkit support
+## Route plotting with OSRM support
 
-Next, we're gonna plot routes using the road network. We do this with the
-support of [go-routingkit](go-routingkit).
+Next, we will plot routes using the road network. We do this with the support of
+[OSRM][osrm]. Make sure a server with a suitable region and profile is running.
 
-### Pre-requisites
+### Pre-requisites for OSRM
 
-1. Install [go-routingkit](go-routingkit) standalone:
+1. Spin up an OSRM server with a suitable region and profile. Follow the
+   [steps][osrm-install] provided by OSRM to get started.
+
+### Plot route paths via OSRM
+
+The command is similar to the one above, but specifies some extra options (refer
+to the full list [below](#additional-information)). The `osrm_host` option
+activates OSRM driven plotting.
+
+```bash
+nextplot route \
+        --input_route data/kyoto-route.json \
+        --jpath_route "vehicles[*].route" \
+        --jpath_x "position.lon" \
+        --jpath_y "position.lat" \
+        --output_map kyoto-route.html \
+        --output_image kyoto-route.png \
+        --osrm_host http://localhost:5000
+```
+
+## Route plotting with RoutingKit support
+
+Another option to plot routes is to use the [go-routingkit][go-rk] library which
+comes with a standalone binary. This approach does not need a running server,
+but takes longer to compute the routes (as it needs to preprocess the osm file
+on each run).
+
+### Pre-requisites for RoutingKit
+
+1. Install [go-routingkit][go-rk] standalone:
 
     ```bash
     go install github.com/nextmv-io/go-routingkit/cmd/routingkit@latest
@@ -106,7 +135,7 @@ support of [go-routingkit](go-routingkit).
     wget -N http://download.geofabrik.de/asia/japan/kansai-latest.osm.pbf
     ```
 
-### Plot route paths
+### Plot route paths via RoutingKit
 
 The command is similar to the one above, but specifies some extra options (refer
 to the full list [below](#additional-information)). The `rk_osm` option
@@ -299,6 +328,9 @@ handle certain data formats. Find an outline of these options here:
 - `--stats_file <path-to-file>`:
   If provided, statistics will be written to the given file in addition to
   stdout.
+- `osrm_host` (route only):
+  Host of the OSRM server to be used for routing. If provided, routes will be
+  generated via OSRM. Example: `http://localhost:5000`.
 - `rk_bin` (route only):
   Path to the [go-routingkit][go-rk] standalone binary. Alternatively,
   `routingkit` command will be used at default (requires go-routingkit
@@ -315,5 +347,7 @@ handle certain data formats. Find an outline of these options here:
 
 [go-rk]: https://github.com/nextmv-io/go-routingkit/tree/stable/cmd/routingkit
 [go-rk-install]: https://github.com/nextmv-io/go-routingkit/tree/stable/cmd/routingkit#install
+[osrm]: https://project-osrm.org/
+[osrm-install]: https://github.com/Project-OSRM/osrm-backend?tab=readme-ov-file#quick-start
 [custom-layers]: http://leaflet-extras.github.io/leaflet-providers/preview/
 [folium-tiles]: https://deparkes.co.uk/2016/06/10/folium-map-tiles/

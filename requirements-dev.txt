@@ -5,6 +5,7 @@ jsonpath_ng==1.6.1
 kaleido==0.2.1
 numpy==1.26.4
 plotly==5.21.0
+polyline==2.0.2
 scipy==1.13.0
 pytest==7.1.1
 imagehash==4.3.1

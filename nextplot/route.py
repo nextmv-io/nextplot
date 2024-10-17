@@ -4,7 +4,7 @@ import folium
 import plotly.graph_objects as go
 from folium import plugins
 
-from . import common, routingkit, types
+from . import common, osrm, routingkit, types
 
 # ==================== This file contains route plotting code (mode: 'route')
 
@@ -176,6 +176,13 @@ def arguments(parser):
         help="indicates whether to add start and end markers",
     )
     parser.add_argument(
+        "--osrm_host",
+        type=str,
+        nargs="?",
+        default=None,
+        help="host and port of the OSRM server (e.g. 'http://localhost:5000')",
+    )
+    parser.add_argument(
         "--rk_bin",
         type=str,
         nargs="?",
@@ -334,7 +341,6 @@ def create_map(
     route_animation_color: str,
     start_end_markers: bool,
     custom_map_tile: list[str],
-    rk_distance: bool,
 ) -> folium.Map:
     """
     Plots the given routes on a folium map.
@@ -369,8 +375,6 @@ def create_map(
             omit_end,
             route_direction,
             route_animation_color,
-            1.0 / 1000.0 if rk_distance else 1.0 / 1000.0,
-            "km" if rk_distance else "s",
         )
 
     # Plot points
@@ -514,6 +518,7 @@ def plot(
     weight_points: float,
     no_points: bool,
     start_end_markers: bool,
+    osrm_host: str,
     rk_osm: str,
     rk_bin: str,
     rk_profile: routingkit.RoutingKitProfile,
@@ -600,8 +605,10 @@ def plot(
             route.points[i].distance = length
         route.length = length
 
-    # Determine route shapes (if routingkit is available)
-    if rk_osm:
+    # Determine route shapes (if osrm or routingkit are available)
+    if osrm_host:
+        osrm.query_routes(osrm_host, routes)
+    elif rk_osm:
         routingkit.query_routes(rk_bin, rk_osm, routes, rk_profile, rk_distance)
 
     # Dump some stats
@@ -670,7 +677,6 @@ def plot(
         route_animation_color,
         start_end_markers,
         custom_map_tile,
-        rk_distance,
     )
 
     # Save map
@@ -737,15 +743,15 @@ def plot_map_route(
     omit_end: bool,
     direction: types.RouteDirectionIndicator = types.RouteDirectionIndicator.none,
     animation_bg_color: str = "FFFFFF",
-    rk_factor: float = None,
-    rk_unit: str = None,
 ):
     """
     Plots a route on the given map.
     """
     rk_text = ""
-    if route.legs is not None:
-        rk_text = f"Route cost (routingkit): {sum(route.leg_costs) * rk_factor:.2f} {rk_unit}</br>"
+    if route.leg_distances is not None:
+        rk_text += f"Route cost (rk/osrm): {sum(route.leg_distances):.2f} km</br>"
+    if route.leg_durations is not None:
+        rk_text += f"Route duration (rk/osrm): {sum(route.leg_durations):.2f} s</br>"
     popup_text = folium.Html(
         "<p>"
         + f"Route: {route_idx+1} / {route_count}</br>"
@@ -838,13 +844,23 @@ def statistics(
         types.Stat("nunassigned", "Unassigned stops", sum([len(g) for g in unassigned])),
     ]
 
-    if all((r.legs is not None) for r in routes):
-        costs = [sum(r.leg_costs) for r in routes]
+    if all((r.leg_distances is not None) for r in routes):
+        costs = [sum(r.leg_distances) for r in routes]
         stats.extend(
             [
-                types.Stat("costs_max", "RK costs (max)", max(costs)),
-                types.Stat("costs_min", "RK costs (min)", min(costs)),
-                types.Stat("costs_avg", "RK costs (avg)", sum(costs) / float(len(routes))),
+                types.Stat("distances_max", "RK/OSRM distances (max)", max(costs)),
+                types.Stat("distances_min", "RK/OSRM distances (min)", min(costs)),
+                types.Stat("distances_avg", "RK/OSRM distances (avg)", sum(costs) / float(len(routes))),
+            ]
+        )
+
+    if all((r.leg_durations is not None) for r in routes):
+        durations = [sum(r.leg_durations) for r in routes]
+        stats.extend(
+            [
+                types.Stat("durations_max", "RK/OSRM durations (max)", max(durations)),
+                types.Stat("durations_min", "RK/OSRM durations (min)", min(durations)),
+                types.Stat("durations_avg", "RK/OSRM durations (avg)", sum(durations) / float(len(routes))),
             ]
         )
 

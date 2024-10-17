@@ -121,8 +121,10 @@ suitable region file via:
 wget -N http://download.geofabrik.de/north-america/us/texas-latest.osm.pbf
 ```
 
-This route plot uses routingkit for plotting road paths. Furthermore, unassigned
-points are plotted in addition to the route stops.
+This route plot uses routingkit for plotting road paths. Alternatively, spin up
+a local OSRM server and use the `--osrm_host` flag to use it (see
+[osrm-steps][osrm-steps]). Furthermore, unassigned points are plotted in
+addition to the route stops.
 
 ```bash
 nextplot route \
@@ -270,3 +272,5 @@ Interactive result: [link](https://nextmv-io.github.io/nextplot/gallery/fleet-cl
 Image result:
 
 ![fleet-cloud-comparison.png](https://nextmv-io.github.io/nextplot/gallery/fleet-cloud-comparison/fleet-cloud-comparison.png)
+
+[osrm-steps]: ../README.md#route-plotting-with-osrm-support
