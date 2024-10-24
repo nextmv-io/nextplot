@@ -21,6 +21,7 @@ class OsrRouteResponse:
     distances: list[float]
     durations: list[float]
     zero_distance: bool = False
+    no_route: bool = False
 
 
 def query_route(
@@ -40,9 +41,26 @@ def query_route(
     # Query OSRM
     try:
         response = requests.get(url)
+        # If no route was found, use as-the-crow-flies fallback
+        if response.status_code == 400 and response.json()["code"] == "NoRoute":
+            print(
+                f"Warning: OSRM was unable to find a route for {[(p.lat, p.lon) for p in route.positions]}"
+                + "(lat,lon ordering), using as-the-crow-flies fallback"
+            )
+            paths, distances, durations = [], [], []
+            for f, t in zip(route.positions, route.positions[1:], strict=False):
+                paths.append(
+                    [types.Position(lon=f.lon, lat=f.lat, desc=None), types.Position(lon=t.lon, lat=t.lat, desc=None)]
+                )
+                distances.append(common.haversine(f, t))
+                durations.append(common.haversine(f, t) / TRAVEL_SPEED)
+            return OsrRouteResponse(paths=paths, distances=distances, durations=durations, no_route=True)
+        # Make sure we are not getting an error
         response.raise_for_status()
     except requests.exceptions.RequestException as e:
         print(f"Error querying OSRM at {url_base}:", e)
+        if response:
+            print(response.text)
         sys.exit(1)
     result = response.json()
     if result["code"] != "Ok":
@@ -103,7 +121,7 @@ def query_routes(
 
     # Query all routes
     reqs = [OsrmRouteRequest(positions=route.points) for route in routes]
-    zero_distance_routes = 0
+    zero_distance_routes, no_route_routes = 0, 0
     for r, req in enumerate(reqs):
         result = query_route(endpoint, req)
         routes[r].legs = result.paths
@@ -111,5 +129,9 @@ def query_routes(
         routes[r].leg_durations = result.durations
         if result.zero_distance:
             zero_distance_routes += 1
+        if result.no_route:
+            no_route_routes += 1
     if zero_distance_routes > 0:
         print(f"Warning: {zero_distance_routes} / {len(routes)} routes have zero distance according to OSRM")
+    if no_route_routes > 0:
+        print(f"Warning: {no_route_routes} / {len(routes)} routes could not be found by OSRM")
