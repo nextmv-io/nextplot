@@ -16,7 +16,7 @@ class OsrmRouteRequest:
 
 
 @dataclasses.dataclass
-class OsrRouteResponse:
+class OsrmRouteResponse:
     paths: list[list[types.Position]]
     distances: list[float]
     durations: list[float]
@@ -27,7 +27,7 @@ class OsrRouteResponse:
 def query_route(
     endpoint: str,
     route: OsrmRouteRequest,
-) -> OsrRouteResponse:
+) -> OsrmRouteResponse:
     """
     Queries a route from the OSRM server.
     """
@@ -54,7 +54,7 @@ def query_route(
                 )
                 distances.append(common.haversine(f, t))
                 durations.append(common.haversine(f, t) / TRAVEL_SPEED)
-            return OsrRouteResponse(paths=paths, distances=distances, durations=durations, no_route=True)
+            return OsrmRouteResponse(paths=paths, distances=distances, durations=durations, no_route=True)
         # Make sure we are not getting an error
         response.raise_for_status()
     except requests.exceptions.RequestException as e:
@@ -103,13 +103,13 @@ def query_route(
         print(f"Warning: number of legs ({len(legs)}) does not match number of positions ({len(route.positions)} - 1)")
 
     # Extract route
-    return OsrRouteResponse(paths=legs, distances=distances, durations=durations, zero_distance=all_zero_distances)
+    return OsrmRouteResponse(paths=legs, distances=distances, durations=durations, zero_distance=all_zero_distances)
 
 
 def query_routes(
     endpoint: str,
     routes: list[types.Route],
-) -> list[OsrRouteResponse]:
+) -> list[OsrmRouteResponse]:
     """
     Queries multiple routes from the OSRM server.
 
