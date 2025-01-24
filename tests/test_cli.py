@@ -480,6 +480,23 @@ def test_map_plot_cli_geojson():
     _run_geojson_test(test)
 
 
+def test_map_plot_cli_geojson_nested():
+    test = GeoJSONTest(
+        "geojson",
+        [
+            "geojson",
+            "--input_geojson",
+            os.path.join(DATA_DIR, "geojson-nested-data.json"),
+            "--jpath_geojson",
+            "assets[*].content",
+        ],
+        os.path.join(OUTPUT_DIR, "geojson-nested-data.json.map.html"),
+        os.path.join(DATA_DIR, "geojson-nested-data.json.golden"),
+        os.path.join(DATA_DIR, "geojson-nested-data.json.map.html.golden"),
+    )
+    _run_geojson_test(test)
+
+
 def test_progression_plot_cli_fleet_cloud_comparison():
     test = ProgressionTest(
         "fleet-cloud-comparison",
@@ -507,5 +524,6 @@ if __name__ == "__main__":
     test_map_plot_cli_paris_point()
     test_map_plot_cli_paris_route_indexed()
     test_map_plot_cli_geojson()
+    test_map_plot_cli_geojson_nested()
     test_progression_plot_cli_fleet_cloud_comparison()
     print("Everything passed")

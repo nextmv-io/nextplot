@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.control.layers.tree@1.1.0/L.Control.Layers.Tree.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.control.layers.tree@1.1.0/L.Control.Layers.Tree.min.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ = L.map(
+                "map_",
+                {
+                    center: [28.28, -33.7684],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                    zoomSnap: 0.25,
+                    zoomDelta: 0.25,
+                    wheelPxPerZoomLevel: 180,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var tile_layer_ = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_.addTo(map_);
+        
+    
+            var feature_group_ = L.featureGroup(
+                {}
+            );
+        
+    
+
+        function geo_json__onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_ = L.geoJson(null, {
+                onEachFeature: geo_json__onEachFeature,
+            
+        });
+
+        function geo_json__add (data) {
+            geo_json_
+                .addData(data);
+        }
+            geo_json__add({"features": [{"geometry": {"coordinates": [-74.076, 4.598], "type": "Point"}, "properties": {}, "type": "Feature"}, {"geometry": {"coordinates": [-75.1649, 39.9525], "type": "Point"}, "properties": {}, "type": "Feature"}], "type": "FeatureCollection"});
+        geo_json_.setStyle(function(feature) {return feature.properties.style;});
+
+        
+    
+            geo_json_.addTo(feature_group_);
+        
+    
+            feature_group_.addTo(map_);
+        
+    
+            var feature_group_ = L.featureGroup(
+                {}
+            );
+        
+    
+
+        function geo_json__onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_ = L.geoJson(null, {
+                onEachFeature: geo_json__onEachFeature,
+            
+        });
+
+        function geo_json__add (data) {
+            geo_json_
+                .addData(data);
+        }
+            geo_json__add({"geometry": {"coordinates": [7.6281, 51.962], "type": "Point"}, "properties": {}, "type": "Feature"});
+        geo_json_.setStyle(function(feature) {return feature.properties.style;});
+
+        
+    
+            geo_json_.addTo(feature_group_);
+        
+    
+            feature_group_.addTo(map_);
+        
+    
+            L.control.fullscreen(
+                {"forceSeparateButton": false, "position": "topright", "title": "Expand me", "titleCancel": "Exit me"}
+            ).addTo(map_);
+        
+    
+            L.control.layers.tree(
+                {
+  "label": "Base Layers",
+  "children": [
+{
+  "label": "Tiles",
+  "radioGroup": "tiles",
+  "children": [
+{
+  "label": "openstreetmap",
+  "layer": tile_layer_,
+},
+{
+  "label": "cartodbdark_matter",
+  "layer": tile_layer_,
+},
+{
+  "label": "cartodb positron",
+  "layer": tile_layer_,
+},
+],
+},
+],
+},
+                {
+  "label": "Overlays",
+  "selectAllCheckbox": "Un/select all",
+  "children": [
+{
+  "label": "GeoJSONs",
+  "selectAllCheckbox": true,
+  "collapsed": true,
+  "children": [
+{
+  "label": "GeoJSON 0",
+  "layer": feature_group_,
+},
+{
+  "label": "GeoJSON 1",
+  "layer": feature_group_,
+},
+],
+},
+],
+},
+                {"closedSymbol": "+", "collapseAll": "", "expandAll": "", "labelIsSelector": "both", "namedToggle": false, "openenedSymbol": "-", "selectorBack": false, "spaceSymbol": "\u0026nbsp;"}
+            ).addTo(map_);
+        
+    
+            map_.fitBounds(
+                [[51.962, 7.6281], [51.962, 7.6281]],
+                {}
+            );
+        
+</script>
+</html>
