@@ -104,14 +104,15 @@ def parse(
     Parses the geojson data object(s) from the file(s).
     """
     # Load json data
-    content_geojson, _ = common.load_data(input_geojson, "")
+    content, _ = common.load_data(input_geojson, "")
+    json_content = json.loads(content)
 
     # Extract geojsons
     if jpath_geojson:
         expression = jsonpath_ng.parse(jpath_geojson)
-        geojsons = [json.loads(match.value) for match in expression.find(content_geojson)]
+        geojsons = [match.value for match in expression.find(json_content)]
     else:
-        geojsons = [json.loads(content_geojson)]
+        geojsons = [json_content]
 
     return geojsons
 
