@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/nextpipe
+      url: https://pypi.org/p/nextplot
     permissions:
       id-token: write # This is required for trusted publishing to PyPI
     steps:
