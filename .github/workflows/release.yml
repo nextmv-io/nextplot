@@ -7,6 +7,9 @@ jobs:
   release:
     if: ${{ github.ref_type == 'branch' }}
     uses: nextmv-io/release/.github/workflows/release.yml@develop
+    permissions:
+      contents: write # Required for creating releases and tags
+      pull-requests: write
     with:
       BRANCH: ${{ github.ref_name }}
       REPOSITORY: nextplot
@@ -51,6 +54,8 @@ jobs:
     needs: [release, publish]
     if: ${{ needs.release.outputs.RELEASE_NEEDED == 'true' && needs.release.outputs.SHOULD_NOTIFY_SLACK == 'true' }}
     uses: nextmv-io/release/.github/workflows/notify-slack.yml@develop
+    permissions:
+      contents: read
     with:
       PACKAGE_NAME: nextplot
       VERSION: ${{ needs.release.outputs.VERSION }}
