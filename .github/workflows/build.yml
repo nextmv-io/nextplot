@@ -2,33 +2,36 @@ name: build
 
 on: [push]
 
+permissions:
+  contents: read
+
 jobs:
-    build:
-        name: "nextplot build, lint & test"
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                # Tests are currently stable only for python 3.11
-                # due to the way we are testing
-                python-version: ["3.11"]
-        steps:
-            - uses: actions/checkout@v4
+  build:
+    name: "nextplot build, lint & test"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Tests are currently stable only for python 3.11
+        # due to the way we are testing
+        python-version: ["3.11"]
+    steps:
+      - uses: actions/checkout@v4
 
-            - name: Set up Python ${{ matrix.python-version }}
-              uses: actions/setup-python@v5
-              with:
-                  python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-            # Install all development dependencies
-            - name: Install dependencies
-              run: |
-                  python -m pip install --upgrade pip
-                  pip install -r requirements-dev.txt
+      # Install all development dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
 
-            # Lint with ruff
-            - name: lint with ruff
-              run: ruff check --output-format=github .
+      # Lint with ruff
+      - name: lint with ruff
+        run: ruff check --output-format=github .
 
-            # Run the tests with pytest
-            - name: Test with pytest
-              run: python -m pytest -v -s
+      # Run the tests with pytest
+      - name: Test with pytest
+        run: python -m pytest -v -s
