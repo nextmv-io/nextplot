@@ -6,7 +6,7 @@ on: [push]
 jobs:
   release:
     if: ${{ github.ref_type == 'branch' }}
-    uses: nextmv-io/release/.github/workflows/release.yml@develop
+    uses: nextmv-io/release/.github/workflows/release.yml@949cbb3b90ab294f8da42cf9c314637deaa578f5
     permissions:
       contents: write # Required for creating releases and tags
       pull-requests: write
@@ -17,7 +17,10 @@ jobs:
       PACKAGE_NAME: nextplot
       PACKAGE_LOCATION: .
       VERSION_FILE: __about__.py
-    secrets: inherit
+    secrets:
+      SLACK_URL_MISSION_CONTROL: ${{ secrets.SLACK_URL_MISSION_CONTROL }}
+      NEXTMVBOT_SSH_KEY: ${{ secrets.NEXTMVBOT_SSH_KEY }}
+      NEXTMVBOT_SIGNING_KEY: ${{ secrets.NEXTMVBOT_SIGNING_KEY }}
 
   publish: # Unfortunately, PyPI publishing does not support reusable workflows, so we must publish here.
     needs: release
@@ -30,12 +33,13 @@ jobs:
       id-token: write # This is required for trusted publishing to PyPI
     steps:
       - name: git clone ${{ github.ref_name }}
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ github.ref_name }}
+          persist-credentials: false
 
       - name: set up Python
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6.2.0
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
 
       - name: install dependencies
         run: |
@@ -46,18 +50,19 @@ jobs:
         run: python -m build
 
       - name: python - publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b  # v1.14.0
+        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0
         with:
           packages-dir: ./dist
 
   notify:
     needs: [release, publish]
     if: ${{ needs.release.outputs.RELEASE_NEEDED == 'true' && needs.release.outputs.SHOULD_NOTIFY_SLACK == 'true' }}
-    uses: nextmv-io/release/.github/workflows/notify-slack.yml@develop
+    uses: nextmv-io/release/.github/workflows/notify-slack.yml@949cbb3b90ab294f8da42cf9c314637deaa578f5
     permissions:
       contents: read
     with:
       PACKAGE_NAME: nextplot
       VERSION: ${{ needs.release.outputs.VERSION }}
       REPOSITORY: nextplot
-    secrets: inherit
+    secrets:
+      SLACK_URL_MISSION_CONTROL: ${{ secrets.SLACK_URL_MISSION_CONTROL }}
