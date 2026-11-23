@@ -6,10 +6,9 @@ on: [push]
 jobs:
   release:
     if: ${{ github.ref_type == 'branch' }}
-    uses: nextmv-io/release/.github/workflows/release.yml@949cbb3b90ab294f8da42cf9c314637deaa578f5
+    uses: nextmv-io/release/.github/workflows/release.yml@55db7c4e696ba9b86c9dee55624e9cad41b58b39
     permissions:
       contents: write # Required for creating releases and tags
-      pull-requests: write
     with:
       BRANCH: ${{ github.ref_name }}
       REPOSITORY: nextplot
@@ -19,8 +18,6 @@ jobs:
       VERSION_FILE: __about__.py
     secrets:
       SLACK_URL_MISSION_CONTROL: ${{ secrets.SLACK_URL_MISSION_CONTROL }}
-      NEXTMVBOT_SSH_KEY: ${{ secrets.NEXTMVBOT_SSH_KEY }}
-      NEXTMVBOT_SIGNING_KEY: ${{ secrets.NEXTMVBOT_SIGNING_KEY }}
 
   publish: # Unfortunately, PyPI publishing does not support reusable workflows, so we must publish here.
     needs: release
@@ -57,7 +54,7 @@ jobs:
   notify:
     needs: [release, publish]
     if: ${{ needs.release.outputs.RELEASE_NEEDED == 'true' && needs.release.outputs.SHOULD_NOTIFY_SLACK == 'true' }}
-    uses: nextmv-io/release/.github/workflows/notify-slack.yml@949cbb3b90ab294f8da42cf9c314637deaa578f5
+    uses: nextmv-io/release/.github/workflows/notify-slack.yml@55db7c4e696ba9b86c9dee55624e9cad41b58b39
     permissions:
       contents: read
     with:
